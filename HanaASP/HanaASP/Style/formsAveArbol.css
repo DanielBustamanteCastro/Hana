@@ -1,0 +1,446 @@
+﻿body {
+    font-family: "Roboto", sans-serif;
+    background-color: #8FC170;
+    background-image: url(../images/fondo2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+.form {
+    background-color: white;
+    max-width: 900px;
+    margin: 0 auto 100px;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 20px double green;
+    position: relative;
+    top: -10px;
+}
+
+.logoPerfil {
+    width: 400px;
+    position: relative;
+}
+
+.logo {
+    height: 200px;
+    position: relative;
+}
+
+.cont {
+    top: 30px;
+    position: relative;
+    margin-bottom: 60px;
+    width: 97%;
+}
+
+.span {
+    width: 180px;
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+/*ANIMATION BUTTON*/
+
+.button-three {
+    position: relative;
+    background-color: green;
+    border: none;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    color: #fff;
+    font-size: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+    .button-three:hover {
+        background: #fff;
+        box-shadow: 0px 2px 10px 5px green;
+        color: #000;
+    }
+
+    .button-three:after {
+        content: "";
+        background: green;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s;
+    }
+
+    .button-three:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+    }
+
+/*ANIMATION TEXT*/
+
+/* LABEL ======================================= */
+.label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+.input:focus ~ label, .input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: green;
+}
+
+.group {
+    position: relative;
+    margin-bottom: 45px;
+    display: inline-block;
+}
+
+.a {
+    width: 35%;
+}
+
+.b {
+    margin-right: 20px;
+}
+
+.cont .z {
+    width: 73%;
+}
+
+.input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #757575;
+    outline: none;
+    width: 100%;
+}
+
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+    .bar:before, .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: green;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .bar:before {
+        left: 50%;
+    }
+
+    .bar:after {
+        right: 50%;
+    }
+
+/* active state */
+.input:focus ~ .bar:before, .input:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+/* active state */
+.input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+/*SELECT*/
+
+select {
+    color: #999;
+    font-size: 18px;
+    border: none;
+    border-bottom: 1px solid;
+    border-bottom-color: #999;
+    border-radius: 0px;
+}
+
+.select {
+    width: 100%;
+    position: relative;
+}
+
+.sel {
+    width: 35%;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+    .sel .span {
+        position: absolute;
+        top: -21px;
+    }
+
+.textarea {
+    width: 85%;
+    display: block;
+    height: 70px;
+    resize: none;
+}
+
+    .textarea .span {
+        margin-left: 7%;
+        position: absolute;
+    }
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 672px) {
+    .group {
+        width: 90%;
+        position: relative;
+    }
+
+    .b {
+        margin-right: 0;
+    }
+
+    .cont .sel {
+        width: 90%;
+    }
+
+    .textarea {
+        width: 94%;
+    }
+
+        .textarea .span {
+            margin-left: 4.6%;
+        }
+}
+
+@media screen and (max-width: 570px) {
+    .button-three {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .form .input-file-container, .form .logoPerfil {
+        width: 90%;
+    }
+}
+
+/*FILE*/
+
+.input-file-container {
+    position: relative;
+    width: 231px;
+    cursor: pointer;
+    top: 5px;
+}
+
+.js .input-file-trigger {
+    display: block;
+    padding: 14px 0px;
+    background: #00AB00;
+    color: #fff;
+    font-size: 1em;
+    transition: all .4s;
+    cursor: pointer;
+}
+
+.js .input-file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+}
+
+    .js .input-file:hover + .input-file-trigger,
+    .js .input-file:focus + .input-file-trigger,
+    .js .input-file-trigger:hover,
+    .js .input-file-trigger:focus {
+        background: #34495E;
+        color: #39D2B4;
+    }
+
+.file-return {
+    margin: 0;
+}
+
+    .file-return:not(:empty) {
+        margin: 1em 0;
+    }
+
+.js .file-return {
+    font-style: italic;
+    font-size: .9em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .js .file-return:not(:empty):before {
+        content: "Selected file: ";
+        font-style: normal;
+        font-weight: normal;
+    }
+
+
+/*nuevo agregado param agregar arbol*/
+.ms {
+    height: 200px;
+    width: 200px;
+}
+
+.aa {
+    display: none;
+}
+
+#asd {
+    display: none;
+}
+
+.file {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: rgb(58, 241, 58);
+    color: white;
+}
+
+#div {
+    height: 200px;
+    width: 98%;
+    background-color: #f6f6f6;
+    border: 2px solid #00ff06;
+}
+
+.thumb {
+    height: 150px;
+    width: 150px;
+    border: 1px solid rgba(10, 250, 10, 1);
+    margin: 10px 5px 0 0;
+    border-radius: 8px;
+    -webkit-box-shadow: 1px 0px 15px 1px rgba(163,163,163,1);
+    -moz-box-shadow: 1px 0px 15px 1px rgba(163,163,163,1);
+    box-shadow: 1px 0px 15px 1px rgba(163,163,163,1);
+}
+
+.imagen {
+    height: 150px;
+    width: 150px;
+    margin: 10px 5px 0 0;
+    border-radius: 8px;
+}
+
+.eliminar {
+    font-size: 18px;
+    position: relative;
+    top: 100px;
+    left: 30%;
+    visibility: hidden;
+}
+
+.out {
+    display: inline-block;
+}
+
+.x {
+    width: 20px;
+    height: 24px;
+    position: relative;
+    top: -165px;
+    left: 76px;
+    cursor: pointer;
+}
+
+.file-upload {
+    background-color: #ffffff;
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}

@@ -1,0 +1,60 @@
+﻿#mainheader {
+    margin-top: -35px;
+}
+
+.div1 {
+    width: 273px;
+    height: 131%;
+    display: inline-block;
+    position: relative;
+}
+
+.div2 {
+    position: relative;
+    top: -13px
+}
+
+.div3 {
+    width: 273px;
+    height: 131%;
+    display: inline-block;
+    position: relative;
+    top: -2px;
+}
+
+.div4 {
+    position: relative;
+    top: -40px;
+}
+
+.div5 {
+    position: relative;
+    top: 2px
+}
+
+.div6 {
+    position: relative;
+    top: -60px
+}
+
+.div7 {
+    position: relative;
+    top: -28px
+}
+
+@media screen and (max-width:703px) {
+    .div1 {
+        position: relative;
+        top: 40px;
+    }
+
+    .div3 {
+        position: relative;
+        top: 40px;
+    }
+
+    .div7 {
+        position: relative;
+        top: 10px;
+    }
+}

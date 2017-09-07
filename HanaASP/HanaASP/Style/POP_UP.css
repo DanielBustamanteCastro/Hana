@@ -1,0 +1,55 @@
+/*POP UP*/
+
+#popup, #popp {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+}
+
+.pop2, .pop {
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    display:none;
+    background-color: #67FD67;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.cee {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+}
+
+@media(max-width:679px) {
+    .group{
+        width: 90%;
+    }
+    .card .input-container {
+        position: relative;
+        margin: 0 0px 28px 31px;
+    }
+    .cont{
+        max-width: 426px;
+    }
+    .card .input-container label {
+        font-size: 22px;
+    }
+    #img{
+        display: none;
+    }
+    #img2{
+        display: none;
+    }
+}
+#stop{
+    cursor: pointer;
+    width: 100%;
+    height: 319.2%;
+    position: fixed;
+}

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CDE69925-E247-45FF-92CD-2CE847DC8DE6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DTO</RootNamespace>
+    <AssemblyName>DTO</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tbl_Altura_arbol.cs" />
+    <Compile Include="tbl_Amplitud_copa.cs" />
+    <Compile Include="tbl_Arbol.cs" />
+    <Compile Include="tbl_Ave.cs" />
+    <Compile Include="tbl_Clase_arbol.cs" />
+    <Compile Include="tbl_Clase_ave.cs" />
+    <Compile Include="tbl_Clase_dieta.cs" />
+    <Compile Include="tbl_Color_flor.cs" />
+    <Compile Include="tbl_Color_hoja.cs" />
+    <Compile Include="tbl_Color_plumaje.cs" />
+    <Compile Include="tbl_Comportamiento_ave.cs" />
+    <Compile Include="tbl_Contraseña.cs" />
+    <Compile Include="tbl_Correo_electronico.cs" />
+    <Compile Include="tbl_Diametro_arbol.cs" />
+    <Compile Include="tbl_Dieta.cs" />
+    <Compile Include="tbl_Division_arbol.cs" />
+    <Compile Include="tbl_Dominio_arbol.cs" />
+    <Compile Include="tbl_Dominio_ave.cs" />
+    <Compile Include="tbl_Especie_arbol.cs" />
+    <Compile Include="tbl_Especie_ave.cs" />
+    <Compile Include="tbl_Estacion_de_floracion.cs" />
+    <Compile Include="tbl_Estado_arbol.cs" />
+    <Compile Include="tbl_Estado_ave.cs" />
+    <Compile Include="tbl_Estado_usuario.cs" />
+    <Compile Include="tbl_Familia_arbol.cs" />
+    <Compile Include="tbl_Familia_ave.cs" />
+    <Compile Include="tbl_Filum_ave.cs" />
+    <Compile Include="tbl_Flora.cs" />
+    <Compile Include="tbl_Forma_de_copa.cs" />
+    <Compile Include="tbl_Fotos_arboles.cs" />
+    <Compile Include="tbl_Funcion_arbol.cs" />
+    <Compile Include="tbl_Genero_arbol.cs" />
+    <Compile Include="tbl_Genero_ave.cs" />
+    <Compile Include="tbl_Habitat_ave.cs" />
+    <Compile Include="tbl_Habito_crecimiento.cs" />
+    <Compile Include="tbl_Limitaciones_fruto.cs" />
+    <Compile Include="tbl_Limitacion_arbol.cs" />
+    <Compile Include="tbl_Longevidad_arbol.cs" />
+    <Compile Include="tbl_Luminocidad_arbol.cs" />
+    <Compile Include="tbl_Orden_arbol.cs" />
+    <Compile Include="tbl_Orden_ave.cs" />
+    <Compile Include="tbl_Origen_ave.cs" />
+    <Compile Include="tbl_Persistencia_hoja.cs" />
+    <Compile Include="tbl_Piso_termico.cs" />
+    <Compile Include="tbl_Reino_arbol.cs" />
+    <Compile Include="tbl_Reino_ave.cs" />
+    <Compile Include="tbl_Reproduccion_ave.cs" />
+    <Compile Include="tbl_Rol.cs" />
+    <Compile Include="tbl_Tamaño_ave.cs" />
+    <Compile Include="tbl_Tipo_arbol.cs" />
+    <Compile Include="tbl_Tipo_ave.cs" />
+    <Compile Include="tbl_Ubicacion.cs" />
+    <Compile Include="tbl_Usuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

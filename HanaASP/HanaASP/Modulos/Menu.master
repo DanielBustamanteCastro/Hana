@@ -1,0 +1,87 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="menu.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
+    <link href="../Frameworks/css/animate.css" rel="stylesheet" />
+    <link href="../Style/menu.css" rel="stylesheet" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="shortcut icon" type="image/x-icon" href="../images/Logo.png" />
+</head>
+<body>
+    <!-- MENU -->
+    <header class="container">
+        <ul class="tl-menu">
+            <li><a id="navItem">
+                <div id="nav-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </a>
+            </li>
+            <div class="ocl">
+                <li></li>
+                <li class="select s1">
+                    <asp:HyperLink ID="hlnkInicio" NavigateUrl="~/Modulos/index.aspx" runat="server" CssClass="entypo-home"></asp:HyperLink></li>
+                <li class="select s2">
+                    <asp:HyperLink ID="hlnkInicioSesion" NavigateUrl="~/Modulos/Inicio sesion3.aspx" CssClass="entypo-login" runat="server"></asp:HyperLink></li>
+                <li class="select s3">
+                    <asp:HyperLink ID="hlnkRegistrar" NavigateUrl="~/Modulos/Register3.aspx" CssClass="entypo-user-add" runat="server"></asp:HyperLink></li>
+                <li class="select s4">
+                    <asp:HyperLink ID="hlnkGalerias" CssClass="galeria open1" runat="server"></asp:HyperLink></li>
+                <li class="select s5">
+                    <asp:HyperLink ID="hlnkQueFauna" NavigateUrl="#" CssClass="colibri" runat="server"></asp:HyperLink></li>
+                <li class="select s6">
+                    <asp:HyperLink ID="hlnkQueFlora" NavigateUrl="#" CssClass="entypo-leaf" runat="server"></asp:HyperLink></li>
+            </div>
+        </ul>
+        <nav class="slider-menu slider-menu-vertical slider-menu-left" id="slider-menu-s1">
+            <h3>MENU</h3>
+            <a href="#" class="1">Inicio</a>
+            <a href="#" class="2">Iniciar Sesión</a>
+            <a href="#" class="3">Registro</a>
+            <a href="#" class="4">Galerias</a>
+            <a href="#" class="5">¿Qué es fauna?</a>
+            <a href="#" class="6">¿Qué es flora?</a>
+        </nav>
+    </header>
+    <div class="modal-frame" id="Galeria">
+        <div class="cont">
+            <div class="modal2">
+                <div class="titleGallery">
+                    <div class="close"><i class="fa fa-close"></i></div>
+                    GALERIAS
+                </div>
+                <div class="modal-inset">
+                    <div class="itemsGallery" id="ave">
+                        <asp:HyperLink runat="server" NavigateUrl="~/Modulos/Galerias/GaleriaAves.aspx">
+                            <asp:Image CssClass="ave" ID="Image3" runat="server" ImageUrl="~/images/popup/ave.png" />
+                            <div class="titleItem">Galeria Aves</div>
+                        </asp:HyperLink>
+                    </div>
+                    <div class="itemsGallery" id="arbol">
+                        <asp:HyperLink runat="server" NavigateUrl="~/Modulos/Galerias/GaleriaArboles.aspx">
+                            <asp:Image ID="Image4" runat="server" ImageUrl="~/images/popup/arbol.jpg" />
+                            <div class="titleItem b">Galeria Arboles</div>
+                        </asp:HyperLink>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay"></div>
+    <script src="../Script/icono.js"></script>
+    <div class="todo">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+    </div>
+</body>
+</html>

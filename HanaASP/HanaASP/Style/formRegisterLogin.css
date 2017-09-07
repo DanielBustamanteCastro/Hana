@@ -1,0 +1,319 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background-image: url(../images/fondo2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
+.validate{
+    color: red;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.form {
+    background-color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 700px;
+    padding: 30px;
+    border: 20px double green;
+    position: relative;
+    top: -10px;
+}
+.b{
+    max-width: 470px;
+    position: relative;
+    top:0px;
+}
+
+.logo {
+    height: 200px;
+    position: relative;
+}
+
+.cont {
+    top: 30px;
+    position: relative;
+    margin-bottom: 60px;
+    display:block;
+}
+.c{
+    margin-bottom: 10px;
+}
+
+.span {
+    width: 180px;
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.date .span {
+    top: -20px;
+    left: 0px;
+    position: absolute;
+}
+
+.date {
+    width: 235px;
+}
+
+@media all and (-ms-high-contrast:none) {
+    .date {
+        width: 210px;
+    }
+}
+
+@-moz-document url-prefix() {
+    .date {
+        width: 205px;
+    }
+}
+
+
+/*ANIMATION BUTTON*/
+
+.button-three {
+    position: relative;
+    background-color: green;
+    border: none;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    color: #fff;
+    font-size: 20px;
+}
+
+    .button-three:hover {
+        background: #fff;
+        box-shadow: 0px 2px 10px 5px green;
+        color: #000;
+    }
+
+    .button-three:after {
+        content: "";
+        background: green;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s;
+    }
+
+    .button-three:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+    }
+
+/*ANIMATION TEXT*/
+
+/* LABEL ======================================= */
+label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: green;
+}
+
+.group {
+    position: relative;
+    margin-bottom: 45px;
+    display: inline-block;
+}
+.cont .g{
+    width: 90%;
+}
+
+.a {
+    margin-right: 40px;
+}
+
+input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #757575;
+    outline: none;
+}
+
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.bar {
+    position: relative;
+    display: block;
+}
+
+    .bar:before, .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: green;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .bar:before {
+        left: 50%;
+    }
+
+    .bar:after {
+        right: 50%;
+    }
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #5264AE;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+/*SELECT*/
+
+select {
+    color: #999;
+    font-size: 18px;
+    border: none;
+    border-bottom: 1px solid;
+    border-bottom-color: #999;
+    border-radius: 0px;
+}
+
+.select {
+    width: 100%;
+    position: relative;
+}
+
+.dep {
+    width: 76%;
+    left: 0px;
+}
+
+    .dep .span {
+        left: 7PX;
+        position: relative;
+    }
+
+/*MESSEGE*/
+
+.form .message {
+    color: #b3b3b3;
+    text-align: center;
+}
+
+    .form .message a {
+        color: #68E700;
+        text-decoration: none;
+    }
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 672px) {
+    .group, .date {
+        width: 90%;
+        position: relative;
+    }
+
+    .a, .dep {
+        margin-right: 0;
+    }
+
+    .g {
+        width: 77%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .logo {
+        height: 150px;
+    }
+}
