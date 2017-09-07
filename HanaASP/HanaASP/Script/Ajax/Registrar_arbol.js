@@ -20,7 +20,7 @@
                 var tipo = 0;
                 var file = $(this).val();
                 var ext = file.substring(file.lastIndexOf("."));
-                if (ext != ".jpg" && ext != ".png" && ext != ".jpeg") {
+                if (ext != ".jpg" && ext != ".png" && ext != ".jpeg" != ext != ".JGP" && ext != ".PNG" && ext != ".JPEG")  {
             swal('Oops...', 'No es una imagen!', 'error');
         tipo = 2;
                     $(this).get(0).value = '';
@@ -61,7 +61,7 @@
 
                         reader.readAsDataURL(f);
                         input = input + 1;
-                        $("#div").append("<output id=" + " out" + input + " class='out'><div id=" + " list" + input + " class='imagen'>  </div><div class='eliminar'>Eliminar</div></output > ");
+                        $("#div").append("<output id=" + " out" + input + " class='out'><div id=" + " list" + input + " class='imagen'>  </div></output > ");
 
 
                     }

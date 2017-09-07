@@ -137,9 +137,8 @@
     <Content Include="Modulos\indexAdmin.aspx" />
     <Content Include="Modulos\indexUsuario.aspx" />
     <Content Include="Modulos\index.aspx" />
-    <Content Include="Modulos\Inicio sesion3.aspx" />
     <Content Include="Modulos\Inicio sesion.aspx" />
-    <Content Include="Modulos\Register3.aspx" />
+    <Content Include="Modulos\Register.aspx" />
     <Content Include="Modulos\Validacion.aspx" />
     <Content Include="Frameworks\fonts\entypo.woff" />
     <Content Include="Modulos\MenuAdmin.master" />
@@ -172,7 +171,6 @@
     <Content Include="Services\Registrar_arbol\Service_Registrar_arbol.svc" />
     <Content Include="Services\Registrar_ave\Service_Registrar_ave.svc" />
     <Content Include="Style\formRegister.css" />
-    <Content Include="Modulos\Register.aspx" />
     <Content Include="packages.config" />
     <Content Include="Modulos\Menu.master" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
@@ -314,13 +312,6 @@
     <Compile Include="Modulos\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Inicio sesion3.aspx.cs">
-      <DependentUpon>Inicio sesion3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\Inicio sesion3.aspx.designer.cs">
-      <DependentUpon>Inicio sesion3.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Modulos\Inicio sesion.aspx.cs">
       <DependentUpon>Inicio sesion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -339,13 +330,6 @@
     <Compile Include="Modulos\Menu.master.cs">
       <DependentUpon>Menu.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\Register3.aspx.cs">
-      <DependentUpon>Register3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\Register3.aspx.designer.cs">
-      <DependentUpon>Register3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>

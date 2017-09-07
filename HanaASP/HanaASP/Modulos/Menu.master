@@ -35,7 +35,7 @@
                 <li class="select s2">
                     <asp:HyperLink ID="hlnkInicioSesion" NavigateUrl="~/Modulos/Inicio sesion3.aspx" CssClass="entypo-login" runat="server"></asp:HyperLink></li>
                 <li class="select s3">
-                    <asp:HyperLink ID="hlnkRegistrar" NavigateUrl="~/Modulos/Register3.aspx" CssClass="entypo-user-add" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkRegistrar" NavigateUrl="~/Modulos/Register.aspx" CssClass="entypo-user-add" runat="server"></asp:HyperLink></li>
                 <li class="select s4">
                     <asp:HyperLink ID="hlnkGalerias" CssClass="galeria open1" runat="server"></asp:HyperLink></li>
                 <li class="select s5">

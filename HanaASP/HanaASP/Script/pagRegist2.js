@@ -14,9 +14,9 @@ $('.modal-body-step-7 label').html('<a href="https://example.com/account?user=' 
 // -------------------------
 $('.next').click(function () {
     var $btn = $(this),
-			$step = $btn.parents('.modal-body'),
-			stepIndex = $step.index(),
-			$pag = $('.modal-header span').eq(stepIndex);
+        $step = $btn.parents('.modal-body'),
+        stepIndex = $step.index(),
+        $pag = $('.modal-header span').eq(stepIndex);
 
     if (stepIndex === 5) {
         var value = $('#activation').val();
@@ -40,9 +40,9 @@ $('.next').click(function () {
 // -------------------------
 $('.previous').click(function () {
     var $btn = $(this),
-			$step = $btn.parents('.modal-body'),
-			stepIndex = $step.index(),
-			$pag = $('.modal-header span').eq(stepIndex);
+        $step = $btn.parents('.modal-body'),
+        stepIndex = $step.index(),
+        $pag = $('.modal-header span').eq(stepIndex);
 
     previousStep($step, $pag);
 });
@@ -60,7 +60,7 @@ function nextStep($step, $pag) {
     // animate the step in
     setTimeout(function () {
         $step.removeClass('animate-out-to-left is-showing')
-             .next().addClass('animate-in-from-right');
+            .next().addClass('animate-in-from-right');
         $pag.removeClass('is-active is-invalid').addClass('is-valid')
             .next().addClass('is-active');
     }, 600);
@@ -68,7 +68,7 @@ function nextStep($step, $pag) {
     // after the animation, adjust the classes
     setTimeout(function () {
         $step.next().removeClass('animate-in-from-right')
-             .addClass('is-showing');
+            .addClass('is-showing');
     }, 1200);
 }
 
@@ -85,7 +85,7 @@ function previousStep($step, $pag) {
     // animate the step in
     setTimeout(function () {
         $step.removeClass('animate-out-to-right is-showing')
-             .prev().addClass('animate-in-from-left');
+            .prev().addClass('animate-in-from-left');
         $pag.removeClass('is-active is-valid is-invalid')
             .prev().removeClass('is-valid is-invalid').addClass('is-active');
     }, 600);
@@ -93,7 +93,7 @@ function previousStep($step, $pag) {
     // after the animation, adjust the classes
     setTimeout(function () {
         $step.prev().removeClass('animate-in-from-left')
-             .addClass('is-showing');
+            .addClass('is-showing');
     }, 1200);
 }
 

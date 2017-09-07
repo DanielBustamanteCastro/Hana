@@ -3,6 +3,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Inicio</title>
     <link href="../Style/slider.css" rel="stylesheet" />
+        <script>
+        $(document).ready(function () {
+            window.location.hash = "no-back-button";
+            3
+            window.location.hash = "Again-No-back-button" //chrome
+            4
+            window.onhashchange = function () { window.location.hash = "no-back-button"; }
+        });
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

@@ -61,3 +61,10 @@ C:\Users\Daniel\Desktop\HanaASP v7\HanaASP v7\CAD\bin\Debug\DTO.pdb
 C:\Users\Daniel\Desktop\HanaASP v7\HanaASP v7\CAD\obj\Debug\CAD.csprojResolveAssemblyReference.cache
 C:\Users\Daniel\Desktop\HanaASP v7\HanaASP v7\CAD\obj\Debug\CAD.dll
 C:\Users\Daniel\Desktop\HanaASP v7\HanaASP v7\CAD\obj\Debug\CAD.pdb
+C:\Users\Daniel\Desktop\github\HanaASP\CAD\bin\Debug\CAD.dll
+C:\Users\Daniel\Desktop\github\HanaASP\CAD\bin\Debug\CAD.pdb
+C:\Users\Daniel\Desktop\github\HanaASP\CAD\bin\Debug\DTO.dll
+C:\Users\Daniel\Desktop\github\HanaASP\CAD\bin\Debug\DTO.pdb
+C:\Users\Daniel\Desktop\github\HanaASP\CAD\obj\Debug\CAD.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Desktop\github\HanaASP\CAD\obj\Debug\CAD.dll
+C:\Users\Daniel\Desktop\github\HanaASP\CAD\obj\Debug\CAD.pdb

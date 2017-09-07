@@ -33,6 +33,13 @@ function ajax(Correo1,Contraseña1) {
         success: function (Mensaje) {
             item = Mensaje.Iniciar_sesionResult;
             $('#txtContraseña').val('');
+            if (item=="Usuario") {
+                location.href = "indexUsuario.aspx";
+            }
+            if (item == "Administrador") {
+                location.href = "indexAdmin.aspx";
+            }
+
             swal(item);
         },
         error: function (Mensaje) {

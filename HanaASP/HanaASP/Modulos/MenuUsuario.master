@@ -40,7 +40,7 @@
                 <li class="select s6">
                     <asp:HyperLink ID="hlnkQueFlora" NavigateUrl="#" CssClass="entypo-leaf" runat="server"></asp:HyperLink></li>
                 <li class="select s10">
-                    <asp:HyperLink ID="hlnkCerrarSesion" NavigateUrl="#" CssClass="entypo-logout" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkCerrarSesion" NavigateUrl="index.aspx" CssClass="entypo-logout" runat="server"></asp:HyperLink></li>
             </div>
         </ul>
         <nav class="slider-menu slider-menu-vertical slider-menu-left" id="slider-menu-s1">

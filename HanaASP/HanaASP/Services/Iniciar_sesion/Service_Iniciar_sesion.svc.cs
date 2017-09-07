@@ -60,9 +60,20 @@ namespace HanaASP.Services
                 }
                 if (Rol[2].Equals("Activo"))
                 {//SI el usuario esta activo podra iniciar sesión correctamente
-                    HttpContext.Current.Session["Rol"] = Rol[0];
-                    HttpContext.Current.Session["Correo"] = Correo;
-                    HttpContext.Current.Session["Contraseña"] = Contraseña;
+                        if (Rol[0]== "Usuario")
+                        {
+                            HttpContext.Current.Session["Rol"] = Rol[0];
+                            HttpContext.Current.Session["Correo"] = Correo;
+                            HttpContext.Current.Session["Contraseña"] = Contraseña;
+                            return HttpContext.Current.Session["Rol"].ToString();
+                        }
+                        if (Rol[0]== "Administrador")
+                        {
+                            HttpContext.Current.Session["Rol"] = Rol[0];
+                            HttpContext.Current.Session["Correo"] = Correo;
+                            HttpContext.Current.Session["Contraseña"] = Contraseña;
+                            HttpContext.Current.Response.Redirect("indexAdmin.aspx");
+                        }
                 }
                 if (Rol[2].Equals("Inactivo"))
                 {//SI el usuario esta inactivo podra iniciar sesión correctamente
