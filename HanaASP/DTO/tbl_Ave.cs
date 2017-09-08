@@ -12,5 +12,6 @@ namespace DTO
         public String  Nombre_cientifico { get; set; }
         public String  Nombre_comun { get; set; }
         public String Descripcion { get; set; }
+        public int id_Especie_ave { get; set; }
     }
 }

@@ -87,6 +87,11 @@ namespace HanaASP.Services.Registrar_ave
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-        String Insertar_ave(String nombreComun, String nombreCientifico, String descripcion, int tipo,int clase_dieta, int dieta, int comportamiento, int habitat, int reproduccion,  int origen, int especie,int color_plumaje,int tamaño_ave);
+        String Insertar_ave(String nombreComun, String nombreCientifico, String descripcion, int tipo, int clase_dieta, int dieta, int comportamiento, int habitat, int reproduccion, int origen, int especie, int color_plumaje, int tamaño_ave);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
+        String Insertar_imagen_ave(string imagen, string nombreCientifico, string nombreComun, int especie);
+
     }
 }

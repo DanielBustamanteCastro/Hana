@@ -59,6 +59,8 @@ namespace CAD
                 cmd.Parameters.AddWithValue("@idEstado", tblEst.id_Estado_ave);
                 cmd.Parameters.AddWithValue("@idOrigen", tblOra.id_Origen_ave);
                 cmd.Parameters.AddWithValue("@idEspecie", tblEpa.id_Especie_ave);
+                cmd.Parameters.AddWithValue("@idTamaño",tblTma.id_Tamaño_ave);
+                cmd.Parameters.AddWithValue("@idColor", tblCpl.id_Color_plumaje);
                 con.Open();
                 int rows = cmd.ExecuteNonQuery();
                 con.Close();
@@ -70,6 +72,35 @@ namespace CAD
                 mensaje = e.Message;
             }
             return mensaje;
+        }
+        public int Buscar_id_ave(tbl_Ave tblAv)
+        {
+            int id = 0;
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_Buscar_id_ave";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@a", tblAv.Nombre_comun);
+                cmd.Parameters.AddWithValue("@nombreCi", tblAv.Nombre_cientifico);
+                cmd.Parameters.AddWithValue("@id_especie", tblAv.id_Especie_ave);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    id = int.Parse(dr["id_ave"].ToString());
+                }
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return id;
+
         }
     }
 }

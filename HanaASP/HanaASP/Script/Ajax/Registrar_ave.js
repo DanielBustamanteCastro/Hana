@@ -144,7 +144,7 @@ $(document).ready(function () {
                         async: false,
                         processdata: true,
                         success: function (Mensaje) {
-                            if (Mensaje.Insertar_arbolResult == "Insertado correctamente") {
+                            if (Mensaje.Insertar_aveResult == "Insertado correctamente") {
                                 permiso = permiso + 1;
                             }
 
@@ -166,15 +166,17 @@ $(document).ready(function () {
                     var jka = nombreComun;
                     $.ajax({
                         type: "POST",
-                        url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Insertar_imagen_arbol",
+                        url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Insertar_imagen_ave",
                         data: '{"imagen":"' + image + '","nombreCientifico":"' + nombreCientifico + '","nombreComun":"' + nombreComun + '","especie":"' + especie + '"}',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         async: false,
                         processdata: true,
                         success: function (Mensaje) {
-                            if (Mensaje.Insertar_imagen_arbolResult == "Insertado correctamente" && permiso == 2) {
-                                swal('', Mensaje.Insertar_imagen_arbolResult, 'success');
+                            alert(Mensaje.Insertar_imagen_arbolResult);
+                            alert(permiso);
+                            if (Mensaje.Insertar_imagen_aveResult == "Insertado correctamente" && permiso == 2) {
+                                swal('', Mensaje.Insertar_imagen_aveResult, 'success');
                                 $("select").val(0);
                                 $("input:text").val("");
                                 $("textarea").val("");

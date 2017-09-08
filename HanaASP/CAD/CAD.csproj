@@ -71,6 +71,7 @@
     <Compile Include="tbl_FloraCAD.cs" />
     <Compile Include="tbl_Forma_de_copaCAD.cs" />
     <Compile Include="tbl_Foto_arbolesCAD.cs" />
+    <Compile Include="tbl_Foto_avesCAD.cs" />
     <Compile Include="tbl_Funcion_arbolCAD.cs" />
     <Compile Include="tbl_Genero_arbolCAD.cs" />
     <Compile Include="tbl_Genero_aveCAD.cs" />

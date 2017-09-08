@@ -69,6 +69,7 @@
     <Compile Include="tbl_Flora.cs" />
     <Compile Include="tbl_Forma_de_copa.cs" />
     <Compile Include="tbl_Fotos_arboles.cs" />
+    <Compile Include="tbl_Fotos_aves.cs" />
     <Compile Include="tbl_Funcion_arbol.cs" />
     <Compile Include="tbl_Genero_arbol.cs" />
     <Compile Include="tbl_Genero_ave.cs" />

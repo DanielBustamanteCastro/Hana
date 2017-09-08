@@ -6,6 +6,8 @@ using System.ServiceModel;
 using System.Text;
 using DTO;
 using CAD;
+using System.Web;
+using System.IO;
 
 namespace HanaASP.Services.Registrar_ave
 {
@@ -141,10 +143,33 @@ namespace HanaASP.Services.Registrar_ave
             tblEsp.id_Especie_ave = especie;
             tblTm.id_Tamaño_ave = tamaño_ave;
             tblCp.id_Color_plumaje = color_plumaje;
-
             tblEst.id_Estado_ave = new tbl_Estado_aveCAD().Buscar_Estado_ave("Espera");
             return new tbl_AveCAD().insertar_ave(tblAv, tblEst, tblEsp, tblOv, tblTp, tblCld, tbldt, tblComp, tblHab, tblRp,tblCp, tblTm);
             
         }
+        public string Insertar_imagen_ave(string imagen, string nombreCientifico, string nombreComun, int especie)
+        {
+            tbl_Ave tblAv = new tbl_Ave();
+            tblAv.Nombre_cientifico = nombreCientifico;
+            tblAv.Nombre_comun = nombreComun;
+            tblAv.id_Especie_ave = especie;
+            tbl_Fotos_aves tblfA = new tbl_Fotos_aves();
+            tblfA.id_Aves = new tbl_AveCAD().Buscar_id_ave(tblAv);
+            tblfA.Fotos_aves = nombreCientifico + ".txt";
+
+            string fil = HttpContext.Current.Server.MapPath(@"~/images/Fotos_Ave/" + nombreCientifico + ".txt");
+            StreamWriter file = new StreamWriter(fil);
+            file.WriteLine(imagen);
+            file.Close();
+            Boolean foto = System.IO.File.Exists(fil);
+            string mensaje = "";
+            if (foto)
+            {
+                mensaje = new tbl_Foto_avesCAD().insert_foto_aves(tblfA);
+            }
+            StreamReader sr = new StreamReader(fil);
+            return mensaje;
+        }
+
     }
     }
