@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HanaASP.Services.Galeria_arbol.Service_Galeria_arbol" CodeBehind="Service_Galeria_arbol.svc.cs" %>

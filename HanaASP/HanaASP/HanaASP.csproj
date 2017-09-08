@@ -126,10 +126,8 @@
     <Content Include="Modulos\Admin\GaleriasAdmin\GaleriaAves.aspx" />
     <Content Include="Modulos\Admin\Modificar\ModificarArbol.aspx" />
     <Content Include="Modulos\Admin\Modificar\ModificarAve.aspx" />
-    <Content Include="Modulos\Admin\Registrar\RegisterArbol.aspx" />
-    <Content Include="Modulos\Admin\Registrar\RegistrarAve.aspx" />
-    <Content Include="Modulos\Admin\Registrar\ResgistroArbol3.aspx" />
-    <Content Include="Modulos\Admin\Registrar\ResgistroAve3.aspx" />
+    <Content Include="Modulos\Admin\Registrar\ResgistroArbol.aspx" />
+    <Content Include="Modulos\Admin\Registrar\ResgistroAve.aspx" />
     <Content Include="Modulos\Galerias\GaleriaArboles.aspx" />
     <Content Include="Modulos\Galerias\GaleriaAves.aspx" />
     <Content Include="Modulos\GaleriasUsuario\GaleriaArboles.aspx" />
@@ -148,6 +146,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Script\Ajax\GaleriaArbol.js" />
     <Content Include="Script\Ajax\Iniciar_sesion.js" />
     <Content Include="Script\Ajax\Registrar.js" />
     <Content Include="Script\Ajax\Registrar_arbol.js" />
@@ -166,6 +165,7 @@
     <Content Include="Script\slider\slider.js" />
     <Content Include="Script\Sweetalert\sweetalert-dev.js" />
     <Content Include="Script\Sweetalert\sweetalert2.js" />
+    <Content Include="Services\Galeria_arbol\Service_Galeria_arbol.svc" />
     <Content Include="Services\Iniciar_sesion\Service_Iniciar_sesion.svc" />
     <Content Include="Services\Registrar\Service_Registrar.svc" />
     <Content Include="Services\Registrar_arbol\Service_Registrar_arbol.svc" />
@@ -235,33 +235,19 @@
     <Compile Include="Modulos\Admin\Modificar\ModificarAve.aspx.designer.cs">
       <DependentUpon>ModificarAve.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Admin\Registrar\RegisterArbol.aspx.cs">
-      <DependentUpon>RegisterArbol.aspx</DependentUpon>
+    <Compile Include="Modulos\Admin\Registrar\ResgistroArbol.aspx.cs">
+      <DependentUpon>ResgistroArbol.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modulos\Admin\Registrar\RegisterArbol.aspx.designer.cs">
-      <DependentUpon>RegisterArbol.aspx</DependentUpon>
+    <Compile Include="Modulos\Admin\Registrar\ResgistroArbol.aspx.designer.cs">
+      <DependentUpon>ResgistroArbol.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Admin\Registrar\RegistrarAve.aspx.cs">
-      <DependentUpon>RegistrarAve.aspx</DependentUpon>
+    <Compile Include="Modulos\Admin\Registrar\ResgistroAve.aspx.cs">
+      <DependentUpon>ResgistroAve.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modulos\Admin\Registrar\RegistrarAve.aspx.designer.cs">
-      <DependentUpon>RegistrarAve.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos\Admin\Registrar\ResgistroArbol3.aspx.cs">
-      <DependentUpon>ResgistroArbol3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\Admin\Registrar\ResgistroArbol3.aspx.designer.cs">
-      <DependentUpon>ResgistroArbol3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos\Admin\Registrar\ResgistroAve3.aspx.cs">
-      <DependentUpon>ResgistroAve3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\Admin\Registrar\ResgistroAve3.aspx.designer.cs">
-      <DependentUpon>ResgistroAve3.aspx</DependentUpon>
+    <Compile Include="Modulos\Admin\Registrar\ResgistroAve.aspx.designer.cs">
+      <DependentUpon>ResgistroAve.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Galerias\GaleriaArboles.aspx.cs">
       <DependentUpon>GaleriaArboles.aspx</DependentUpon>
@@ -346,6 +332,10 @@
       <DependentUpon>Validacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Galeria_arbol\IService_Galeria_arbol.cs" />
+    <Compile Include="Services\Galeria_arbol\Service_Galeria_arbol.svc.cs">
+      <DependentUpon>Service_Galeria_arbol.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\Iniciar_sesion\IService_Iniciar_sesion.cs" />
     <Compile Include="Services\Iniciar_sesion\Service_Iniciar_sesion.svc.cs">
       <DependentUpon>Service_Iniciar_sesion.svc</DependentUpon>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Registro Arbol" Language="C#" MasterPageFile="~/Modulos/MenuAdmin.master" AutoEventWireup="true" CodeBehind="ResgistroArbol3.aspx.cs" Inherits="HanaASP.Modulos.Admin.Registrar.ResgistroAve2" %>
+﻿<%@ Page Title="Registro Arbol" Language="C#" MasterPageFile="~/Modulos/MenuAdmin.master" AutoEventWireup="true" CodeBehind="ResgistroArbol.aspx.cs" Inherits="HanaASP.Modulos.Admin.Registrar.ResgistroAve2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="../../../Style/formsAveArbol3.css" />
@@ -278,7 +278,7 @@
                 <div class="text-center">
                     <a href="../../indexAdmin.aspx">
                         <input value="Ir a Inicio" type="button" class="button" /></a>
-                    <a href="ResgistroArbol3.aspx">
+                    <a href="ResgistroArbol.aspx">
                         <input value="Nuevo registro" type="button" class="button" /></a>
                 </div>
             </div>

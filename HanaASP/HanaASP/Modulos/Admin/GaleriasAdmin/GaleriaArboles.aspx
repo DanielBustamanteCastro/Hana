@@ -4,13 +4,15 @@
     <link href="../../../Style/galeria/gallery.css" rel="stylesheet" />
     <link href="../../Style/galeria/tooltip.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../../Scripts/jquery-3.1.1.js"></script>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
+    <script src="../../../Script/Ajax/GaleriaArbol.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+    <%--<div>
         <input type="number" id="valor" placeholder="agregue cantidad" value="1000">
         <button id="agregarArbol">agregar</button>
-    </div>
+    </div>--%>
 
     <!--PAGINACION-->
     <div class="carousel">
@@ -267,6 +269,5 @@
     <script src="../../../Scripts/jquery-3.1.1.min.js"></script>
     <script src="../../../Script/icono.js"></script>
     <script src="../../../Script/galeria/gallery.js"></script>
-    <script src="../../../Script/galeria/boton(ajax).js"></script>
     <script src="../../../Script/galeria/OndulationButton.js"></script>
 </asp:Content>

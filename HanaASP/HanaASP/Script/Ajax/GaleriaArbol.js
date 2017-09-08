@@ -1,0 +1,90 @@
+﻿$(document).ready(function () {
+    $.ajax({
+        type: "POST",
+        url: "../../../Services/Galeria_arbol/Service_Galeria_arbol.svc/Llamar_arboles",
+        data: '{}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async:false,
+        processdata: true,
+        success: function (Arboles) {
+            var Arbol = Arboles.Llamar_arbolesResult;
+            var cantidad = Arbol.length;
+            var cont = 6;
+            var cant;
+            var sec = 1;
+            var fotos = [];
+            var Foto;
+            $.each(Arbol, function (index, item) {
+                $.ajax({
+                    type: "POST",
+                    url: "../../../Services/Galeria_arbol/Service_Galeria_arbol.svc/Llamar_fotos_arboles",
+                    data: '{"idArbol":"' + item[29] + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,
+                    processdata: true,
+                    success: function (Fotos) {
+                        var img = Fotos.Llamar_fotos_arbolesResult;
+                        $.each(img, function (index, item) {
+                            Foto = item.foto_arbol;
+                        });
+                    }
+                });
+                alert(item[2]);
+                /*Definicion de Valores*/   
+                var NombreComun = item[1] ;
+                var Especie = item[11];
+                var Familia = item[9] ;
+                var Tipo = item[12] ;
+                var ColorHojas = item[20] ;
+                var Altura = item[14];
+                var NombreCientifico = item[2] ;
+                var Clase = item[7] ;
+                var Dominio = item[4];
+                var Reino = item[5] ;
+                var Genero = item[10];
+                var Division = item[6];
+                var Orden = item[8];
+                var LongevidadArbol = item[24] ;
+                var LimitacionesFrutos = item[23] ;
+                var FormaCopa = item[17] ;
+                var AmplitudCopa = item[16] ;
+                var Diametro = item[15] ;
+                var PersistenciaHoja = item[18] ;
+                var EstacionFloracion = item[21] ;
+                var LimitacionesArbol = item[22] ;
+                var PisoTermico = item[25] ;
+                var Luminocidad = item[26] ;
+                var ColorFlor = item[19] ;
+                var HabitoCrecimiento = item[13] ;
+                var Descripcion = item[0];
+                var FuncionArbol = item[27];
+                alert(NombreCientifico);
+                /*Agregar clases con sus valores*/
+
+                $('#Item' + sec).append('<div id="' + item[29] + '" class="card card--big"><div class="card__image" style="background-image: url(' + Foto + '"></div><h2 class="card__title">' + NombreCientifico + '</h2><p class="card__text">' + NombreComun + '</p><div class="card__action-bar"><button class="card__button mas-info" >Mas información</button></div><div class="informat"><div class="NombreComun">' + NombreComun + '</div><div class="Especie">' + Especie + '</div><div class="Familia">' + Familia + '</div><div class="Tipo">' + Tipo + '</div><div class="ColorHojas">' + ColorHojas + '</div><div class="Altura">' + Altura + '</div><div class="NombreCientifico">' + NombreCientifico + '</div><div class="Clase">' + Clase + '</div><div class="Dominio">' + Dominio + '</div><div class="Reino">' + Reino + '</div><div class="Genero">' + Genero + '</div><div class="Division">' + Division + '</div><div class="Orden">' + Orden + '</div><div class="LongevidadArbol">' + LongevidadArbol + '</div><div class="LimitacionesFrutos">' + LimitacionesFrutos + '</div><div class="FormaCopa">' + FormaCopa + '</div><div class="AmplitudCopa">' + AmplitudCopa + '</div><div class="Diametro">' + Diametro + '</div><div class="PersistenciaHoja">' + PersistenciaHoja + '</div><div class="EstacionFloracion">' + EstacionFloracion + '</div><div class="LimitacionesArbol">' + LimitacionesArbol + '</div><div class="PisoTermico">' + PisoTermico + '</div><div class="Luminocidad">' + Luminocidad + '</div><div class="ColorFlor">' + ColorFlor + '</div><div class="HabitoCrecimiento">' + HabitoCrecimiento + '</div><div class="Descripcion">' + Descripcion + '</div><div class="FuncionArbol">' + FuncionArbol + '</div></div></div>');
+              
+                /*Crear seccion*/
+                cant = $('.card').length;
+                if (cant == cont) {
+                    sec = sec + 1;
+                    $('#carousel').append('<section id="Item' + sec + '" class="item"></section>');
+                }
+                if (cant == cont + 1) {
+                    cont = cont + 6;
+                    /*Crear paginacion segun numeros de secciones*/
+                    $('.wrap ol').append('<li class="js-carousel-pagItem"></li>');
+                    $('.pagination').css('display', 'flex');
+                }
+            });
+            action();
+
+
+        },
+        error: function () {
+
+        }
+    });
+
+});

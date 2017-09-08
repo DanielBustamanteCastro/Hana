@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Registro ave" Language="C#" MasterPageFile="~/Modulos/MenuAdmin.master" AutoEventWireup="true" CodeBehind="ResgistroAve3.aspx.cs" Inherits="HanaASP.Modulos.Admin.Registrar.ResgistroAve2" %>
+﻿<%@ Page Title="Registro ave" Language="C#" MasterPageFile="~/Modulos/MenuAdmin.master" AutoEventWireup="true" CodeBehind="ResgistroAve.aspx.cs" Inherits="HanaASP.Modulos.Admin.Registrar.ResgistroAve2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="../../../Style/formsAveArbol3.css" />
