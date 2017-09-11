@@ -157,5 +157,30 @@ namespace CAD
             }
             return id;
         }
+
+        //Actualizar contraseña usuario recuperar cuenta
+        public String Recuperar_Cuenta(String Contraseña, String Correo)
+        {
+            String Mensaje = "Error al erecuperar cuenta, intenta nuevamente";
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_Recuperar_usuario";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@correo",Correo);
+                cmd.Parameters.AddWithValue("@contraseña", Contraseña);
+                con.Open();
+                int rows = cmd.ExecuteNonQuery();
+                con.Close();
+                if (rows != 0) Mensaje = "Hemos enviado un correo a " + Correo + ", para recuperar tu cuenta";
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            return Mensaje;
+        }
     }
 }

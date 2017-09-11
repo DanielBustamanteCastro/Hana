@@ -15,6 +15,10 @@ namespace HanaASP.Services
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
         string Iniciar_sesion(string Correo, string Contraseña);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
+        string Recuperar(string Correo);
        
     }
 }

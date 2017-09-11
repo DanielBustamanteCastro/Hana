@@ -28,12 +28,25 @@
                     preConfirm: function (email) {
                         return new Promise(function (resolve, reject) {
                             setTimeout(function () {
-                                if (email === 'taken@example.com') {
-                                    reject('Correo invalido')
-                                } else {
-                                    reject('Correo invalido')
-                                    resolve()
-                                }
+                                alert(email);
+                                $.ajax({
+                                    type: "POST",
+                                    url: "../Services/Iniciar_sesion/Service_Iniciar_sesion.svc/Recuperar",
+                                    data: '{"Correo": "' + email + '"}',
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    processdata: true,
+                                    success: function (Mensaje) {
+                                        item = Mensaje.RecuperarResult;
+                                 
+
+                                        swal(item);
+                                    },
+                                    error: function (Mensaje) {
+                                        alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                    }
+
+                                });
                             }, 2000)
                         })
                     },
