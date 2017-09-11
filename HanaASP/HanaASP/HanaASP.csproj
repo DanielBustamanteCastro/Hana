@@ -147,6 +147,7 @@
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Script\Ajax\GaleriaArbol.js" />
+    <Content Include="Script\Ajax\GaleriaAve.js" />
     <Content Include="Script\Ajax\Iniciar_sesion.js" />
     <Content Include="Script\Ajax\Registrar.js" />
     <Content Include="Script\Ajax\Registrar_arbol.js" />
@@ -166,6 +167,7 @@
     <Content Include="Script\Sweetalert\sweetalert-dev.js" />
     <Content Include="Script\Sweetalert\sweetalert2.js" />
     <Content Include="Services\Galeria_arbol\Service_Galeria_arbol.svc" />
+    <Content Include="Services\Galeria_ave\Service_Galeria_ave.svc" />
     <Content Include="Services\Iniciar_sesion\Service_Iniciar_sesion.svc" />
     <Content Include="Services\Registrar\Service_Registrar.svc" />
     <Content Include="Services\Registrar_arbol\Service_Registrar_arbol.svc" />
@@ -335,6 +337,10 @@
     <Compile Include="Services\Galeria_arbol\IService_Galeria_arbol.cs" />
     <Compile Include="Services\Galeria_arbol\Service_Galeria_arbol.svc.cs">
       <DependentUpon>Service_Galeria_arbol.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Galeria_ave\IService_Galeria_ave.cs" />
+    <Compile Include="Services\Galeria_ave\Service_Galeria_ave.svc.cs">
+      <DependentUpon>Service_Galeria_ave.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\Iniciar_sesion\IService_Iniciar_sesion.cs" />
     <Compile Include="Services\Iniciar_sesion\Service_Iniciar_sesion.svc.cs">

@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+   
     $.ajax({
         type: "POST",
         url: "../../../Services/Galeria_arbol/Service_Galeria_arbol.svc/Llamar_arboles",
@@ -29,6 +30,10 @@
                         $.each(img, function (index, item) {
                             Foto = item.foto_arbol;
                         });
+                    },
+                    error: function (Mensaje) {
+                        alert('Error al llamar el servicio : ' + Mensaje.status + '' + Mensaje.statusText);
+
                     }
                 });
                 alert(item[2]);
@@ -82,8 +87,8 @@
 
 
         },
-        error: function () {
-
+        error: function (Mensaje) {
+            alert('Error al llamar el servicio : ' + Mensaje.status + '' + Mensaje.statusText);
         }
     });
 

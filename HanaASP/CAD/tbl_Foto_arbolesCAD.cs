@@ -55,6 +55,7 @@ namespace CAD
                     fa.id_arbol=int.Parse(dr["id_foto_arbol"].ToString());
                     lista.Add(fa);
                 }
+                con.Close();
             }
             catch (Exception)
             {

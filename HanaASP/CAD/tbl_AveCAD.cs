@@ -102,5 +102,52 @@ namespace CAD
             return id;
 
         }
+        public  List<String[]> Llamar_aves()
+        {
+            List<String[]> lista = new List<string[]>();
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_Buscar_tbl_Ave";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    String id_ave = dr["id_ave"].ToString();
+                    String nom_cient_ave = dr["nom_cient_ave"].ToString();
+                    String nom_com_ave = dr["nom_com_ave"].ToString();
+                    String desc_ave = dr["desc_ave"].ToString();
+                    String estado_ave = dr["estado_ave"].ToString();
+                    String dominio_ave = dr["dominio_ave"].ToString();
+                    String reino_ave = dr["reino_ave"].ToString();
+                    String filum_ave = dr["filum_ave"].ToString();
+                    String clase_ave = dr["clase_ave"].ToString();
+                    String orden_aves = dr["orden_aves"].ToString();
+                    String familia_ave = dr["familia_ave"].ToString();
+                    String genero_ave = dr["genero_ave"].ToString();
+                    String especie_aves = dr["especie_aves"].ToString();
+                    String origen_ave = dr["origen_ave"].ToString();
+                    String tipo_ave = dr["tipo_ave"].ToString();
+                    String desc_dieta = dr["desc_dieta"].ToString();
+                    String comportamiento_ave = dr["comportamiento_ave"].ToString();
+                    String habitat_ave = dr["habitat_ave"].ToString();
+                    String reproduccion_ave = dr["reproduccion_ave"].ToString();
+                    String color_plumaje = dr["color_plumaje"].ToString();
+                    String tamaño_ave = dr["tamaño_ave"].ToString();
+                    String tipo_dieta = dr["clase_dieta"].ToString();
+                    lista.Add(new String[] { id_ave, nom_cient_ave, nom_com_ave, desc_ave,
+                    estado_ave,dominio_ave,reino_ave,filum_ave,clase_ave,orden_aves,familia_ave,
+                    genero_ave,especie_aves,origen_ave,tipo_ave,desc_dieta,comportamiento_ave,
+                    habitat_ave,reproduccion_ave,color_plumaje,tamaño_ave,tipo_dieta});
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return lista;
+        }
     }
 }

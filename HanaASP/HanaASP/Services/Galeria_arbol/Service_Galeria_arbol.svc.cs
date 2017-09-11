@@ -15,7 +15,7 @@ namespace HanaASP.Services.Galeria_arbol
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service_Galeria_arbol.svc o Service_Galeria_arbol.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class Service_Galeria_arbol : IService_Galeria_arbol
     {
-    
+
 
         public List<string[]> Llamar_arboles()
         {
@@ -27,11 +27,10 @@ namespace HanaASP.Services.Galeria_arbol
             tbl_Arbol ar = new tbl_Arbol();
             ar.id_arbol = int.Parse(idArbol);
             List<tbl_Fotos_arboles> listaFo = new List<tbl_Fotos_arboles>();
-            List<tbl_Fotos_arboles> listaF= new tbl_Foto_arbolesCAD().Buscar_fotos(ar);
-
+            List<tbl_Fotos_arboles> listaF = new tbl_Foto_arbolesCAD().Buscar_fotos(ar);
             foreach (var item in listaF)
             {
-                String fil = HttpContext.Current.Server.MapPath(@"~/images/Fotos_Arbol/" + item.foto_arbol );
+                String fil = HttpContext.Current.Server.MapPath(@"~/images/Fotos_Arbol/" + item.foto_arbol);
                 bool existe = File.Exists(fil);
                 if (existe)
                 {
@@ -39,10 +38,8 @@ namespace HanaASP.Services.Galeria_arbol
                     StreamReader img = new StreamReader(fil);
                     string imagenes = img.ReadLine();
                     String[] arregloimg = imagenes.Split('~');
-                
-                    for (int i = 0; i < arregloimg.Length -1 ; i++)
+                    for (int i = 0; i < arregloimg.Length - 1; i++)
                     {
-
                         fa.foto_arbol = arregloimg[i];
                         listaFo.Add(fa);
                     }

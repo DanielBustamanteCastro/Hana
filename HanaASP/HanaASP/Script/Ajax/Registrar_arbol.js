@@ -20,7 +20,7 @@
                 var tipo = 0;
                 var file = $(this).val();
                 var ext = file.substring(file.lastIndexOf("."));
-                if (ext != ".jpg" && ext != ".png" && ext != ".jpeg" != ext != ".JGP" && ext != ".PNG" && ext != ".JPEG")  {
+                if (ext != ".jpg" && ext != ".png" && ext != ".jpeg" && ext != ".JGP" && ext != ".PNG" && ext != ".JPEG")  {
             swal('Oops...', 'No es una imagen!', 'error');
         tipo = 2;
                     $(this).get(0).value = '';

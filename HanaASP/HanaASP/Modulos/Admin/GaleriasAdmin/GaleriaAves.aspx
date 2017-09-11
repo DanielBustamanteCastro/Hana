@@ -5,12 +5,21 @@
     <link href="../../../Style/galeria/tooltip.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
+    <script src="../../../Scripts/jquery-3.1.1.js"></script>
+    <script src="../../../Script/Ajax/GaleriaAve.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#imgModificar").click(function () {
+                alert($("#asdf").text());
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+<%--    <div>
         <input type="number" id="valor" placeholder="agregue cantidad" value="1000" />
         <button id="agregarAve">agregar ave</button>
-    </div>
+    </div>--%>
 
     <!--PAGINACION-->
     <div class="carousel">
@@ -77,22 +86,26 @@
             <div class="hi-icon-wrap hi-icon-effect-8">
                 <div class="contIcon" tooltip="Galeria" flow="down">
                     <div id="SVGgaleria" class="hi-icon">
-                        <object data="../../../images/svg/galeria.svg"></object>
+                        <%--<object data="../../../images/svg/galeria.svg"></object>--%>
+                        <img src="../../../images/svg/galeria.png" alt="Galeria" />
                     </div>
                 </div>
                 <div class="contIcon" tooltip="Favorito" flow="down">
                     <div id="SVGfavorito" class="hi-icon">
-                        <object data="../../../images/svg/estrella.svg"></object>
+                        <%--<object data="../../../images/svg/estrella.svg"></object>--%>
+                        <img src="../../../images/svg/estrella.png" alt="Estrella" />
                     </div>
                 </div>
                 <div class="contIcon" tooltip="Modificar" flow="down">
-                    <div id="SVGmodificar" class="hi-icon">
-                        <object data="../../../images/svg/editar.svg"></object>
+                    <div id="SVGmodificar" class="hi-icon" >
+                        <%--<object data="../../../images/svg/editar.svg" ></object>--%>
+                        <img src="../../../images/svg/Editar.png" alt="Editar" id="imgModificar" />
                     </div>
                 </div>
                 <div class="contIcon" tooltip="Ubicacion" flow="down">
                     <div id="SVGubicacion" class="hi-icon">
-                        <object data="../../../images/svg/ubicacion.svg"></object>
+                        <%--<object data="../../../images/svg/ubicacion.svg"></object>--%>
+                        <img src="../../../images/svg/Ubicacion.png" alt="Ubicación" />
                     </div>
                 </div>
             </div>
@@ -160,6 +173,11 @@
                         <tr>
                             <td>
                                 <span>Color de plumas:</span><div id="mColorPlumaje"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>id:</span><div id="mid"></div>
                             </td>
                         </tr>
                         <tr>
