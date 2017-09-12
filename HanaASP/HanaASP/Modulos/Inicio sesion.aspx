@@ -19,7 +19,7 @@
         $(document).ready(function () {
             $('#olvContra').click(function () {
                 swal({
-                    title: 'Ingrese correo electronico, para mandar un codigo de recuperación.',
+                    title: 'Ingrese correo electronico, para recuperar cuenta.',
                     input: 'email',
                     showCancelButton: true,
                     cancelButtonText: 'Cancelar',

@@ -214,7 +214,7 @@
                 <div class="text-center">
                     <a href="../../indexAdmin.aspx">
                         <input value="Ir a Inicio" type="button" class="button" /></a>
-                    <a href="ResgistroAve3.aspx">
+                    <a href="ResgistroAve.aspx">
                         <input value="Nuevo registro" type="button" class="button" /></a>
                 </div>
             </div>

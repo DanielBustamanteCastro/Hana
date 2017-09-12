@@ -106,7 +106,7 @@ namespace HanaASP.Services.Registrar_ave
             bool existe = new tbl_AveCAD().buscar_Ave_con_nombreCientifico(tblAv);
             if (existe)
             {
-                mensaje = "El árbol ya esta guardado, por favor valida la información.";
+                mensaje = "El ave ya esta guardado, por favor valida la información.";
             }
             else
             {
