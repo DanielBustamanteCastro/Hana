@@ -56,3 +56,7 @@ C:\Users\Daniel\Desktop\github\Hana\HanaASP\DTO\bin\Debug\DTO.dll
 C:\Users\Daniel\Desktop\github\Hana\HanaASP\DTO\bin\Debug\DTO.pdb
 C:\Users\Daniel\Desktop\github\Hana\HanaASP\DTO\obj\Debug\DTO.dll
 C:\Users\Daniel\Desktop\github\Hana\HanaASP\DTO\obj\Debug\DTO.pdb
+C:\Users\APRENDIZ\Desktop\Daniel\Git\Hana\Hana\HanaASP\DTO\bin\Debug\DTO.dll
+C:\Users\APRENDIZ\Desktop\Daniel\Git\Hana\Hana\HanaASP\DTO\bin\Debug\DTO.pdb
+C:\Users\APRENDIZ\Desktop\Daniel\Git\Hana\Hana\HanaASP\DTO\obj\Debug\DTO.dll
+C:\Users\APRENDIZ\Desktop\Daniel\Git\Hana\Hana\HanaASP\DTO\obj\Debug\DTO.pdb

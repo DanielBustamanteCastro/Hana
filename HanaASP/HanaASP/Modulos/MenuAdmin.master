@@ -35,7 +35,7 @@
                 <li class="select s7">
                     <asp:HyperLink ID="hlnkAgregarNuevo" CssClass="entypo-plus-circled open2" runat="server"></asp:HyperLink></li>
                 <li class="select s8">
-                    <asp:HyperLink ID="hlnkFavoritos" NavigateUrl="#" CssClass="entypo-star" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkFavoritos" NavigateUrl="#" CssClass="open3 entypo-star" runat="server"></asp:HyperLink></li>
                 <li class="select s9">
                     <asp:HyperLink ID="hlnkGalerias" CssClass="galeria open1" runat="server"></asp:HyperLink></li>
                 <li class="select s5">
@@ -57,6 +57,33 @@
             <a href="#" class="10">Cerrar sesión</a>
         </nav>
     </header>
+    
+    <div class="modal-frame" id="Favorito">
+        <div class="cont">
+            <div class="modal2">
+                <div class="titleGallery">
+                    <div class="close"><i class="fa fa-close"></i></div>
+                    Favoritos
+               
+                </div>
+                <div class="modal-inset">
+                    <div class="itemsGallery" id="ave3">
+                        <asp:HyperLink runat="server" NavigateUrl="~/Modulos/Favoritos/Favorito ave.aspx">
+                            <asp:Image CssClass="ave" ID="Image5" runat="server" ImageUrl="~/images/popup/ave.png" />
+                            <div class="titleItem">Favorito Ave</div>
+                        </asp:HyperLink>
+                    </div>
+                    <div class="itemsGallery" id="arbol3">
+                        <asp:HyperLink runat="server" NavigateUrl="~/Modulos/Admin/Registrar/ResgistroArbol.aspx">
+                            <asp:Image ID="Image6" runat="server" ImageUrl="~/images/popup/arbol.jpg" />
+                            <div class="titleItem b">Favorito Arbol</div>
+                        </asp:HyperLink>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal-frame" id="Agregar">
         <div class="cont">
             <div class="modal2">

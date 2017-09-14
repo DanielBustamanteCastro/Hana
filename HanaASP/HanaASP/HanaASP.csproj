@@ -128,6 +128,7 @@
     <Content Include="Modulos\Admin\Modificar\ModificarAve.aspx" />
     <Content Include="Modulos\Admin\Registrar\ResgistroArbol.aspx" />
     <Content Include="Modulos\Admin\Registrar\ResgistroAve.aspx" />
+    <Content Include="Modulos\Favoritos\Favorito ave.aspx" />
     <Content Include="Modulos\Galerias\GaleriaArboles.aspx" />
     <Content Include="Modulos\Galerias\GaleriaAves.aspx" />
     <Content Include="Modulos\GaleriasUsuario\GaleriaArboles.aspx" />
@@ -152,6 +153,7 @@
     <Content Include="Script\Ajax\GaleriaArbol.js" />
     <Content Include="Script\Ajax\GaleriaAve.js" />
     <Content Include="Script\Ajax\Iniciar_sesion.js" />
+    <Content Include="Script\Ajax\ModificarAve.js" />
     <Content Include="Script\Ajax\Registrar.js" />
     <Content Include="Script\Ajax\Registrar_arbol.js" />
     <Content Include="Script\Ajax\Registrar_ave.js" />
@@ -254,6 +256,13 @@
     </Compile>
     <Compile Include="Modulos\Admin\Registrar\ResgistroAve.aspx.designer.cs">
       <DependentUpon>ResgistroAve.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Favoritos\Favorito ave.aspx.cs">
+      <DependentUpon>Favorito ave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Favoritos\Favorito ave.aspx.designer.cs">
+      <DependentUpon>Favorito ave.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Galerias\GaleriaArboles.aspx.cs">
       <DependentUpon>GaleriaArboles.aspx</DependentUpon>

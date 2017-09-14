@@ -9,8 +9,10 @@
     <link href="../../../Style/PNotify/pnotify.custom.min.css" rel="stylesheet" />
     <link href="../../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
-    <script src="../../../Script/Ajax/Registrar_ave.js"></script>
+    <script src="../../../Script/Ajax/ModificarAve.js"></script>
     <script>
+
+
         function getGET()
         {
             var loc = document.location.href;
@@ -39,8 +41,11 @@
                         processdata: true,
                         success: function (Mensaje) {
                             var ave = Mensaje.Cargar_aveResult;
-                            alert(ave[1]);
-
+                            $("#txtNombreCientifico").val(ave[1]);
+                            $("#txtNombreComun").val(ave[2]);
+                            dominio(ave[5]);
+                            reino(ave[5], ave[6]);
+                            
                         },
                         error: function (Mensaje) {
                             alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
