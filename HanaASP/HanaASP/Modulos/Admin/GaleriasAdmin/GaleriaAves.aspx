@@ -10,7 +10,7 @@
     <script>
         $(document).ready(function () {
             $("#imgModificar").click(function () {
-                alert($("#asdf").text());
+                location.href = "../Modificar/ModificarAve.aspx?av=" + $("#mNombreCientifico").text() + "";
             });
         });
     </script>
@@ -173,11 +173,6 @@
                         <tr>
                             <td>
                                 <span>Color de plumas:</span><div id="mColorPlumaje"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span>id:</span><div id="mid"></div>
                             </td>
                         </tr>
                         <tr>

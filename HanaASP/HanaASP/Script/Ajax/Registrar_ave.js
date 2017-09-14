@@ -133,8 +133,6 @@ $(document).ready(function () {
 
                 });
                 if (permiso == 1) {
-                    alert("en el ajax con permiso");
-                    alert(origen_ave);
                      $.ajax({
                         type: "POST",
                         url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Insertar_ave",
@@ -172,9 +170,7 @@ $(document).ready(function () {
                         dataType: "json",
                         async: false,
                         processdata: true,
-                        success: function (Mensaje) {
-                            alert(Mensaje.Insertar_imagen_arbolResult);
-                            alert(permiso);
+                        success: function (Mensaje){
                             if (Mensaje.Insertar_imagen_aveResult == "Insertado correctamente" && permiso == 2) {
                                 swal('', Mensaje.Insertar_imagen_aveResult, 'success');
                                 $("select").val(0);

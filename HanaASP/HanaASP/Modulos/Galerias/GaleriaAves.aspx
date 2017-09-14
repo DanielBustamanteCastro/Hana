@@ -5,12 +5,14 @@
     <link href="../../Style/galeria/tooltip.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
+    <script src="../../../Scripts/jquery-3.1.1.js"></script>
+    <script src="../../../Script/Ajax/GaleriaAve.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+<%--    <div>
         <input type="number" id="valor" placeholder="agregue cantidad" value="1000" />
         <button id="agregarAve">agregar ave</button>
-    </div>
+    </div>--%>
 
     <!--PAGINACION-->
     <div class="carousel">

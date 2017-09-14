@@ -149,5 +149,51 @@ namespace CAD
             }
             return lista;
         }
+
+        public String[] Buscar_ave_nombre_cientifico(tbl_Ave av)
+        {
+            String[] Save = new String[22];
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_Buscar_tbl_Ave_nombreCient";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombreCient", av.Nombre_cientifico);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    Save[0] = dr["id_ave"].ToString();
+                    Save[1] = dr["nom_cient_ave"].ToString();
+                    Save[2] = dr["nom_com_ave"].ToString();
+                    Save[3] = dr["desc_ave"].ToString();
+                    Save[4] = dr["estado_ave"].ToString();
+                    Save[5] = dr["dominio_ave"].ToString();
+                    Save[6] = dr["reino_ave"].ToString();
+                    Save[7] = dr["filum_ave"].ToString();
+                    Save[8] = dr["clase_ave"].ToString();
+                    Save[9] = dr["orden_aves"].ToString();
+                    Save[10] = dr["familia_ave"].ToString();
+                    Save[11] = dr["genero_ave"].ToString();
+                    Save[12] = dr["especie_aves"].ToString();
+                    Save[13] = dr["origen_ave"].ToString();
+                    Save[14] = dr["tipo_ave"].ToString();
+                    Save[15] = dr["desc_dieta"].ToString();
+                    Save[16] = dr["comportamiento_ave"].ToString();
+                    Save[17] = dr["habitat_ave"].ToString();
+                    Save[18] = dr["reproduccion_ave"].ToString();
+                    Save[19] = dr["color_plumaje"].ToString();
+                    Save[20] = dr["tamaño_ave"].ToString();
+                    Save[21] = dr["clase_dieta"].ToString();
+                    
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return Save;
+        }
     }
 }

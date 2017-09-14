@@ -10,6 +10,48 @@
     <link href="../../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
     <script src="../../../Script/Ajax/Registrar_ave.js"></script>
+    <script>
+        function getGET()
+        {
+            var loc = document.location.href;
+            if (loc.indexOf('?') > 0) {
+                var getString = loc.split('?')[1];
+                var GET = getString.split('&');
+                var get = {};
+                for (var i = 0, l = GET.length; i < l; i++) {
+                    var tmp = GET[i].split('=');
+                    get[tmp[0]] = unescape(decodeURI(tmp[1]));
+                }
+                return get;
+            }
+        }
+        window.onload = function () {
+            var valores = getGET();
+            if (valores) {
+                for (var index in valores) {
+                    $.ajax({
+                        type: "POST",
+                        url: "../../../Services/Modificar_ave/Service_Modificar_ave.svc/Cargar_ave",
+                        data: '{"NombreCientifico":"' + valores[index] + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        processdata: true,
+                        success: function (Mensaje) {
+                            var ave = Mensaje.Cargar_aveResult;
+                            alert(ave[1]);
+
+                        },
+                        error: function (Mensaje) {
+                            alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                        }
+
+                    });
+                }
+            } 
+        }
+
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

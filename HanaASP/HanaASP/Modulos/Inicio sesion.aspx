@@ -41,6 +41,7 @@
                                  
 
                                         swal(item);
+                                        return;
                                     },
                                     error: function (Mensaje) {
                                         alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -92,7 +93,7 @@
                     </div>
                 </div>
                 <p class="message"><a id="olvContra">¿Olvidaste tu contraseña?</a></p>
-                <p class="message">¿No estas registrado? <a href="Register3.aspx">Crear cuenta</a></p>
+                <p class="message">¿No estas registrado? <a href="Register.aspx">Crear cuenta</a></p>
             </div>
             <div class="modal-body modal-body-step-2">
                 <div class="title">Registro Guardado</div>

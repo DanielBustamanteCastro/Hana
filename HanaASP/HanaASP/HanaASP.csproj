@@ -136,6 +136,8 @@
     <Content Include="Modulos\indexUsuario.aspx" />
     <Content Include="Modulos\index.aspx" />
     <Content Include="Modulos\Inicio sesion.aspx" />
+    <Content Include="Modulos\Que es fauna.aspx" />
+    <Content Include="Modulos\Que es flora.aspx" />
     <Content Include="Modulos\Register.aspx" />
     <Content Include="Modulos\Validacion.aspx" />
     <Content Include="Frameworks\fonts\entypo.woff" />
@@ -146,6 +148,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\Materialize.min.js" />
     <Content Include="Script\Ajax\GaleriaArbol.js" />
     <Content Include="Script\Ajax\GaleriaAve.js" />
     <Content Include="Script\Ajax\Iniciar_sesion.js" />
@@ -169,6 +172,7 @@
     <Content Include="Services\Galeria_arbol\Service_Galeria_arbol.svc" />
     <Content Include="Services\Galeria_ave\Service_Galeria_ave.svc" />
     <Content Include="Services\Iniciar_sesion\Service_Iniciar_sesion.svc" />
+    <Content Include="Services\Modificar_ave\Service_Modificar_ave.svc" />
     <Content Include="Services\Registrar\Service_Registrar.svc" />
     <Content Include="Services\Registrar_arbol\Service_Registrar_arbol.svc" />
     <Content Include="Services\Registrar_ave\Service_Registrar_ave.svc" />
@@ -319,6 +323,20 @@
       <DependentUpon>Menu.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Modulos\Que es fauna.aspx.cs">
+      <DependentUpon>Que es fauna.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Que es fauna.aspx.designer.cs">
+      <DependentUpon>Que es fauna.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Que es flora.aspx.cs">
+      <DependentUpon>Que es flora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Que es flora.aspx.designer.cs">
+      <DependentUpon>Que es flora.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -345,6 +363,10 @@
     <Compile Include="Services\Iniciar_sesion\IService_Iniciar_sesion.cs" />
     <Compile Include="Services\Iniciar_sesion\Service_Iniciar_sesion.svc.cs">
       <DependentUpon>Service_Iniciar_sesion.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Modificar_ave\IService_Modificar_ave.cs" />
+    <Compile Include="Services\Modificar_ave\Service_Modificar_ave.svc.cs">
+      <DependentUpon>Service_Modificar_ave.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\Registrar\IService_Registrar.cs" />
     <Compile Include="Services\Registrar\Service_Registrar.svc.cs">

@@ -34,15 +34,16 @@ namespace HanaASP.Services
                 if (existe)
                 {
                     Random rdn = new Random();
-                    String contra="";
+                    String contra = "";
                     for (int i = 0; i < 9; i++)
-			{
-			 int a = rdn.Next(65,126);
-                       contra= contra + Convert.ToChar(a);
+                    {
+                        int a = rdn.Next(65, 126);
+                        contra = contra + Convert.ToChar(a);
 
-			}
+                    }
+                    
 
-                   return contra;
+                   return new tbl_UsuarioCAD().Recuperar_Cuenta(contra, Correo);
                 }
                 else
                 {

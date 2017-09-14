@@ -29,7 +29,6 @@
                         });
                     }
                 });
-                alert(Foto);
                 /*Definicion de Valores*/
                 var NombreComun = item["2"] ;
                 var Especie = item["12"] ;

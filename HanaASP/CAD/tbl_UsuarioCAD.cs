@@ -7,6 +7,8 @@ using System.Configuration;
 using DTO;
 using System.Data.SqlClient;
 using System.Data;
+using System.Net.Mail;
+using System.Net;
 
 namespace CAD
 {
@@ -20,7 +22,7 @@ namespace CAD
         tbl_Estado_usuarioCAD tblE = new tbl_Estado_usuarioCAD();
         tbl_Correo_electronicoCAD tblCR = new tbl_Correo_electronicoCAD();
         //Login
-        public String[] Iniciar_sesión(tbl_Correo_electronico cr,tbl_Contraseña cn)
+        public String[] Iniciar_sesión(tbl_Correo_electronico cr, tbl_Contraseña cn)
         {
             String[] Rol = new String[3];//Creamos un arreglo para guardar el rol, el mensaje de error y el estado del usuario
             Rol[0] = null;
@@ -30,7 +32,7 @@ namespace CAD
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT U.id_usuario,U.nombre_usuario,R.rol,C.contraseña_usuario,CR.correo_usuario,EU.estado_usuario FROM tbl_Rol AS R INNER JOIN tbl_Usuario AS U ON R.id_rol=U.id_rol INNER JOIN tbl_Contraseña AS C ON U.id_contraseña= C.id_contraseña INNER JOIN tbl_Correo_electronico AS CR ON U.id_usuario=CR.id_usuario INNER JOIN tbl_Estado_usuario AS EU ON U.id_estado_usuario=EU.id_estado_usuario  WHERE CR.correo_usuario = '"+cr.correo_electronico+"' AND C.contraseña_usuario='"+ cn.contraseña_usuario + "';";
+                cmd.CommandText = "SELECT U.id_usuario,U.nombre_usuario,R.rol,C.contraseña_usuario,CR.correo_usuario,EU.estado_usuario FROM tbl_Rol AS R INNER JOIN tbl_Usuario AS U ON R.id_rol=U.id_rol INNER JOIN tbl_Contraseña AS C ON U.id_contraseña= C.id_contraseña INNER JOIN tbl_Correo_electronico AS CR ON U.id_usuario=CR.id_usuario INNER JOIN tbl_Estado_usuario AS EU ON U.id_estado_usuario=EU.id_estado_usuario  WHERE CR.correo_usuario = '" + cr.correo_electronico + "' AND C.contraseña_usuario='" + cn.contraseña_usuario + "';";
                 cmd.CommandType = CommandType.Text;
                 //cmd.CommandText = "prc_Buscar_Usuario";
                 //cmd.CommandType = CommandType.StoredProcedure;
@@ -47,17 +49,17 @@ namespace CAD
             }
             catch (Exception e)
             {
-                Rol[1]=e.Message;//Si existe algun error se guardara en la posición 1
+                Rol[1] = e.Message;//Si existe algun error se guardara en la posición 1
             }
             return Rol;
         }
 
         //Registrar usuario
-        public String[] Insertar_usuario(tbl_Usuario us, tbl_Contraseña cont, tbl_Ubicacion ub, tbl_Rol rol, tbl_Estado_usuario est,tbl_Correo_electronico cel)
+        public String[] Insertar_usuario(tbl_Usuario us, tbl_Contraseña cont, tbl_Ubicacion ub, tbl_Rol rol, tbl_Estado_usuario est, tbl_Correo_electronico cel)
         {
-                String[] Insert = new String[2];
-                Insert[0] = null;
-                Insert[1] = null;
+            String[] Insert = new String[2];
+            Insert[0] = null;
+            Insert[1] = null;
             try
             {
                 int id = 0;
@@ -70,9 +72,9 @@ namespace CAD
                 cmd.Connection = con;
                 cmd.CommandText = "prc_INSERT_Usuario";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@nombre",us.nombre_usuario);
-                cmd.Parameters.AddWithValue("@apellido",us.apellido_usuario);
-                cmd.Parameters.AddWithValue("@fecha",us.fecha_nacimiento);
+                cmd.Parameters.AddWithValue("@nombre", us.nombre_usuario);
+                cmd.Parameters.AddWithValue("@apellido", us.apellido_usuario);
+                cmd.Parameters.AddWithValue("@fecha", us.fecha_nacimiento);
                 cmd.Parameters.AddWithValue("@idU", idUb);
                 cmd.Parameters.AddWithValue("@idC", idCn);
                 cmd.Parameters.AddWithValue("@idR", idR);
@@ -86,7 +88,7 @@ namespace CAD
             catch (Exception e)
             {
 
-                Insert[1] = e.Message; 
+                Insert[1] = e.Message;
             }
             return Insert;
         }
@@ -102,8 +104,8 @@ namespace CAD
                 cmd.CommandText = "prc_Buscar_id_usuario";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@nombre_usuario", us.nombre_usuario);
-                cmd.Parameters.AddWithValue("@apellido_usuario",us.apellido_usuario);
-                cmd.Parameters.AddWithValue("@fecha",us.fecha_nacimiento);
+                cmd.Parameters.AddWithValue("@apellido_usuario", us.apellido_usuario);
+                cmd.Parameters.AddWithValue("@fecha", us.fecha_nacimiento);
                 cmd.Parameters.AddWithValue("@idU", idUb);
                 cmd.Parameters.AddWithValue("@idC", idCn);
                 cmd.Parameters.AddWithValue("@idR", idR);
@@ -111,13 +113,13 @@ namespace CAD
                 SqlDataReader dr = cmd.ExecuteReader();
                 foreach (var item in dr)
                 {
-                    id=int.Parse(dr["id_usuario"].ToString());
+                    id = int.Parse(dr["id_usuario"].ToString());
                 }
                 con.Close();
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
             return id;
@@ -126,7 +128,7 @@ namespace CAD
 
 
         //Buscar id usuario enviar correo
-        public int Buscar_id_correo(tbl_Usuario tblU,tbl_Contraseña tblC,tbl_Ubicacion tblUb,tbl_Rol tblR, tbl_Correo_electronico tblCe )
+        public int Buscar_id_correo(tbl_Usuario tblU, tbl_Contraseña tblC, tbl_Ubicacion tblUb, tbl_Rol tblR, tbl_Correo_electronico tblCe)
         {
             int id = 0;
             try
@@ -168,19 +170,50 @@ namespace CAD
                 cmd.Connection = con;
                 cmd.CommandText = "prc_Recuperar_usuario";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@correo",Correo);
+                cmd.Parameters.AddWithValue("@correo", Correo);
                 cmd.Parameters.AddWithValue("@contraseña", Contraseña);
                 con.Open();
                 int rows = cmd.ExecuteNonQuery();
                 con.Close();
-                if (rows != 0) Mensaje = "Hemos enviado un correo a " + Correo + ", para recuperar tu cuenta";
+                if (rows != 0)
+                {
+                    Mensaje = "Hemos enviado un correo a " + Correo + ", para recuperar tu cuenta";
+                    Enviar_correo_recuperacion(Correo, Contraseña);
+                }
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
             return Mensaje;
+        }
+
+        public bool Enviar_correo_recuperacion(String Correo, String Contrasela)
+        {
+            bool validacion = false;
+            try
+            {
+                MailMessage Mail = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+                String Mensaje = "Hola <br> Está es tu nueva contraseña " + Contrasela + ", ingrsa con tu contraseña para poder modificarla nuevamente";
+                Mail.From = new MailAddress("hanatoshizen@gmail.com");
+                Mail.To.Add(new MailAddress(Correo));
+                Mail.Body = Mensaje;
+                Mail.IsBodyHtml = true;
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.Credentials = new NetworkCredential("hanatoshizen@gmail.com", "ADSI1129639");
+                smtp.EnableSsl = true;
+                smtp.Send(Mail);
+                validacion = true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return validacion;
         }
     }
 }

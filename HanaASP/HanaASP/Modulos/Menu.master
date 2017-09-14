@@ -39,9 +39,9 @@
                 <li class="select s4">
                     <asp:HyperLink ID="hlnkGalerias" CssClass="galeria open1" runat="server"></asp:HyperLink></li>
                 <li class="select s5">
-                    <asp:HyperLink ID="hlnkQueFauna" NavigateUrl="#" CssClass="colibri" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkQueFauna" NavigateUrl="~/Modulos/Que es fauna.aspx" CssClass="colibri" runat="server"></asp:HyperLink></li>
                 <li class="select s6">
-                    <asp:HyperLink ID="hlnkQueFlora" NavigateUrl="#" CssClass="entypo-leaf" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkQueFlora" NavigateUrl="~/Modulos/Que es flora.aspx" CssClass="entypo-leaf" runat="server"></asp:HyperLink></li>
             </div>
         </ul>
         <nav class="slider-menu slider-menu-vertical slider-menu-left" id="slider-menu-s1">
