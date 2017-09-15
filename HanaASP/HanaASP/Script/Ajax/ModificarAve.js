@@ -208,42 +208,6 @@ function mensajCampoVacio(campo) {
     });
 }
 
-$(document).ready(function () {
-    dominio();
-    tipo();
-    origen();
-    clase_dieta();
-    Comportamiento_ave();
-    habitat_ave();
-    reproducccion_ave();
-    color_plumaje();
-    tamaño_ave();
-
-
-   
-    $("#ddlReino").on("change", function () {
-        filum($(this).val());
-    });
-    $("#ddlFilum").on("change", function () {
-        clase($(this).val());
-    });
-    $("#ddlClase").on("change", function () {
-        orden($(this).val());
-    });
-    $("#ddlOrden").on("change", function () {
-        familia($(this).val());
-    });
-    $("#ddlFamilia").on("change", function () {
-        genero($(this).val());
-    });
-    $("#ddlGenero").on("change", function () {
-        especie($(this).val());
-    });
-    $("#ddClase_dieta").on("change", function () {
-        dieta($(this).val());
-    });
-});
-
 function dominio(id_Dominio) {
     $.ajax({
         type: "POST",
@@ -305,7 +269,7 @@ function reino(id_dominio,id_reino) {
     
 }
 
-function filum(id_reino) {
+function filum(id_reino,id_filum) {
     $('#ddlFilum').empty();
     $('#ddlFilum').append("<option value='0'>No determinado</option>");
     $('#ddlClase').empty();
@@ -331,6 +295,7 @@ function filum(id_reino) {
                 $("#ddlFilum").append("<option value=" + Filum.id_Filum_ave + ">" + Filum.Filum_ave + "</option>");
 
             });
+            $("#ddlFilum option[value=" + id_filum + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -340,7 +305,7 @@ function filum(id_reino) {
 
 }
 
-function clase(id_filum) {
+function clase(id_filum,id_clase) {
     $('#ddlClase').empty();
     $('#ddlClase').append("<option value='0'>No determinado</option>");
     $('#ddlOrden').empty();
@@ -363,7 +328,8 @@ function clase(id_filum) {
             $.each(item, function (index, Clase) {
                 $("#ddlClase").append("<option value=" + Clase.id_Clase_ave + ">" + Clase.Clase_ave + "</option>");
 
-            });
+            }); 
+            $("#ddlClase option[value=" + id_clase + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -372,7 +338,7 @@ function clase(id_filum) {
     });
 }
 
-function orden(id_clase) {
+function orden(id_clase,id_orden) {
     $('#ddlOrden').empty();
     $('#ddlOrden').append("<option value='0'>No determinado</option>");
     $('#ddlFamilia').empty();
@@ -394,6 +360,7 @@ function orden(id_clase) {
                 $("#ddlOrden").append("<option value=" + Orden.id_Orden_ave + ">" + Orden.Orden_ave + "</option>");
 
             });
+            $("#ddlOrden option[value=" + id_orden + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -402,7 +369,7 @@ function orden(id_clase) {
     });
 }
 
-function familia(id_orden) {
+function familia(id_orden,id_familia) {
     $('#ddlFamilia').empty();
     $('#ddlFamilia').append("<option value='0'>No determinado</option>");
     $('#ddlGenero').empty();
@@ -422,6 +389,7 @@ function familia(id_orden) {
                 $("#ddlFamilia").append("<option value=" + Familia.id_Familia_ave + ">" + Familia.Familia_ave + "</option>");
 
             });
+            $("#ddlFamilia option[value=" + id_familia + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -430,7 +398,7 @@ function familia(id_orden) {
     });
 }
 
-function genero(id_familia) {
+function genero(id_familia,id_genero) {
     $('#ddlGenero').empty();
     $('#ddlGenero').append("<option value='0'>No determinado</option>");
     $('#ddlEspecie').empty();
@@ -446,8 +414,8 @@ function genero(id_familia) {
             item = Mensaje.GeneroResult;
             $.each(item, function (index, Genero) {
                 $("#ddlGenero").append("<option value=" + Genero.id_Genero_ave + ">" + Genero.Genero_ave + "</option>");
-
             });
+            $("#ddlGenero option[value=" + id_genero + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -456,7 +424,7 @@ function genero(id_familia) {
     });
 }
 
-function especie(id_genero) {
+function especie(id_genero,id_especie){
     $('#ddlEspecie').empty();
     $('#ddlEspecie').append("<option value='0'>No determinado</option>");
     $.ajax({
@@ -470,8 +438,8 @@ function especie(id_genero) {
             item = Mensaje.EspecieResult;
             $.each(item, function (index, Especie) {
                 $("#ddlEspecie").append("<option value=" + Especie.id_Especie_ave + ">" + Especie.Especie_ave + "</option>");
-
             });
+            $("#ddlEspecie option[value=" + id_especie + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -480,7 +448,7 @@ function especie(id_genero) {
     });
 }
 
-function origen() {
+function origen(id_origen) {
     $.ajax({
         type: "POST",
         url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Origen",
@@ -492,8 +460,8 @@ function origen() {
             item = Mensaje.OrigenResult;
             $.each(item, function (index, Origen) {
                 $("#ddlOrigen").append("<option value=" + Origen.id_Origen_ave + ">" + Origen.Origen_ave + "</option>");
-
             });
+            $("#ddlOrigen option[value=" + id_origen + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -502,7 +470,7 @@ function origen() {
     });
 }
 
-function tipo() {
+function tipo(id_tipo) {
     $.ajax({
         type: "POST",
         url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Tipo",
@@ -515,6 +483,7 @@ function tipo() {
             $.each(item, function (index, Tipo) {
                 $("#ddlTipo").append("<option value=" + Tipo.id_Tipo_ave + ">" + Tipo.Tipo_ave + "</option>");
             });
+            $("#ddlTipo option[value=" + id_tipo + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -523,7 +492,7 @@ function tipo() {
     });
 }
 
-function clase_dieta() {
+function clase_dieta(id_clase_dieta) {
     $('#ddlDieta').empty();
     $('#ddlDieta').append("<option value='0'>No determinado</option>");
     $.ajax({
@@ -538,6 +507,7 @@ function clase_dieta() {
             $.each(item, function (index, Clase_dieta) {
                 $("#ddClase_dieta").append("<option value=" + Clase_dieta.id_Clase_dieta + ">" + Clase_dieta.Clase_dieta + "</option>");
             });
+            $("#ddClase_dieta option[value=" + id_clase_dieta + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -545,7 +515,7 @@ function clase_dieta() {
     });
 }
 
-function dieta(idClase_dieta) {
+function dieta(idClase_dieta,id_dieta) {
     $.ajax({
         type: "POST",
         url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Dieta",
@@ -558,13 +528,14 @@ function dieta(idClase_dieta) {
             $.each(item, function (index, Dieta) {
                 $("#ddlDieta").append("<option value=" + Dieta.id_Dieta + ">" + Dieta.Dieta + "</option>");
             });
+            $("#ddlDieta option[value=" + id_dieta + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
         }
     });
 }
-function Comportamiento_ave() {
+function Comportamiento_ave(id_comportamiento) {
     $.ajax({
         type: "POST",
         url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Comportamiento_ave",
@@ -576,8 +547,8 @@ function Comportamiento_ave() {
             item = Mensaje.Comportamiento_aveResult;
             $.each(item, function (index, Comportamiento_ave) {
                 $("#ddlComportamiento_ave").append("<option value=" + Comportamiento_ave.id_Comportamiento_ave + ">" + Comportamiento_ave.Comportamiento_ave + "</option>");
-
             });
+            $("#ddlComportamiento_ave option[value=" + id_comportamiento + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -585,7 +556,7 @@ function Comportamiento_ave() {
     });
 }
 
-function habitat_ave() {
+function habitat_ave(id_ahbitat_ave) {
 
     $.ajax({
         type: "POST",
@@ -598,8 +569,8 @@ function habitat_ave() {
             item = Mensaje.Habitat_aveResult;
             $.each(item, function (index, Habitat_ave) {
                 $("#ddlHabitat").append("<option value=" + Habitat_ave.id_Habitat_ave + ">" + Habitat_ave.Habitat_ave + "</option>");
-
             });
+            $("#ddlHabitat option[value=" + id_ahbitat_ave + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -607,7 +578,7 @@ function habitat_ave() {
     });
 }
 
-function reproducccion_ave() {
+function reproducccion_ave(id_reproduccion) {
 
     $.ajax({
         type: "POST",
@@ -621,13 +592,14 @@ function reproducccion_ave() {
             $.each(item, function (index, Reproduccion_ave) {
                 $("#ddlReproduccion").append("<option value=" + Reproduccion_ave.id_Reproduccion_ave + ">" + Reproduccion_ave.Reproduccion_ave + "</option>");
             });
+            $("#ddlReproduccion option[value=" + id_reproduccion + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
         }
     });
 }
-function color_plumaje() {
+function color_plumaje(id_color_plumaje) {
     $.ajax({
         type: "POST",
         url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Color_plumaje",
@@ -639,8 +611,9 @@ function color_plumaje() {
             item = Mensaje.Color_plumajeResult;
             $.each(item, function (index, Color_plumaje) {
                 $("#ddlColorplumaje").append("<option value=" + Color_plumaje.id_Color_plumaje + ">" + Color_plumaje.Color_plumaje + "</option>");
-
             });
+            $("#ddlColorplumaje option[value=" + id_color_plumaje + "]").attr("selected", true);
+
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -648,7 +621,7 @@ function color_plumaje() {
     });
 }
 
-function tamaño_ave() {
+function tamaño_ave(id_tamaño_ave) {
 
     $.ajax({
         type: "POST",
@@ -661,8 +634,8 @@ function tamaño_ave() {
             item = Mensaje.Tamaño_aveResult;
             $.each(item, function (index, Tamaño_ave) {
                 $("#ddlTamaño_ave").append("<option value=" + Tamaño_ave.id_Tamaño_ave + ">" + Tamaño_ave.Tamaño_ave + "</option>");
-
             });
+            $("#ddlTamaño_ave option[value=" + id_tamaño_ave + "]").attr("selected", true);
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);

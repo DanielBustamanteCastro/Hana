@@ -152,7 +152,7 @@ namespace CAD
 
         public String[] Buscar_ave_nombre_cientifico(tbl_Ave av)
         {
-            String[] Save = new String[21];
+            String[] Save = new String[22];
             try
             {
                 SqlCommand cmd = new SqlCommand();
@@ -184,8 +184,8 @@ namespace CAD
                     Save[17] = dr["id_reproduccion_ave"].ToString();
                     Save[18] = dr["id_color_plumaje"].ToString();
                     Save[19] = dr["id_tamaño_ave"].ToString();
-                    Save[20] = dr["id_clase_dieta"].ToString();
-                    
+                    Save[20] = dr["id_clase_dieta"].ToString();                    
+                    Save[21] = dr["id_clase_ave"].ToString();
                 }
             }
             catch (Exception)

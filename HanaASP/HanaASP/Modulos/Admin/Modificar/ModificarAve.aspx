@@ -12,9 +12,11 @@
     <script src="../../../Script/Ajax/ModificarAve.js"></script>
     <script>
 
+</script>
+    <script>
 
-        function getGET()
-        {
+
+        function getGET() {
             var loc = document.location.href;
             if (loc.indexOf('?') > 0) {
                 var getString = loc.split('?')[1];
@@ -45,16 +47,77 @@
                             $("#txtNombreComun").val(ave[2]);
                             dominio(ave[5]);
                             reino(ave[5], ave[6]);
-                            
+                            filum(ave[6], ave[7]);
+                            clase(ave[7], ave[21]);
+                            orden(ave[21], ave[9]);
+                            familia(ave[9], ave[10]);
+                            genero(ave[10], ave[11]);
+                            especie(ave[11], ave[12]);
+                            origen(ave[13]);
+                            tipo(ave[14]);
+                            clase_dieta(ave[20]);
+                            dieta(ave[20], ave[8]);
+                            Comportamiento_ave(ave[15]);
+                            habitat_ave(ave[16]);
+                            reproducccion_ave(ave[17]);
+                            color_plumaje(ave[18]);
+                            tamaño_ave(ave[19]);
+                            $("#txaDescripcion").val(ave[3]);
+
+
+
+
+                            $.ajax({
+                                type: "POST",
+                                url: "../../../Services/Galeria_ave/Service_Galeria_ave.svc/Llamar_fotos_aves",
+                                data: '{"idAve":"' + ave[0] + '"}',
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                async: false,
+                                processdata: true,
+                                success: function (Fotos) {
+                                    var img = Fotos.Llamar_fotos_avesResult;
+                                    $("#div").append("<output id=" + " out" + 0 + " class='out'><div id=" + " list" + 0 + " class='imagen'>  </div></output > ");
+                                    $.each(img, function (index, imagen) {
+                                        var input = $("#div output").length;
+                                        alert(imagen.Fotos_aves);
+                                        alert(imagen.id_Fotos_aves);
+                                        var asa = input - 1;
+                                        alert("#list" + asa);
+                                        $("#list" + asa).append('<img class="thumb" id="im" src="'+ imagen.Fotos_aves+ '" title="'+ imagen.id_Fotos_aves+ '"/> <img id="' + input + '" class="x"  src="../../../images/X-roja.png" />')
+                                        $("#" + input).click(function () {
+                                                        swal({
+                                                            title: 'Esta seguro que desea eliminar esta imagen?',
+                                                            type: 'warning',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#3085d6',
+                                                            cancelButtonColor: '#d33',
+                                                            confirmButtonText: 'Si, eliminar'
+                                                        }).then(function () {
+                                                            $("#out" + asa).remove();
+                                                            $("#files").get(0).value = '';
+                                                            $("#files").get(0).type = '';
+                                                            $("#files").get(0).type = 'file';
+                                                        })
+                                                    });
+                                        
+                                            input = input + 1;
+                                    })
+
+                                }, error: function (Mensaje) {
+                                    alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                }
+                            });
+
                         },
                         error: function (Mensaje) {
                             alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
                         }
-
                     });
                 }
-            } 
+            }
         }
+
 
     </script>
 </asp:Content>
@@ -113,7 +176,7 @@
                         <label class="mdl-select__label"><span>Clase:</span></label>
                     </div>
                     <div class="text-center">
-                        <a href="#">
+                        <a>
                             <input value="Siguiente" type="button" class="button next" /></a>
                     </div>
                 </div>
@@ -166,9 +229,9 @@
                         <label class="mdl-select__label"><span>Tipo:</span></label>
                     </div>
                     <div class="text-center fade-in">
-                        <a href="#">
+                        <a>
                             <input value="Atras" type="button" class="button previous" /></a>
-                        <a href="#">
+                        <a>
                             <input value="Siguiente" type="button" class="button next" /></a>
                     </div>
                 </div>
@@ -229,16 +292,16 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="#">
+                    <a>
                         <input value="Atras" type="button" class="button previous" /></a>
-                    <a href="#">
+                    <a>
                         <input value="Siguiente" type="button" class="button next" /></a>
                 </div>
             </div>
             <!-- Forth step-->
             <div class="modal-body modal-body-step-4">
                 <div class="title">Cargar imagenes</div>
-                <div class="description">Aquí se subirán las primeras imágenes del ave.</div>
+                <div class="description">Aquí se subirán las imágenes del ave.</div>
                 <div id="div">
                 </div>
                 <label class="file">

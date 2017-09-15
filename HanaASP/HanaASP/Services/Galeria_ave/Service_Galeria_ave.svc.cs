@@ -41,6 +41,7 @@ namespace HanaASP.Services.Galeria_ave
                     for (int i = 0; i < arregloimg.Length - 1; i++)
                     {
                         fa.Fotos_aves = arregloimg[i];
+                        fa.id_Fotos_aves = item.id_Fotos_aves;
                         listaFo.Add(fa);
                     }
                 }
