@@ -124,6 +124,7 @@
     <Content Include="images\Registrar\FondoI1.png" />
     <Content Include="Modulos\Admin\GaleriasAdmin\GaleriaArboles.aspx" />
     <Content Include="Modulos\Admin\GaleriasAdmin\GaleriaAves.aspx" />
+    <Content Include="Modulos\Admin\Informacion\Que es fauna.aspx" />
     <Content Include="Modulos\Admin\Modificar\ModificarArbol.aspx" />
     <Content Include="Modulos\Admin\Modificar\ModificarAve.aspx" />
     <Content Include="Modulos\Admin\Registrar\ResgistroArbol.aspx" />
@@ -136,9 +137,9 @@
     <Content Include="Modulos\indexAdmin.aspx" />
     <Content Include="Modulos\indexUsuario.aspx" />
     <Content Include="Modulos\index.aspx" />
+    <Content Include="Modulos\Informacion\Que es fauna.aspx" />
+    <Content Include="Modulos\Informacion\Que es flora.aspx" />
     <Content Include="Modulos\Inicio sesion.aspx" />
-    <Content Include="Modulos\Que es fauna.aspx" />
-    <Content Include="Modulos\Que es flora.aspx" />
     <Content Include="Modulos\Register.aspx" />
     <Content Include="Modulos\Validacion.aspx" />
     <Content Include="Frameworks\fonts\entypo.woff" />
@@ -198,6 +199,7 @@
     <Content Include="Style\galeria\gallery.css" />
     <Content Include="Style\galeria\tooltip.css" />
     <Content Include="Style\glDatePicker\glDatePicker.default.css" />
+    <Content Include="Style\informacion.css" />
     <Content Include="Style\menu.css" />
     <Content Include="Style\PNotify\pnotify.custom.min.css" />
     <Content Include="Style\POP_UP.css" />
@@ -228,6 +230,13 @@
     </Compile>
     <Compile Include="Modulos\Admin\GaleriasAdmin\GaleriaAves.aspx.designer.cs">
       <DependentUpon>GaleriaAves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Admin\Informacion\Que es fauna.aspx.cs">
+      <DependentUpon>Que es fauna.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Admin\Informacion\Que es fauna.aspx.designer.cs">
+      <DependentUpon>Que es fauna.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Admin\Modificar\ModificarArbol.aspx.cs">
       <DependentUpon>ModificarArbol.aspx</DependentUpon>
@@ -313,6 +322,20 @@
     <Compile Include="Modulos\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Informacion\Que es fauna.aspx.cs">
+      <DependentUpon>Que es fauna.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Informacion\Que es fauna.aspx.designer.cs">
+      <DependentUpon>Que es fauna.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Informacion\Que es flora.aspx.cs">
+      <DependentUpon>Que es flora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Informacion\Que es flora.aspx.designer.cs">
+      <DependentUpon>Que es flora.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Inicio sesion.aspx.cs">
       <DependentUpon>Inicio sesion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -331,20 +354,6 @@
     <Compile Include="Modulos\Menu.master.cs">
       <DependentUpon>Menu.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\Que es fauna.aspx.cs">
-      <DependentUpon>Que es fauna.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\Que es fauna.aspx.designer.cs">
-      <DependentUpon>Que es fauna.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos\Que es flora.aspx.cs">
-      <DependentUpon>Que es flora.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\Que es flora.aspx.designer.cs">
-      <DependentUpon>Que es flora.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>

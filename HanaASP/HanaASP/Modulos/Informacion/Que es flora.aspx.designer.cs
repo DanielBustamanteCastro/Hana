@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace HanaASP.Modulos {
+namespace HanaASP.Modulos.Informacion {
     
     
-    public partial class Que_es_fauna {
+    public partial class Que_es_flora {
     }
 }

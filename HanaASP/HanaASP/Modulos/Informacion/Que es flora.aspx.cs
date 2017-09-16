@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace HanaASP.Modulos
+namespace HanaASP.Modulos.Informacion
 {
-    public partial class Que_es_fauna : System.Web.UI.Page
+    public partial class Que_es_flora : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

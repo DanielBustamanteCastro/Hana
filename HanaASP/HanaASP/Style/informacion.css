@@ -1,0 +1,53 @@
+﻿body {
+    font-family: "Roboto", sans-serif;
+    background-image: url(../images/fondo2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    overflow-x: hidden;
+}
+
+.contInfo {
+    box-sizing: border-box;
+    padding: 40px;
+}
+
+    .contInfo .info {
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .contInfo .titleInfo {
+        width: 100%;
+        text-align: center;
+        font-size: 30px;
+        background-color: #e7e7e7;
+        color: #00AE00;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .contInfo .descInfo {
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+
+    .contInfo .itemInfo {
+        width: 100%;
+        padding: 10px;
+        background-color: #fff;
+        box-sizing: border-box;
+    }
+
+.subTitleInfo {
+    color: #00AE00;
+    font-size: 25px;
+    padding: 10px;
+}
+
+@media screen and (max-width: 1000px){
+    .contInfo{
+        padding: 40px 0 40px 0;
+    }
+}
