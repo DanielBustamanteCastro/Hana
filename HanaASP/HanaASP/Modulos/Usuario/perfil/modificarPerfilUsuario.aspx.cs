@@ -23,14 +23,14 @@ namespace HanaASP.Modulos.Usuario
 
         //protected void Page_Load(object sender, EventArgs e)
         //{
-        ////    ddlMunicipio.Items.Clear();
-        ////    List<String> Ubicacion = tblUC.Buscar_ubicacion();
-        ////    foreach (var item in Ubicacion)
-        ////    {
-        ////        ddlMunicipio.Items.Add(item);
-        ////    }
-        ////    txtNombre.Attributes.Add("onkeypress", "a(event)");
-        //}
+        //    ddlMunicipio.Items.Clear();
+        //    List<String> Ubicacion = tblUC.Buscar_ubicacion();
+        //    foreach (var item in Ubicacion)
+        //    {
+        //        ddlMunicipio.Items.Add(item);
+        //    }
+        //    txtNombre.Attributes.Add("onkeypress", "a(event)");
+        }
 
        
         //    DateTime ahora = DateTime.Now;
@@ -80,5 +80,5 @@ namespace HanaASP.Modulos.Usuario
         //        ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
         //    }
 
-        }
+        //}
     }

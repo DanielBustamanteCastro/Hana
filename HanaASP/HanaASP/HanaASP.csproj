@@ -116,6 +116,7 @@
     <Content Include="images\Logo.png" />
     <Content Include="images\popup\arbol.jpg" />
     <Content Include="images\popup\ave.png" />
+    <Content Include="images\settings.png" />
     <Content Include="images\svg\editar.svg" />
     <Content Include="images\svg\estrella.svg" />
     <Content Include="images\svg\galeria.svg" />
@@ -127,6 +128,8 @@
     <Content Include="Modulos\Admin\Informacion\Que es fauna.aspx" />
     <Content Include="Modulos\Admin\Modificar\ModificarArbol.aspx" />
     <Content Include="Modulos\Admin\Modificar\ModificarAve.aspx" />
+    <Content Include="Modulos\Admin\perfil\modificarPerfilAdmin.aspx" />
+    <Content Include="Modulos\Admin\perfil\perfilAdmin.aspx" />
     <Content Include="Modulos\Admin\Registrar\ResgistroArbol.aspx" />
     <Content Include="Modulos\Admin\Registrar\ResgistroAve.aspx" />
     <Content Include="Modulos\Favoritos\Favorito ave.aspx" />
@@ -141,6 +144,8 @@
     <Content Include="Modulos\Informacion\Que es flora.aspx" />
     <Content Include="Modulos\Inicio sesion.aspx" />
     <Content Include="Modulos\Register.aspx" />
+    <Content Include="Modulos\Usuario\perfil\modificarPerfilUsuario.aspx" />
+    <Content Include="Modulos\Usuario\perfil\perfilUsuario.aspx" />
     <Content Include="Modulos\Validacion.aspx" />
     <Content Include="Frameworks\fonts\entypo.woff" />
     <Content Include="Modulos\MenuAdmin.master" />
@@ -206,6 +211,7 @@
     <Content Include="Style\Registrar.css" />
     <Content Include="Style\Select2\select2.css" />
     <Content Include="Style\slider.css" />
+    <Content Include="Style\stylePerfil.css" />
     <Content Include="Style\Sweetalert\sweetalert.css" />
     <Content Include="Style\Sweetalert\sweetalert2.css" />
     <Content Include="Style\validacion\validacion.css" />
@@ -251,6 +257,20 @@
     </Compile>
     <Compile Include="Modulos\Admin\Modificar\ModificarAve.aspx.designer.cs">
       <DependentUpon>ModificarAve.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Admin\perfil\modificarPerfilAdmin.aspx.cs">
+      <DependentUpon>modificarPerfilAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Admin\perfil\modificarPerfilAdmin.aspx.designer.cs">
+      <DependentUpon>modificarPerfilAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Admin\perfil\perfilAdmin.aspx.cs">
+      <DependentUpon>perfilAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Admin\perfil\perfilAdmin.aspx.designer.cs">
+      <DependentUpon>perfilAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Admin\Registrar\ResgistroArbol.aspx.cs">
       <DependentUpon>ResgistroArbol.aspx</DependentUpon>
@@ -361,6 +381,20 @@
     </Compile>
     <Compile Include="Modulos\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Usuario\perfil\modificarPerfilUsuario.aspx.cs">
+      <DependentUpon>modificarPerfilUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Usuario\perfil\modificarPerfilUsuario.aspx.designer.cs">
+      <DependentUpon>modificarPerfilUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Usuario\perfil\perfilUsuario.aspx.cs">
+      <DependentUpon>perfilUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Usuario\perfil\perfilUsuario.aspx.designer.cs">
+      <DependentUpon>perfilUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Validacion.aspx.cs">
       <DependentUpon>Validacion.aspx</DependentUpon>

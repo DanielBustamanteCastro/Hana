@@ -32,38 +32,42 @@
                 <li></li>
                 <li class="select s1">
                     <asp:HyperLink ID="hlnkInicio" NavigateUrl="~/Modulos/indexAdmin.aspx" runat="server" CssClass="entypo-home"></asp:HyperLink></li>
-                <li class="select s7">
+                <li class="select s2">
+                    <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Modulos/Admin/perfil/perfilAdmin.aspx" runat="server" CssClass="entypo-user"></asp:HyperLink></li>
+                <li class="select s3">
                     <asp:HyperLink ID="hlnkAgregarNuevo" CssClass="entypo-plus-circled open2" runat="server"></asp:HyperLink></li>
-                <li class="select s8">
+                <li class="select s4">
                     <asp:HyperLink ID="hlnkFavoritos" NavigateUrl="#" CssClass="open3 entypo-star" runat="server"></asp:HyperLink></li>
-                <li class="select s9">
-                    <asp:HyperLink ID="hlnkGalerias" CssClass="galeria open1" runat="server"></asp:HyperLink></li>
                 <li class="select s5">
-                    <asp:HyperLink ID="hlnkQueFauna" NavigateUrl="#" CssClass="colibri" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkGalerias" CssClass="galeria open1" runat="server"></asp:HyperLink></li>
                 <li class="select s6">
+                    <asp:HyperLink ID="hlnkQueFauna" NavigateUrl="#" CssClass="colibri" runat="server"></asp:HyperLink></li>
+                <li class="select s7">
                     <asp:HyperLink ID="hlnkQueFlora" NavigateUrl="#" CssClass="entypo-leaf" runat="server"></asp:HyperLink></li>
-                <li class="select s10">
+                <li class="select s8">
                     <asp:HyperLink ID="hlnkCerrarSesion" NavigateUrl="#" CssClass="entypo-logout" runat="server"></asp:HyperLink></li>
             </div>
         </ul>
         <nav class="slider-menu slider-menu-vertical slider-menu-left" id="slider-menu-s1">
             <h3>MENU</h3>
             <a href="#" class="1">Inicio</a>
-            <a href="#" class="7">Agregar nuevo</a>
-            <a href="#" class="8">Favoritos</a>
-            <a href="#" class="9">Galerias</a>
-            <a href="#" class="5">¿Qué es fauna?</a>
-            <a href="#" class="6">¿Qué es flora?</a>
-            <a href="#" class="10">Cerrar sesión</a>
+            <a href="#" class="2">Perfil</a>
+            <a href="#" class="3">Agregar nuevo</a>
+            <a href="#" class="4">Favoritos</a>
+            <a href="#" class="5">Galerias</a>
+            <a href="#" class="6">¿Qué es fauna?</a>
+            <a href="#" class="7">¿Qué es flora?</a>
+            <a href="#" class="8">Cerrar sesión</a>
         </nav>
     </header>
-    
+
     <div class="modal-frame" id="Favorito">
         <div class="cont">
             <div class="modal2">
                 <div class="titleGallery">
                     <div class="close"><i class="fa fa-close"></i></div>
                     Favoritos
+               
                
                 </div>
                 <div class="modal-inset">
@@ -90,6 +94,7 @@
                 <div class="titleGallery">
                     <div class="close"><i class="fa fa-close"></i></div>
                     Agregar nuevo
+               
                 </div>
                 <div class="modal-inset">
                     <div class="itemsGallery" id="ave2">
@@ -115,6 +120,7 @@
                 <div class="titleGallery">
                     <div class="close"><i class="fa fa-close"></i></div>
                     GALERIAS
+               
                 </div>
                 <div class="modal-inset">
                     <div class="itemsGallery" id="ave">
@@ -136,6 +142,7 @@
     <div class="modal-overlay"></div>
     <script src="../Script/icono.js"></script>
     <div class="todo">
+
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
     </div>
 </body>

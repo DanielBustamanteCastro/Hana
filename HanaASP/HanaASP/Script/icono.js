@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $('#navItem').click(function () {
-        var mediaquery = window.matchMedia("(max-width: 600px)");
+        var mediaquery = window.matchMedia("(max-width: 1000px)");
         if (mediaquery.matches) {
             $('#nav-icon, .tl-menu').toggleClass('open');
             $('#slider-menu-s1').css('transition', '1s').toggleClass('slider-menu-open');

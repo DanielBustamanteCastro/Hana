@@ -21,16 +21,16 @@ namespace HanaASP.Modulos.Usuario
     //    tbl_Correo_electronico tblCe = new tbl_Correo_electronico();
     //    tbl_Correo_electronicoCAD tblCeC = new tbl_Correo_electronicoCAD();
 
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-        ////    ddlMunicipio.Items.Clear();
-        ////    List<String> Ubicacion = tblUC.Buscar_ubicacion();
-        ////    foreach (var item in Ubicacion)
-        ////    {
-        ////        ddlMunicipio.Items.Add(item);
-        ////    }
-        ////    txtNombre.Attributes.Add("onkeypress", "a(event)");
-        //}
+        protected void Page_Load(object sender, EventArgs e)
+        {
+        //    ddlMunicipio.Items.Clear();
+        //    List<String> Ubicacion = tblUC.Buscar_ubicacion();
+        //    foreach (var item in Ubicacion)
+        //    {
+        //        ddlMunicipio.Items.Add(item);
+        //    }
+        //    txtNombre.Attributes.Add("onkeypress", "a(event)");
+        }
 
        
         //    DateTime ahora = DateTime.Now;

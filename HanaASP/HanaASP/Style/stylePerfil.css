@@ -1,0 +1,125 @@
+@import url(tooltip.css);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-image: url(../images/fondo2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    overflow-x: hidden;
+}
+
+.contPerfil {
+    width: 100%;
+}
+
+    .contPerfil .contImage {
+        width: 100%;
+        background-color: #fff;
+        height: 10px;
+        margin-top: 220px;
+    }
+
+        .contPerfil .contImage a {
+            text-decoration: none;
+        }
+
+        .contPerfil .contImage img {
+            width: 170px;
+            margin: -80px auto;
+            position: absolute;
+            left: calc(50% - 50px);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .contPerfil .contImage img:hover {
+                transform: scale(1.1);
+            }
+
+    .contPerfil .contData {
+        width: 100%;
+        background-color: #fff;
+        padding: 100px 0 80px 0;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+        .contPerfil .contData .itemPerfil {
+            color: #999;
+            padding: 10px;
+        }
+
+            .contPerfil .contData .itemPerfil .name {
+                font-size: 30px;
+                color: black;
+            }
+
+    .contPerfil .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .contPerfil .buttons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            color: #fff;
+            border: 1px solid #00AE00;
+            cursor: pointer;
+            text-align: center;
+            height: 100%;
+            background-color: #00AE00;
+            transition: 0.3s;
+            height: 32px;
+            border-radius: 0px 15px 15px 0px;
+        }
+
+            .contPerfil .buttons a:hover {
+                background-color: #fff;
+                color: #00AE00;
+            }
+
+        .contPerfil .buttons .mover {
+            margin-right: 156px;
+            border-radius: 15px 0px 0px 15px;
+            padding-right: 10px;
+        }
+
+    .contPerfil .contData .itemPerfil.img {
+        width: 50px;
+        margin: 0 auto;
+        margin-top: 40px;
+    }
+
+    .contPerfil .contData .itemPerfil img {
+        width: 100%;
+        height: auto;
+        transition: 1.5s;
+        cursor: pointer;
+    }
+
+        .contPerfil .contData .itemPerfil img:hover {
+            transform: rotate(180deg);
+        }
+
+@media screen and (max-width: 1000px) {
+    .contPerfil .contImage img {
+        left: calc(50% - 55px);
+        width: 110px;
+        margin: -47px auto;
+    }
+
+    .contPerfil .buttons .mover {
+        padding-right: 0;
+        margin-right: 79px;
+    }
+}
