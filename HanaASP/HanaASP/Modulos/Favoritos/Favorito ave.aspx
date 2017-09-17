@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
     <script src="../../../Scripts/jquery-3.1.1.js"></script>
-    <script src="../../../Script/Ajax/GaleriaAve.js"></script>
+    <script src="../../Script/Sweetalert/sweetalert2.js"></script>
+    <link href="../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
+    <script src="../../Script/Ajax/Favoritos_ave.js"></script>
     <script>
-        $(document).ready(function () {
-            $("#imgModificar").click(function () {
-                location.href = "../Modificar/ModificarAve.aspx?av=" + $("#mNombreCientifico").text() + "";
-            });
-        });
+  
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -89,18 +87,13 @@
                         <img src="../../../images/svg/galeria.png" alt="Galeria" />
                     </div>
                 </div>
-                <div class="contIcon" tooltip="Favorito" flow="down">
-                    <div id="SVGfavorito" class="hi-icon">
+                <div class="contIcon" tooltip="Eliminar" flow="down">
+                    <div id="SVGEliminar" class="hi-icon">
                         <%--<object data="../../../images/svg/estrella.svg"></object>--%>
-                        <img src="../../../images/svg/estrella.png" alt="Estrella" />
+                        <img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/delete1.png" alt="Eliminar" />
                     </div>
                 </div>
-                <div class="contIcon" tooltip="Modificar" flow="down">
-                    <div id="SVGmodificar" class="hi-icon" >
-                        <%--<object data="../../../images/svg/editar.svg" ></object>--%>
-                        <img src="../../../images/svg/Editar.png" alt="Editar" id="imgModificar" />
-                    </div>
-                </div>
+                
                 <div class="contIcon" tooltip="Ubicacion" flow="down">
                     <div id="SVGubicacion" class="hi-icon">
                         <%--<object data="../../../images/svg/ubicacion.svg"></object>--%>

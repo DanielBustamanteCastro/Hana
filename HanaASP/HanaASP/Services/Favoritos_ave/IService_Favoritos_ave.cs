@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -6,24 +7,23 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace HanaASP.Services.Modificar_ave
+namespace HanaASP.Services.Favoritos_ave
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService_Modificar_ave" en el código y en el archivo de configuración a la vez.
+    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService_Favoritos_ave" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
-    public interface IService_Modificar_ave
+    public interface IService_Favoritos_ave
     {
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
+        String Agregar_favoritos(String nombreCientifico);
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-        string[] Cargar_ave(string NombreCientifico);
+         List<String[]> Cargar_favoritos();
+
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-        string Modificar_ave(String nombreComun, String nombreCientifico, String descripcion, int tipo, int clase_dieta, int dieta, int comportamiento, int habitat, int reproduccion, int origen, int especie, int color_plumaje, int tamaño_ave);
-
-        [OperationContract]
-        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-        string Modificar_foto_ave(String imagen);
-
+        String Eliminar_favoritos(String nombreCientifico);
     }
 }

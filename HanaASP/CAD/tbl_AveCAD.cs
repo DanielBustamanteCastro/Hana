@@ -39,7 +39,7 @@ namespace CAD
             }
             return existe;
         }
-        public String insertar_ave(tbl_Ave tblAv, tbl_Estado_ave tblEst,tbl_Especie_ave tblEpa, tbl_Origen_ave tblOra,tbl_Tipo_ave tblTa,tbl_Clase_dieta tblCld, tbl_Dieta tblD, tbl_Comportamiento_ave tblComp,tbl_Habitat_ave tblHbt,tbl_Reproduccion_ave tblRp, tbl_Color_plumaje tblCpl,tbl_Tamaño_ave tblTma )
+        public String insertar_ave(tbl_Ave tblAv, tbl_Estado_ave tblEst, tbl_Especie_ave tblEpa, tbl_Origen_ave tblOra, tbl_Tipo_ave tblTa, tbl_Clase_dieta tblCld, tbl_Dieta tblD, tbl_Comportamiento_ave tblComp, tbl_Habitat_ave tblHbt, tbl_Reproduccion_ave tblRp, tbl_Color_plumaje tblCpl, tbl_Tamaño_ave tblTma)
         {
             String mensaje = "Error al insertar, porfavor intenta de nuevo";
             try
@@ -59,7 +59,7 @@ namespace CAD
                 cmd.Parameters.AddWithValue("@idEstado", tblEst.id_Estado_ave);
                 cmd.Parameters.AddWithValue("@idOrigen", tblOra.id_Origen_ave);
                 cmd.Parameters.AddWithValue("@idEspecie", tblEpa.id_Especie_ave);
-                cmd.Parameters.AddWithValue("@idTamaño",tblTma.id_Tamaño_ave);
+                cmd.Parameters.AddWithValue("@idTamaño", tblTma.id_Tamaño_ave);
                 cmd.Parameters.AddWithValue("@idColor", tblCpl.id_Color_plumaje);
                 con.Open();
                 int rows = cmd.ExecuteNonQuery();
@@ -102,7 +102,7 @@ namespace CAD
             return id;
 
         }
-        public  List<String[]> Llamar_aves()
+        public List<String[]> Llamar_aves()
         {
             List<String[]> lista = new List<string[]>();
             try
@@ -142,6 +142,7 @@ namespace CAD
                     genero_ave,especie_aves,origen_ave,tipo_ave,desc_dieta,comportamiento_ave,
                     habitat_ave,reproduccion_ave,color_plumaje,tamaño_ave,tipo_dieta});
                 }
+                con.Close();
             }
             catch (Exception)
             {
@@ -184,7 +185,7 @@ namespace CAD
                     Save[17] = dr["id_reproduccion_ave"].ToString();
                     Save[18] = dr["id_color_plumaje"].ToString();
                     Save[19] = dr["id_tamaño_ave"].ToString();
-                    Save[20] = dr["id_clase_dieta"].ToString();                    
+                    Save[20] = dr["id_clase_dieta"].ToString();
                     Save[21] = dr["id_clase_ave"].ToString();
                 }
             }
@@ -193,6 +194,123 @@ namespace CAD
                 throw;
             }
             return Save;
+        }
+        public String Modificar_ave(tbl_Ave tblAv, tbl_Estado_ave tblEst, tbl_Especie_ave tblEpa, tbl_Origen_ave tblOra, tbl_Tipo_ave tblTa, tbl_Clase_dieta tblCld, tbl_Dieta tblD, tbl_Comportamiento_ave tblComp, tbl_Habitat_ave tblHbt, tbl_Reproduccion_ave tblRp, tbl_Color_plumaje tblCpl, tbl_Tamaño_ave tblTma)
+        {
+            String mensaje = "Error al modificar, porfavor intenta de nuevo";
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_UPDATE_tbl_Ave";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idAve", tblAv.id_Ave);
+                cmd.Parameters.AddWithValue("@nombre_cientifico", tblAv.Nombre_cientifico);
+                cmd.Parameters.AddWithValue("@nombre_comun", tblAv.Nombre_comun);
+                cmd.Parameters.AddWithValue("@descripcion", tblAv.Descripcion);
+                cmd.Parameters.AddWithValue("@idTipo", tblTa.id_Tipo_ave);
+                cmd.Parameters.AddWithValue("@idDieta", tblD.id_Dieta);
+                cmd.Parameters.AddWithValue("@idComportamiento", tblComp.id_Comportamiento_ave);
+                cmd.Parameters.AddWithValue("@idHabitat", tblHbt.id_Habitat_ave);
+                cmd.Parameters.AddWithValue("@idReproduccion", tblRp.id_Reproduccion_ave);
+                cmd.Parameters.AddWithValue("@idEstado", tblEst.id_Estado_ave);
+                cmd.Parameters.AddWithValue("@idOrigen", tblOra.id_Origen_ave);
+                cmd.Parameters.AddWithValue("@idEspecie", tblEpa.id_Especie_ave);
+                cmd.Parameters.AddWithValue("@idTamaño", tblTma.id_Tamaño_ave);
+                cmd.Parameters.AddWithValue("@idColor", tblCpl.id_Color_plumaje);
+                con.Open();
+                int rows = cmd.ExecuteNonQuery();
+                con.Close();
+                if (rows != 0) mensaje = "Modificado correctamente";
+            }
+            catch (Exception e)
+            {
+
+                mensaje = e.Message;
+            }
+            return mensaje;
+        }
+        public int Buscar_id_ave_cient(tbl_Ave tblAv)
+        {
+            int id = 0;
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_Buscar_id_ave_nomcient";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombreCi", tblAv.Nombre_cientifico);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    id = int.Parse(dr["id_ave"].ToString());
+                }
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return id;
+
+        }
+
+        public List<String[]> Llamar_aves_id(List<String[]> mustra)
+        {
+            List<String[]> lista = new List<string[]>();
+            try
+            {
+                foreach (var m in mustra)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = con;
+                    cmd.CommandText = "prc_Buscar_tbl_Ave_id";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@id", m[2]);
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    foreach (var item in dr)
+                    {
+                        String id_ave = dr["id_ave"].ToString();
+                        String nom_cient_ave = dr["nom_cient_ave"].ToString();
+                        String nom_com_ave = dr["nom_com_ave"].ToString();
+                        String desc_ave = dr["desc_ave"].ToString();
+                        String estado_ave = dr["estado_ave"].ToString();
+                        String dominio_ave = dr["dominio_ave"].ToString();
+                        String reino_ave = dr["reino_ave"].ToString();
+                        String filum_ave = dr["filum_ave"].ToString();
+                        String clase_ave = dr["clase_ave"].ToString();
+                        String orden_aves = dr["orden_aves"].ToString();
+                        String familia_ave = dr["familia_ave"].ToString();
+                        String genero_ave = dr["genero_ave"].ToString();
+                        String especie_aves = dr["especie_aves"].ToString();
+                        String origen_ave = dr["origen_ave"].ToString();
+                        String tipo_ave = dr["tipo_ave"].ToString();
+                        String desc_dieta = dr["desc_dieta"].ToString();
+                        String comportamiento_ave = dr["comportamiento_ave"].ToString();
+                        String habitat_ave = dr["habitat_ave"].ToString();
+                        String reproduccion_ave = dr["reproduccion_ave"].ToString();
+                        String color_plumaje = dr["color_plumaje"].ToString();
+                        String tamaño_ave = dr["tamaño_ave"].ToString();
+                        String tipo_dieta = dr["clase_dieta"].ToString();
+                        lista.Add(new String[] { id_ave, nom_cient_ave, nom_com_ave, desc_ave,
+                    estado_ave,dominio_ave,reino_ave,filum_ave,clase_ave,orden_aves,familia_ave,
+                    genero_ave,especie_aves,origen_ave,tipo_ave,desc_dieta,comportamiento_ave,
+                    habitat_ave,reproduccion_ave,color_plumaje,tamaño_ave,tipo_dieta});
+                    }
+                    con.Close();
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return lista;
         }
     }
 }

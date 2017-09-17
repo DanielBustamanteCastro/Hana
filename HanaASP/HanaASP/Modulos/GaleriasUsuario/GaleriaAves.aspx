@@ -7,6 +7,42 @@
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
     <script src="../../Scripts/jquery-3.1.1.js"></script>
     <script src="../../Script/Ajax/GaleriaAve.js"></script>
+    <script src="../../Script/Sweetalert/sweetalert2.js"></script>
+    <link href="../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
+    <script>
+        $(document).ready(function () {
+            $("#SVGfavorito").click(function () {
+                var nombreCientifico = $("#mNombreCientifico").text();
+                swal({
+                    title: 'Esta seguro que desea agregar a favoritos?',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si'
+                }).then(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "../../../Services/Favoritos_ave/Service_Favoritos_ave.svc/Agregar_favoritos",
+                        data: '{"nombreCientifico":"' + nombreCientifico + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        processdata: true,
+                        success: function (Mensaje) {
+                            var mensaje = Mensaje.Agregar_favoritosResult;
+                            swal('',mensaje,'success');
+
+                        },
+                        error: function (Mensaje) {
+                            alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                        }
+
+                    });
+                })
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <%--    <div>
@@ -79,17 +115,16 @@
             <div class="hi-icon-wrap hi-icon-effect-8">
                 <div class="contIcon" tooltip="Galeria" flow="down">
                     <div id="SVGgaleria" class="hi-icon">
-                        <object data="../../images/svg/galeria.svg"></object>
+                         <img src="../../../images/svg/galeria.png" alt="Galeria" />
                     </div>
                 </div>
                 <div class="contIcon" tooltip="Favorito" flow="down">
                     <div id="SVGfavorito" class="hi-icon">
-                        <object data="../../images/svg/estrella.svg"></object>
+                          <img src="../../../images/svg/estrella.png" alt="Favoritos"  />
                     </div>
                 </div>
                 <div class="contIcon" tooltip="Ubicacion" flow="down">
-                    <div id="SVGubicacion" class="hi-icon">
-                        <object data="../../images/svg/ubicacion.svg"></object>
+                    <div id="SVGubicacion" class="hi-icon"> <img src="../../../images/svg/Ubicacion.png" alt="Ubicación" />
                     </div>
                 </div>
             </div>

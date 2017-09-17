@@ -78,7 +78,7 @@
                         </asp:HyperLink>
                     </div>
                     <div class="itemsGallery" id="arbol3">
-                        <asp:HyperLink runat="server" NavigateUrl="~/Modulos/Admin/Registrar/ResgistroArbol.aspx">
+                        <asp:HyperLink runat="server" NavigateUrl="~/Modulos/Favoritos/Favorito arbol.aspx">
                             <asp:Image ID="Image6" runat="server" ImageUrl="~/images/popup/arbol.jpg" />
                             <div class="titleItem b">Favorito Arbol</div>
                         </asp:HyperLink>

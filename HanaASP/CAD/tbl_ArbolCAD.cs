@@ -191,5 +191,94 @@ namespace CAD
             }
             return lista;
         }
+
+        public int Buscar_id_arbol_cient(tbl_Arbol tblAr)
+        {
+            int id = 0;
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_Buscar_id_arbol_cient";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombreCi", tblAr.nom_cient_arbol);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    id = int.Parse(dr["id_arbol"].ToString());
+                }
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return id;
+
+        }
+        public List<String[]> Llamar_arbol_id(List<String[]> mustra)
+        {
+            List<String[]> lista = new List<string[]>();
+            try
+            {
+                foreach (var m in mustra)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = con;
+                    cmd.CommandText = "prc_Buscar_tbl_Arbol_id";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@id", m[2]);
+                    con.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    foreach (var item in dr)
+                    {
+                        String desc_ave = dr["desc_arbol"].ToString();//0
+                        String NombreComun = dr["nom_com_arbol"].ToString();//1
+                        String NombreCientifico = dr["nom_cient_arbol"].ToString();//2
+                        String EstadoArbol = dr["estado_arbol"].ToString();//3
+                        String DominioArbol = dr["dominio_arbol"].ToString();//4
+                        String ReinoArbol = dr["reino_arbol"].ToString();//5
+                        String DivisionArbol = dr["division_arbol"].ToString();//6
+                        String ClaseArbol = dr["clase_arbol"].ToString();//7
+                        String OrdenArbol = dr["oreden_arbol"].ToString();//8
+                        String FamiliArbol = dr["familia_arbol"].ToString();//9
+                        String GeneroArbol = dr["genero_arbol"].ToString();//10
+                        String EspecieArbol = dr["especie_arbol"].ToString();//11
+                        String TipoArbol = dr["tipo_arbol"].ToString();//12
+                        String Crecimiento = dr["crecimiento"].ToString();//13
+                        String AlturaArbol = dr["altura_arbol"].ToString();//14
+                        String DiametroArbol = dr["diametro_arbol"].ToString();//15
+                        String AmplitudCopa = dr["amplitud_copa"].ToString();//16
+                        String FormaCopa = dr["forma_copa"].ToString();//17
+                        String PersistenciaHoja = dr["persistencia_hoja"].ToString();//18
+                        String ColorFlor = dr["color_flor"].ToString();//19
+                        String ColorHoja = dr["color_hoja"].ToString();//20
+                        String EstacionFloracion = dr["estacion_de_floracion"].ToString();//21
+                        String LimitacionArbol = dr["limitaciones_arbol"].ToString();//22
+                        String LimitacionFruto = dr["limitaciones_fruto"].ToString();//23
+                        String LongevidadArbol = dr["longevidad_arbol"].ToString();//24
+                        String PisoTermico = dr["piso_termico"].ToString();//25
+                        String LuminocidadArbol = dr["luminocidad_arbol"].ToString();//26
+                        String FuncionArbol = dr["funcion_arbol"].ToString();//27
+                        String FotoArbol = dr["foto_arbol"].ToString();//28
+                        String IdArbol = dr["id_arbol"].ToString();//29
+                        lista.Add(new String[] { desc_ave, NombreComun, NombreCientifico,EstadoArbol, DominioArbol,ReinoArbol,DivisionArbol ,ClaseArbol,
+                        OrdenArbol,FamiliArbol,GeneroArbol,EspecieArbol,TipoArbol,Crecimiento,AlturaArbol,DiametroArbol,AmplitudCopa,FormaCopa,PersistenciaHoja,
+                        ColorFlor,ColorHoja,EstacionFloracion,LimitacionArbol,LimitacionFruto,LongevidadArbol,PisoTermico,LuminocidadArbol,FuncionArbol,FotoArbol,IdArbol});
+                    }
+                    con.Close();
+
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return lista;
+        }
     }
 }

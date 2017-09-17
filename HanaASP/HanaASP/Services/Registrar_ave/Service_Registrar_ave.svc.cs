@@ -144,7 +144,7 @@ namespace HanaASP.Services.Registrar_ave
             tblTm.id_Tamaño_ave = tamaño_ave;
             tblCp.id_Color_plumaje = color_plumaje;
             tblEst.id_Estado_ave = new tbl_Estado_aveCAD().Buscar_Estado_ave("Espera");
-            return new tbl_AveCAD().insertar_ave(tblAv, tblEst, tblEsp, tblOv, tblTp, tblCld, tbldt, tblComp, tblHab, tblRp,tblCp, tblTm);
+            return new tbl_AveCAD().Modificar_ave(tblAv, tblEst, tblEsp, tblOv, tblTp, tblCld, tbldt, tblComp, tblHab, tblRp,tblCp, tblTm);
             
         }
         public string Insertar_imagen_ave(string imagen, string nombreCientifico, string nombreComun, int especie)

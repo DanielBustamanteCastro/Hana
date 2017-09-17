@@ -80,10 +80,7 @@
                                     $("#div").append("<output id=" + " out" + 0 + " class='out'><div id=" + " list" + 0 + " class='imagen'>  </div></output > ");
                                     $.each(img, function (index, imagen) {
                                         var input = $("#div output").length;
-                                        alert(imagen.Fotos_aves);
-                                        alert(imagen.id_Fotos_aves);
                                         var asa = input - 1;
-                                        alert("#list" + asa);
                                         $("#list" + asa).append('<img class="thumb" id="im" src="'+ imagen.Fotos_aves+ '" title="'+ imagen.id_Fotos_aves+ '"/> <img id="' + input + '" class="x"  src="../../../images/X-roja.png" />')
                                         $("#" + input).click(function () {
                                                         swal({

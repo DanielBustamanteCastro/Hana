@@ -109,88 +109,56 @@ $(document).ready(function () {
                 swal('Ooops...', 'Ningun campo puede estar vacio y/o no determinado', 'error');
             }
             else {
+                        $.ajax({
+                            type: "POST",
+                            url: "../../../Services/Modificar_ave/Service_Modificar_ave.svc/Modificar_ave",
+                            data: '{"nombreComun":"' + nombreComun + '","nombreCientifico":"' + nombreCientifico + '","descripcion":"' + descripcion + '","tipo":"' + tipo + '","dieta":"' + dieta + '","clase_dieta":"' + clase_dieta + '","comportamiento":"' + comportamiento_ave + '","habitat":"' + habitat + '","reproduccion":"' + reproduccion + '","origen":"' + origen_ave + '","especie":"' + especie + '","color_plumaje":"' + colorplumaje + '","tamaño_ave":"' + tamaño_ave + '"}',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            processdata: true,
+                            success: function (Mensaje) {
+                                item = Mensaje.Modificar_aveResult;
+                                swal(item);
+                            },
+                            error: function (Mensaje) {
+                                alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                            }
+
+                });
+                var image = [];
+                for (var i = 1; i < input + 1; i++) {
+                    image[image.length] = $("#out" + i + " img").attr("src") + "~";
+
+                }
+                var jk = nombreCientifico;
+                var jka = nombreComun;
                 $.ajax({
                     type: "POST",
-                    url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Buscar_ave_con_nombreCientifico",
-                    data: '{"nombreCientifico":"' + nombreCientifico + '"}',
+                    url: "../../../Services/Modificar_ave/Service_Modificar_ave.svc/Modificar_foto_ave",
+                    data: '{"imagen":"' + image + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: false,
                     processdata: true,
                     success: function (Mensaje) {
-                        var mensaje = Mensaje.Buscar_ave_con_nombreCientificoResult;
-                        if (mensaje == "Correcto") {
-                            permiso = 1;
+                        if (Mensaje.Modificar_foto_aveResult == "Insertado correctamente" && permiso == 1) {
+                            swal('', Mensaje.Modificar_foto_aveResult, 'success');
+                            $("select").val(0);
+                            $("input:text").val("");
+                            $("textarea").val("");
+                            $("output").remove();
+                            $("#files").get(0).value = '';
+                            $("#files").get(0).type = '';
+                            $("#files").get(0).type = 'file';
                         } else {
-                            permiso = 0;
-                            swal('Oops...', mensaje, 'error');
+                            swal('', 'Error al registrar', 'error')
                         }
-
                     },
                     error: function (Mensaje) {
                         alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
                     }
 
                 });
-                if (permiso == 1) {
-                    $.ajax({
-                        type: "POST",
-                        url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Insertar_ave",
-                        data: '{"nombreComun":"' + nombreComun + '","nombreCientifico":"' + nombreCientifico + '","descripcion":"' + descripcion + '","tipo":"' + tipo + '","dieta":"' + dieta + '","clase_dieta":"' + clase_dieta + '","comportamiento":"' + comportamiento_ave + '","habitat":"' + habitat + '","reproduccion":"' + reproduccion + '","origen":"' + origen_ave + '","especie":"' + especie + '","color_plumaje":"' + colorplumaje + '","tamaño_ave":"' + tamaño_ave + '"}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        async: false,
-                        processdata: true,
-                        success: function (Mensaje) {
-                            if (Mensaje.Insertar_aveResult == "Insertado correctamente") {
-                                permiso = permiso + 1;
-                            }
-
-                        },
-                        error: function (Mensaje) {
-                            alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
-                        }
-
-                    });
-                    var image = [];
-                    for (var i = 1; i < input + 1; i++) {
-                        image[image.length] = $("#out" + i + " img").attr("src") + "~";
-
-                    }
-
-
-
-                    var jk = nombreCientifico;
-                    var jka = nombreComun;
-                    $.ajax({
-                        type: "POST",
-                        url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Insertar_imagen_ave",
-                        data: '{"imagen":"' + image + '","nombreCientifico":"' + nombreCientifico + '","nombreComun":"' + nombreComun + '","especie":"' + especie + '"}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        async: false,
-                        processdata: true,
-                        success: function (Mensaje) {
-                            if (Mensaje.Insertar_imagen_aveResult == "Insertado correctamente" && permiso == 2) {
-                                swal('', Mensaje.Insertar_imagen_aveResult, 'success');
-                                $("select").val(0);
-                                $("input:text").val("");
-                                $("textarea").val("");
-                                $("output").remove();
-                                $("#files").get(0).value = '';
-                                $("#files").get(0).type = '';
-                                $("#files").get(0).type = 'file';
-                            } else {
-                                swal('', 'Error al registrar', 'error')
-                            }
-                        },
-                        error: function (Mensaje) {
-                            alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
-                        }
-
-                    });
-                }
-
             }
 
         }

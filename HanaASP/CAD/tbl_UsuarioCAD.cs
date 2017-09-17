@@ -215,5 +215,31 @@ namespace CAD
             }
             return validacion;
         }
+        
+        public int  Buscar_id_usu(String correo)
+        {
+            int id= 0;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT * FROM tbl_Correo_electronico WHERE correo_usuario='" + correo + "'";
+                cmd.CommandType = CommandType.Text;
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    id = int.Parse(dr["id_usuario"].ToString());
+                }
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return id;
+
+        }
     }
 }

@@ -67,6 +67,8 @@
     <Compile Include="tbl_Estado_usuarioCAD.cs" />
     <Compile Include="tbl_Familia_arbolCAD.cs" />
     <Compile Include="tbl_Familia_aveCAD.cs" />
+    <Compile Include="tbl_Favoritos_arbolCAD.cs" />
+    <Compile Include="tbl_Favoritos_aveCAD.cs" />
     <Compile Include="tbl_Filum_aveCAD.cs" />
     <Compile Include="tbl_FloraCAD.cs" />
     <Compile Include="tbl_Forma_de_copaCAD.cs" />

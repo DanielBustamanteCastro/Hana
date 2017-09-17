@@ -22,7 +22,7 @@
     });
 });
 
-function ajax(Correo1,Contraseña1) {
+function ajax(Correo1, Contraseña1) {
     $.ajax({
         type: "POST",
         url: "../Services/Iniciar_sesion/Service_Iniciar_sesion.svc/Iniciar_sesion",
@@ -38,9 +38,10 @@ function ajax(Correo1,Contraseña1) {
             }
             if (item == "Administrador") {
                 location.href = "indexAdmin.aspx";
+            } else {
+                swal(Mensaje.Iniciar_sesionResult);
             }
-
-            swal(item);
+            
         },
         error: function (Mensaje) {
             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);

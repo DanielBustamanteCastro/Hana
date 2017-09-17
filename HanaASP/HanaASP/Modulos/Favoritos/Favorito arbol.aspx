@@ -1,50 +1,16 @@
-﻿<%@ Page Title="Galeria de arboles" Language="C#" MasterPageFile="~/Modulos/MenuUsuario.master" AutoEventWireup="true" CodeBehind="GaleriaArboles.aspx.cs" Inherits="HanaASP.Modulos.GaleriaAves" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/MenuUsuario.master" AutoEventWireup="true" CodeBehind="Favorito arbol.aspx.cs" Inherits="HanaASP.Modulos.Favoritos.Favorito_arbol" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="../../Style/galeria/gallery.css" rel="stylesheet" />
+     <link href="../../Style/galeria/gallery.css" rel="stylesheet" />
     <link href="../../Style/galeria/tooltip.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
     <script src="../../Scripts/jquery-3.1.1.js"></script>
-    <script src="../../Script/Ajax/GaleriaArbol.js"></script> <script src="../../Script/Sweetalert/sweetalert2.js"></script>
+    <script src="../../Script/Ajax/Favoritos_arbol.js"></script>
+    <script src="../../Script/Sweetalert/sweetalert2.js"></script>
     <link href="../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
-    <script>
-        $(document).ready(function () {
-            $("#SVGfavorito").click(function () {
-                var nombreCientifico = $("#mNombreCientifico").text();
-                swal({
-                    title: 'Esta seguro que desea agregar a favoritos?',
-                    type: 'info',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si'
-                }).then(function () {
-                    $.ajax({
-                        type: "POST",
-                        url: "../../../Services/Favoritos_arbol/Service_Favoritos_arbol.svc/Agregar_favoritos",
-                        data: '{"nombreCientifico":"' + nombreCientifico + '"}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        async: false,
-                        processdata: true,
-                        success: function (Mensaje) {
-                            var mensaje = Mensaje.Agregar_favoritosResult;
-                            swal('',mensaje,'success');
-
-                        },
-                        error: function (Mensaje) {
-                            alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
-                        }
-
-                    });
-                })
-            });
-        });
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <%--  <div>
+     <%--  <div>
         <input type="number" id="valor" placeholder="agregue cantidad" value="1000">
         <button id="agregarArbol">agregar</button>
     </div>--%>
@@ -110,23 +76,25 @@
     </div>
 
     <div class="modal todo">
-            <div class="w50 bg">
+        <div class="w50 bg">
             <div class="contImage">
                 <img id="imagen" src="">
             </div>
             <div class="hi-icon-wrap hi-icon-effect-8">
                 <div class="contIcon" tooltip="Galeria" flow="down">
                     <div id="SVGgaleria" class="hi-icon">
-                         <img src="../../../images/svg/galeria.png" alt="Galeria" />
+                        <object data="../../images/svg/galeria.svg"></object>
                     </div>
                 </div>
-                <div class="contIcon" tooltip="Favorito" flow="down">
-                    <div id="SVGfavorito" class="hi-icon">
-                          <img src="../../../images/svg/estrella.png" alt="Favoritos"  />
+                <div class="contIcon" tooltip="Eliminar" flow="down">
+                    <div id="SVGEliminar" class="hi-icon">
+                        <%--<object data="../../../images/svg/estrella.svg"></object>--%>
+                        <img src="https://www.jose-aguilar.com/blog/wp-content/uploads/2012/03/delete1.png" alt="Eliminar" />
                     </div>
                 </div>
                 <div class="contIcon" tooltip="Ubicacion" flow="down">
-                    <div id="SVGubicacion" class="hi-icon"> <img src="../../../images/svg/Ubicacion.png" alt="Ubicación" />
+                    <div id="SVGubicacion" class="hi-icon">
+                        <object data="../../images/svg/ubicacion.svg"></object>
                     </div>
                 </div>
             </div>
