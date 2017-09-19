@@ -120,5 +120,30 @@ namespace CAD
             int num = r.Next(1, 100);
             return num;
         }
+
+        public string Actualizar_usuario(String correo,String contraN, string contraA)
+        {
+            String mensaje = "Error al modificar";
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_Actualizae_contraseña";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@contraseñaA", contraA);
+                cmd.Parameters.AddWithValue("@contraseñaN", contraN);
+                cmd.Parameters.AddWithValue("@correo", correo);
+                con.Open();
+                int rows = cmd.ExecuteNonQuery();
+                con.Close();
+                if (rows != 0) mensaje = "Modificado correctamenre";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return mensaje;
+        }
     }
 }

@@ -9,7 +9,6 @@
         processdata: true,
         success: function (Aves) {
             var Ave = Aves.Cargar_favoritosResult;
-            alert(Ave);
             var cont = 6;
             var sec = 1;
             var cant;
@@ -31,37 +30,30 @@
                     }
                 });
 
-                /*Definicion de Valores*/
-                var NombreComun = item[1];
-                var Especie = item[11];
-                var Familia = item[9];
-                var Tipo = item[12];
-                var ColorHojas = item[20];
-                var Altura = item[14];
-                var NombreCientifico = item[2];
-                var Clase = item[7];
-                var Dominio = item[4];
-                var Reino = item[5];
-                var Genero = item[10];
-                var Division = item[6];
-                var Orden = item[8];
-                var LongevidadArbol = item[24];
-                var LimitacionesFrutos = item[23];
-                var FormaCopa = item[17];
-                var AmplitudCopa = item[16];
-                var Diametro = item[15];
-                var PersistenciaHoja = item[18];
-                var EstacionFloracion = item[21];
-                var LimitacionesArbol = item[22];
-                var PisoTermico = item[25];
-                var Luminocidad = item[26];
-                var ColorFlor = item[19];
-                var HabitoCrecimiento = item[13];
-                var Descripcion = item[0];
-                var FuncionArbol = item[27];
+                var NombreComun = item["2"];
+                var Especie = item["12"];
+                var Familia = item["10"];
+                var Dieta = item["15"];
+                var Tipo = item["14"];
+                var ColorPlumaje = item["19"];
+                var Origen = item["13"];
+                var TamanoAve = item["20"];
+                var ClaseDieta = item["21"];
+                var NombreCientifico = item["1"];
+                var Comportamiento = item["16"];
+                var Clase = item["8"];
+                var Habitat = item["17"];
+                var Dominio = item["5"];
+                var Reino = item["6"];
+                var Reproduccion = item["18"];
+                var Genero = item["11"];
+                var Descripcion = item["3"];
+                var Filum = item["7"];
+                var Orden = item["9"];
+
                 /*Agregar clases con sus valores*/
 
-                $('#Item' + sec).append('<div id="' + item[29] + '" class="card card--big"><div class="card__image" style="background-image: url(' + Foto + '"></div><h2 class="card__title">' + NombreCientifico + '</h2><p class="card__text">' + NombreComun + '</p><div class="card__action-bar"><button class="card__button mas-info" >Mas información</button></div><div class="informat"><div class="NombreComun">' + NombreComun + '</div><div class="Especie">' + Especie + '</div><div class="Familia">' + Familia + '</div><div class="Tipo">' + Tipo + '</div><div class="ColorHojas">' + ColorHojas + '</div><div class="Altura">' + Altura + '</div><div class="NombreCientifico">' + NombreCientifico + '</div><div class="Clase">' + Clase + '</div><div class="Dominio">' + Dominio + '</div><div class="Reino">' + Reino + '</div><div class="Genero">' + Genero + '</div><div class="Division">' + Division + '</div><div class="Orden">' + Orden + '</div><div class="LongevidadArbol">' + LongevidadArbol + '</div><div class="LimitacionesFrutos">' + LimitacionesFrutos + '</div><div class="FormaCopa">' + FormaCopa + '</div><div class="AmplitudCopa">' + AmplitudCopa + '</div><div class="Diametro">' + Diametro + '</div><div class="PersistenciaHoja">' + PersistenciaHoja + '</div><div class="EstacionFloracion">' + EstacionFloracion + '</div><div class="LimitacionesArbol">' + LimitacionesArbol + '</div><div class="PisoTermico">' + PisoTermico + '</div><div class="Luminocidad">' + Luminocidad + '</div><div class="ColorFlor">' + ColorFlor + '</div><div class="HabitoCrecimiento">' + HabitoCrecimiento + '</div><div class="Descripcion">' + Descripcion + '</div><div class="FuncionArbol">' + FuncionArbol + '</div></div></div>');
+                $('#Item' + sec).append('<div id="' + item[0] + '" class="card card--big"><div class="card__image" style="background-image: url(' + Foto + ')"></div><h2 class="card__title">' + NombreCientifico + '</h2><p class="card__text">' + NombreComun + '</p><div class="card__action-bar"><button class="card__button mas-info" >Mas información</button></div><div class="informat"><div class="NombreComun">' + NombreComun + '</div><div class="Especie">' + Especie + '</div><div class="Familia">' + Familia + '</div><div class="Dieta">' + Dieta + '</div><div class="Tipo">' + Tipo + '</div><div class="Origen">' + Origen + '</div><div class="TamanoAve">' + TamanoAve + '</div><div class="ClaseDieta">' + ClaseDieta + '</div><div class="NombreCientifico">' + NombreCientifico + '</div><div class="Comportamiento">' + Comportamiento + '</div><div class="Clase">' + Clase + '</div><div class="Habitat">' + Habitat + '</div><div class="Dominio">' + Dominio + '</div><div class="Reino">' + Reino + '</div><div class="Reproduccion">' + Reproduccion + '</div><div class="Genero">' + Genero + '</div><div class="Descripcion">' + Descripcion + '</div><div class="Filum">' + Filum + '</div><div class="Orden">' + Orden + '</div><div class="ColorPlumaje">' + ColorPlumaje + '</div><div id="asdf">' + item[0] + '</div></div></div>');
 
                 /*Crear seccion*/
                 cant = $('.card').length;
@@ -104,7 +96,6 @@
                     var mensaje = Mensaje.Eliminar_favoritosResult;
                     if (mensaje == "Eliminado correctamente") {
                         swal('', mensaje, 'success');
-                        location.href = "Favorito ave.aspx";
 
                     }
                     else {

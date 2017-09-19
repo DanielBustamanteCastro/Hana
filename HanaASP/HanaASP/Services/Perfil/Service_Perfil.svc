@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HanaASP.Services.Perfil.Service_Perfil" CodeBehind="Service_Perfil.svc.cs" %>

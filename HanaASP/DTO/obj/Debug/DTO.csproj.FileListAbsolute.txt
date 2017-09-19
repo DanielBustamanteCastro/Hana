@@ -62,6 +62,5 @@ C:\Users\APRENDIZ\Desktop\Daniel\Git\Hana\Hana\HanaASP\DTO\obj\Debug\DTO.dll
 C:\Users\APRENDIZ\Desktop\Daniel\Git\Hana\Hana\HanaASP\DTO\obj\Debug\DTO.pdb
 F:\Todo\Hana\HanaASP\DTO\bin\Debug\DTO.dll
 F:\Todo\Hana\HanaASP\DTO\bin\Debug\DTO.pdb
-F:\Todo\Hana\HanaASP\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
 F:\Todo\Hana\HanaASP\DTO\obj\Debug\DTO.dll
 F:\Todo\Hana\HanaASP\DTO\obj\Debug\DTO.pdb

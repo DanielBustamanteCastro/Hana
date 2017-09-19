@@ -163,6 +163,8 @@
     <Content Include="Script\Ajax\GaleriaAve.js" />
     <Content Include="Script\Ajax\Iniciar_sesion.js" />
     <Content Include="Script\Ajax\ModificarAve.js" />
+    <Content Include="Script\Ajax\Modificar_perfil.js" />
+    <Content Include="Script\Ajax\Perfil.js" />
     <Content Include="Script\Ajax\Registrar.js" />
     <Content Include="Script\Ajax\Registrar_arbol.js" />
     <Content Include="Script\Ajax\Registrar_ave.js" />
@@ -186,6 +188,7 @@
     <Content Include="Services\Galeria_ave\Service_Galeria_ave.svc" />
     <Content Include="Services\Iniciar_sesion\Service_Iniciar_sesion.svc" />
     <Content Include="Services\Modificar_ave\Service_Modificar_ave.svc" />
+    <Content Include="Services\Perfil\Service_Perfil.svc" />
     <Content Include="Services\Registrar\Service_Registrar.svc" />
     <Content Include="Services\Registrar_arbol\Service_Registrar_arbol.svc" />
     <Content Include="Services\Registrar_ave\Service_Registrar_ave.svc" />
@@ -439,6 +442,10 @@
     <Compile Include="Services\Modificar_ave\IService_Modificar_ave.cs" />
     <Compile Include="Services\Modificar_ave\Service_Modificar_ave.svc.cs">
       <DependentUpon>Service_Modificar_ave.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Perfil\IService_Perfil.cs" />
+    <Compile Include="Services\Perfil\Service_Perfil.svc.cs">
+      <DependentUpon>Service_Perfil.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\Registrar\IService_Registrar.cs" />
     <Compile Include="Services\Registrar\Service_Registrar.svc.cs">

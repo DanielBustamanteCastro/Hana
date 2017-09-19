@@ -241,5 +241,31 @@ namespace CAD
             return id;
 
         }
+
+        public String[] Cargar_usuario(String correo)
+        {
+            String[] datos = new String[8];
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT* FROM tbl_Contraseña AS C INNER JOIN tbl_Usuario AS U ON C.id_contraseña = U.id_contraseña INNER JOIN tbl_Correo_electronico AS CE ON U.id_usuario = CE.id_usuario INNER JOIN tbl_Ubicacion AS UB ON U.id_Ubicacion = UB.id_ubicacion WHERE CE.correo_usuario = '"+correo+"'";
+                cmd.CommandType = CommandType.Text;
+                //cmd.Parameters.AddWithValue("@Correo", correo);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    datos = new string[] {dr["id_contraseña"].ToString(),dr["contraseña_usuario"].ToString(),dr["id_usuario"].ToString(),
+                    dr["nombre_usuario"].ToString(),dr["apellido_usuario"].ToString(),Convert.ToDateTime(dr["fecha_nacimiento_usuario"].ToString()).ToString("d MMMM yyyy"),dr["id_Ubicacion"].ToString(),dr["correo_usuario"].ToString(),dr["departamento"].ToString()};
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return datos;
+        }
     }
 }

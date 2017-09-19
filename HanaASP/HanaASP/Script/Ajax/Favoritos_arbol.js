@@ -9,7 +9,6 @@
         processdata: true,
         success: function (Aves) {
             var Ave = Aves.Cargar_favoritosResult;
-            alert(Ave);
             var cont = 6;
             var sec = 1;
             var cant;
@@ -107,7 +106,6 @@
                     var mensaje = Mensaje.Eliminar_favoritosResult;
                     if (mensaje == "Eliminado correctamente") {
                         swal('', mensaje, 'success');
-                        location.href = "Favorito arbol.aspx";
 
                     }
                     else {

@@ -3,13 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="../../../Style/formsAveArbol3.css" />
     <script src="../../../Scripts/jquery-3.1.1.js"></script>
-    <script src="../../../Script/Sweetalert/sweetalert2.js"></script>
     <script src="../../../Script/PNotify/pnotify.custom.min.js"></script>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
     <link href="../../../Style/PNotify/pnotify.custom.min.css" rel="stylesheet" />
     <link href="../../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
+    <script src="../../../Script/Sweetalert/sweetalert2.js"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
-    <script src="../../../Script/Ajax/Registrar.js"></script>
+   
+    <script src="../../../Script/Ajax/Modificar_perfil.js"></script>
     <script>
         
     </script>

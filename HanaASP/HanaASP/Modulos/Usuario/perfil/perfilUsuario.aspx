@@ -3,7 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../../../Style/stylePerfil.css" rel="stylesheet" />
     <link href="../../../Style/galeria/tooltip.css" rel="stylesheet" />
-
+    <script src="../../../Scripts/jquery-3.1.1.js"></script>
+    <script src="../../../Script/Sweetalert/sweetalert2.js"></script>
+    <link href="../../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
+    <script src="../../../Script/Ajax/Perfil.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="contPerfil">
@@ -11,25 +14,22 @@
             <a href="../../indexUsuario.aspx"><img src="../../../images/Logo.png" /></a>
             <div class="buttons">
                 <a class="mover" href="../../indexUsuario.aspx">Ir a inicio</a>
-                <a>Cambiar contraseña</a>
+                <a id="aCambioContraseña">Cambiar contraseña</a>
             </div>
         </div>
         <div class="contData">
             <div class="itemPerfil">
-                <label class="name">Victor Manuel</label>
-                <label class="name">Soto Morales</label>
+                <label class="name" id="lblNombre"></label>
+                <label class="name" id="lblApellido"></label>
             </div>
             <div class="itemPerfil">
-                <label class="date">19/03/1999</label>
+                <label class="date" id="lblFechaNacimiento"></label>
             </div>
             <div class="itemPerfil">
-                <label>vmsoto86@misena.edu.co</label>
-            </div>
-             <div class="itemPerfil">
-                <label class="rol">Usuario</label>
+                <label id="lblCorreo"></label>
             </div>
             <div class="itemPerfil">
-                <label>Medellín</label>
+                <label id="lblMunicipio"></label>
             </div>
             <div class="itemPerfil img" tooltip="Modificar" flow="down">
                 <a href="modificarPerfilUsuario.aspx"><img src="../../../images/settings.png" /></a>
