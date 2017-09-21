@@ -9,7 +9,22 @@
             3
             window.location.hash = "Again-No-back-button" //chrome
             4
-            window.onhashchange = function () { window.location.hash = "no-back-button"; }
+            window.onhashchange = function () { window.location.hash = " "; }
+
+
+            $('li').removeClass('tl-current');
+            $('li.s1').addClass('tl-current');
+            $.ajax({
+                type: "POST",
+                url: "../../Services/Iniciar_sesion/Service_Iniciar_sesion.svc/Eliminar_sesion",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                processdata: true,
+                success: function (Fotos) {}
+                
+            });
         });
     </script>
 </asp:Content>

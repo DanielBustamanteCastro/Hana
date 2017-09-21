@@ -96,3 +96,10 @@ F:\Todo\Hana\HanaASP\CAD\bin\Debug\DTO.pdb
 F:\Todo\Hana\HanaASP\CAD\obj\Debug\CAD.csprojResolveAssemblyReference.cache
 F:\Todo\Hana\HanaASP\CAD\obj\Debug\CAD.dll
 F:\Todo\Hana\HanaASP\CAD\obj\Debug\CAD.pdb
+H:\Todo\Hana\HanaASP\CAD\bin\Debug\CAD.dll
+H:\Todo\Hana\HanaASP\CAD\bin\Debug\CAD.pdb
+H:\Todo\Hana\HanaASP\CAD\bin\Debug\DTO.dll
+H:\Todo\Hana\HanaASP\CAD\bin\Debug\DTO.pdb
+H:\Todo\Hana\HanaASP\CAD\obj\Debug\CAD.csprojResolveAssemblyReference.cache
+H:\Todo\Hana\HanaASP\CAD\obj\Debug\CAD.dll
+H:\Todo\Hana\HanaASP\CAD\obj\Debug\CAD.pdb

@@ -1,200 +1,226 @@
 ﻿
 
 $(document).ready(function () {
-    $("input").focusout(function () {
-        var campo = $(this).val();
-        if (campo.length == 0) {
-            mensajCampoVacio($(this).attr("name"));
-        }
-    });
-    $("textarea").focusout(function () {
-        var campo = $(this).val();
-        if (campo.length == 0) {
-            mensajCampoVacio($(this).attr("name"));
-        }
-    });
-
-
-    var datos;
-
-    $("#files").change(function (evt) {
-        var input = $("#div output").length;
-        if (input == 5) {
-            swal(' ', 'No puedes agregar mas de 5 imagen!', 'info');
-        } else {
-
-            var tipo = 0;
-            var file = $(this).val();
-            var ext = file.substring(file.lastIndexOf("."));
-            if (ext != ".jpg" && ext != ".png" && ext != ".jpeg" && ext != ".JPG" && ext != ".PNG" && ext != ".JPEG") {
-                swal('Oops...', 'No es una imagen!', 'error');
-                tipo = 2;
-                $(this).get(0).value = '';
-                $(this).get(0).type = '';
-                $(this).get(0).type = 'file';
+    $.ajax({
+        type: "POST",
+        url: "../../../../../../Services/Iniciar_sesion/Service_Iniciar_sesion.svc/Validar_sesion",
+        data: '{}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        processdata: true,
+        success: function (Fotos) {
+            var img = Fotos.Validar_sesionResult;
+            if (img == "No iniciado") {
+                swal({
+                    allowOutsideClick: false,
+                    title: 'Inicia sesión para poder ingresar aquí',
+                    type: 'error'
+                }).then(function () { location.href = "../../index.aspx" });
+            } if (img == "Usuario") {
+                swal({
+                    allowOutsideClick: false,
+                    title: 'Tu rol no tiene acceso a esta seccion',
+                    type: 'info'
+                }).then(function () { location.href = "../../indexUsuario.aspx" });
             } else {
-                tipo = 1;
-            }
-            if (tipo == 1) {
-                var input = $("#div output").length;
-                var files = evt.target.files;
-                for (var i = 0, f; f = files[i]; i++) {
-                    if (!f.type.match('image.*')) {
-                        continue;
+                $("input").focusout(function () {
+                    var campo = $(this).val();
+                    if (campo.length == 0) {
+                        mensajCampoVacio($(this).attr("name"));
                     }
-                    var reader = new FileReader();
-                    reader.onload = (function (theFile) {
-                        return function (e) {
-                            // Insertamos la imagen
-                            document.getElementById("list" + input).innerHTML = ['<img class="thumb" id="im" src="', e.target.result, '" title="', escape(theFile.name), '"/> <img id="' + input + '" class="x"  src="../../../images/X-roja.png" />'].join('');
-                            document.getElementById(input).addEventListener("click", function () {
-                                swal({
-                                    title: 'Esta seguro que desea eliminar esta imagen?',
-                                    type: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Si, eliminar'
-                                }).then(function () {
-                                    $("#out" + input).remove();
-                                    $("#files").get(0).value = '';
-                                    $("#files").get(0).type = '';
-                                    $("#files").get(0).type = 'file';
-                                })
-                            });
-                        };
-                    })(f);
-
-                    reader.readAsDataURL(f);
-                    input = input + 1;
-                    $("#div").append("<output id=" + " out" + input + " class='out'><div id=" + " list" + input + " class='imagen'>  </div></output > ");
-
-
-                }
-            }
-
-
-        }
-    });
-
-    $("#btnGuardar").click(function () {
-        var permiso = 0;
-        var input = $("#div output").length;
-        if (input == 0) {
-            swal('Oops...', 'Por favor ingresa almenos una foto', 'error');
-        }
-        else {
-            var nombreCientifico = $("#txtNombreCientifico").val();
-            var nombreComun = $("#txtNombreComun").val();
-            var dominio = $("#ddlEspecie").val();
-            var reino = $("#ddlReino").val();
-            var division = $("#ddlFilum").val();
-            var clase = $("#ddlClase").val();
-            var orden = $("#ddlOrden").val();
-            var familia = $("#ddlFamilia").val();
-            var origen_ave = $("#ddlOrigen").val();
-            var genero = $("#ddlGenero").val();
-            var especie = $("#ddlEspecie").val();
-            var tipo = $("#ddlTipo").val();
-            var clase_dieta = $("#ddClase_dieta").val();
-            var dieta = $("#ddlDieta").val();
-            var comportamiento_ave = $("#ddlComportamiento_ave").val();
-            var habitat = $("#ddlHabitat").val();
-            var reproduccion = $("#ddlReproduccion").val();
-            var colorplumaje = $("#ddlColorplumaje").val();
-            var tamaño_ave = $("#ddlTamaño_ave").val();
-            var descripcion = $("#txaDescripcion").val();
-            if (nombreCientifico.length == 0 || nombreComun.length == 0 || dominio == 0 || reino == 0 || division == 0 || clase == 0 || orden == 0 || familia == 0 || genero == 0 || especie == 0
-                || tipo == 0 || clase_dieta == 0 || dieta == 0 || comportamiento_ave == 0 || habitat == 0 || reproduccion == 0 || colorplumaje == 0 || tamaño_ave == 0 || descripcion.length == 0) {
-                swal('Ooops...', 'Ningun campo puede estar vacio y/o no determinado', 'error');
-            }
-            else {
-                $.ajax({
-                    type: "POST",
-                    url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Buscar_ave_con_nombreCientifico",
-                    data: '{"nombreCientifico":"' + nombreCientifico + '"}',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    async: false,
-                    processdata: true,
-                    success: function (Mensaje) {
-                        var mensaje = Mensaje.Buscar_ave_con_nombreCientificoResult;
-                        if (mensaje == "Correcto") {
-                            permiso = 1;
-                        } else {
-                            permiso = 0;
-                            swal('Oops...', mensaje, 'error');
-                        }
-
-                    },
-                    error: function (Mensaje) {
-                        alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
-                    }
-
                 });
-                if (permiso == 1) {
-                     $.ajax({
-                        type: "POST",
-                        url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Insertar_ave",
-                        data: '{"nombreComun":"' + nombreComun + '","nombreCientifico":"' + nombreCientifico + '","descripcion":"' + descripcion + '","tipo":"' + tipo + '","dieta":"' + dieta + '","clase_dieta":"' + clase_dieta + '","comportamiento":"' + comportamiento_ave + '","habitat":"' + habitat + '","reproduccion":"' + reproduccion + '","origen":"' + origen_ave + '","especie":"' + especie + '","color_plumaje":"' + colorplumaje + '","tamaño_ave":"' + tamaño_ave + '"}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        async: false,
-                        processdata: true,
-                        success: function (Mensaje) {
-                            if (Mensaje.Insertar_aveResult == "Insertado correctamente") {
-                                permiso = permiso + 1;
-                            }
+                $("textarea").focusout(function () {
+                    var campo = $(this).val();
+                    if (campo.length == 0) {
+                        mensajCampoVacio($(this).attr("name"));
+                    }
+                });
 
-                        },
-                        error: function (Mensaje) {
-                            alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
+
+                var datos;
+
+                $("#files").change(function (evt) {
+                    var input = $("#div output").length;
+                    if (input == 5) {
+                        swal(' ', 'No puedes agregar mas de 5 imagen!', 'info');
+                    } else {
+
+                        var tipo = 0;
+                        var file = $(this).val();
+                        var ext = file.substring(file.lastIndexOf("."));
+                        if (ext != ".jpg" && ext != ".png" && ext != ".jpeg" && ext != ".JPG" && ext != ".PNG" && ext != ".JPEG") {
+                            swal('Oops...', 'No es una imagen!', 'error');
+                            tipo = 2;
+                            $(this).get(0).value = '';
+                            $(this).get(0).type = '';
+                            $(this).get(0).type = 'file';
+                        } else {
+                            tipo = 1;
+                        }
+                        if (tipo == 1) {
+                            var input = $("#div output").length;
+                            var files = evt.target.files;
+                            for (var i = 0, f; f = files[i]; i++) {
+                                if (!f.type.match('image.*')) {
+                                    continue;
+                                }
+                                var reader = new FileReader();
+                                reader.onload = (function (theFile) {
+                                    return function (e) {
+                                        // Insertamos la imagen
+                                        document.getElementById("list" + input).innerHTML = ['<img class="thumb" id="im" src="', e.target.result, '" title="', escape(theFile.name), '"/> <img id="' + input + '" class="x"  src="../../../images/X-roja.png" />'].join('');
+                                        document.getElementById(input).addEventListener("click", function () {
+                                            swal({
+                                                title: 'Esta seguro que desea eliminar esta imagen?',
+                                                type: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#3085d6',
+                                                cancelButtonColor: '#d33',
+                                                confirmButtonText: 'Si, eliminar'
+                                            }).then(function () {
+                                                $("#out" + input).remove();
+                                                $("#files").get(0).value = '';
+                                                $("#files").get(0).type = '';
+                                                $("#files").get(0).type = 'file';
+                                            })
+                                        });
+                                    };
+                                })(f);
+
+                                reader.readAsDataURL(f);
+                                input = input + 1;
+                                $("#div").append("<output id=" + " out" + input + " class='out'><div id=" + " list" + input + " class='imagen'>  </div></output > ");
+
+
+                            }
                         }
 
-                    });
-                    var image = [];
-                    for (var i = 1; i < input + 1; i++) {
-                        image[image.length] = $("#out" + i + " img").attr("src") + "~";
 
                     }
+                });
+
+                $("#btnGuardar").click(function () {
+                    var permiso = 0;
+                    var input = $("#div output").length;
+                    if (input == 0) {
+                        swal('Oops...', 'Por favor ingresa almenos una foto', 'error');
+                    }
+                    else {
+                        var nombreCientifico = $("#txtNombreCientifico").val();
+                        var nombreComun = $("#txtNombreComun").val();
+                        var dominio = $("#ddlEspecie").val();
+                        var reino = $("#ddlReino").val();
+                        var division = $("#ddlFilum").val();
+                        var clase = $("#ddlClase").val();
+                        var orden = $("#ddlOrden").val();
+                        var familia = $("#ddlFamilia").val();
+                        var origen_ave = $("#ddlOrigen").val();
+                        var genero = $("#ddlGenero").val();
+                        var especie = $("#ddlEspecie").val();
+                        var tipo = $("#ddlTipo").val();
+                        var clase_dieta = $("#ddClase_dieta").val();
+                        var dieta = $("#ddlDieta").val();
+                        var comportamiento_ave = $("#ddlComportamiento_ave").val();
+                        var habitat = $("#ddlHabitat").val();
+                        var reproduccion = $("#ddlReproduccion").val();
+                        var colorplumaje = $("#ddlColorplumaje").val();
+                        var tamaño_ave = $("#ddlTamaño_ave").val();
+                        var descripcion = $("#txaDescripcion").val();
+                        if (nombreCientifico.length == 0 || nombreComun.length == 0 || dominio == 0 || reino == 0 || division == 0 || clase == 0 || orden == 0 || familia == 0 || genero == 0 || especie == 0
+                            || tipo == 0 || clase_dieta == 0 || dieta == 0 || comportamiento_ave == 0 || habitat == 0 || reproduccion == 0 || colorplumaje == 0 || tamaño_ave == 0 || descripcion.length == 0) {
+                            swal('Ooops...', 'Ningun campo puede estar vacio y/o no determinado', 'error');
+                        }
+                        else {
+                            $.ajax({
+                                type: "POST",
+                                url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Buscar_ave_con_nombreCientifico",
+                                data: '{"nombreCientifico":"' + nombreCientifico + '"}',
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                async: false,
+                                processdata: true,
+                                success: function (Mensaje) {
+                                    var mensaje = Mensaje.Buscar_ave_con_nombreCientificoResult;
+                                    if (mensaje == "Correcto") {
+                                        permiso = 1;
+                                    } else {
+                                        permiso = 0;
+                                        swal('Oops...', mensaje, 'error');
+                                    }
+
+                                },
+                                error: function (Mensaje) {
+                                    alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                }
+
+                            });
+                            if (permiso == 1) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Insertar_ave",
+                                    data: '{"nombreComun":"' + nombreComun + '","nombreCientifico":"' + nombreCientifico + '","descripcion":"' + descripcion + '","tipo":"' + tipo + '","dieta":"' + dieta + '","clase_dieta":"' + clase_dieta + '","comportamiento":"' + comportamiento_ave + '","habitat":"' + habitat + '","reproduccion":"' + reproduccion + '","origen":"' + origen_ave + '","especie":"' + especie + '","color_plumaje":"' + colorplumaje + '","tamaño_ave":"' + tamaño_ave + '"}',
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    async: false,
+                                    processdata: true,
+                                    success: function (Mensaje) {
+                                        if (Mensaje.Insertar_aveResult == "Insertado correctamente") {
+                                            permiso = permiso + 1;
+                                        }
+
+                                    },
+                                    error: function (Mensaje) {
+                                        alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                    }
+
+                                });
+                                var image = [];
+                                for (var i = 1; i < input + 1; i++) {
+                                    image[image.length] = $("#out" + i + " img").attr("src") + "~";
+
+                                }
 
 
 
-                    var jk = nombreCientifico;
-                    var jka = nombreComun;
-                    $.ajax({
-                        type: "POST",
-                        url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Insertar_imagen_ave",
-                        data: '{"imagen":"' + image + '","nombreCientifico":"' + nombreCientifico + '","nombreComun":"' + nombreComun + '","especie":"' + especie + '"}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        async: false,
-                        processdata: true,
-                        success: function (Mensaje){
-                            if (Mensaje.Insertar_imagen_aveResult == "Insertado correctamente" && permiso == 2) {
-                                swal('', Mensaje.Insertar_imagen_aveResult, 'success');
-                                $("select").val(0);
-                                $("input:text").val("");
-                                $("textarea").val("");
-                                $("output").remove();
-                                $("#files").get(0).value = '';
-                                $("#files").get(0).type = '';
-                                $("#files").get(0).type = 'file';
-                            } else {
-                                swal('', 'Error al registrar', 'error')
+                                var jk = nombreCientifico;
+                                var jka = nombreComun;
+                                $.ajax({
+                                    type: "POST",
+                                    url: "../../../Services/Registrar_ave/Service_Registrar_ave.svc/Insertar_imagen_ave",
+                                    data: '{"imagen":"' + image + '","nombreCientifico":"' + nombreCientifico + '","nombreComun":"' + nombreComun + '","especie":"' + especie + '"}',
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    async: false,
+                                    processdata: true,
+                                    success: function (Mensaje) {
+                                        if (Mensaje.Insertar_imagen_aveResult == "Insertado correctamente" && permiso == 2) {
+                                            swal('', Mensaje.Insertar_imagen_aveResult, 'success').then(function () { location.href = "ResgistroAve.aspx" });
+                                            $("select").val(0);
+                                            $("input:text").val("");
+                                            $("textarea").val("");
+                                            $("output").remove();
+                                            $("#files").get(0).value = '';
+                                            $("#files").get(0).type = '';
+                                            $("#files").get(0).type = 'file';
+                                        } else {
+                                            swal('', 'Error al registrar', 'error')
+                                        }
+                                    },
+                                    error: function (Mensaje) {
+                                        alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                    }
+
+                                });
                             }
-                        },
-                        error: function (Mensaje) {
-                            alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+
                         }
 
-                    });
-                }
-
+                    }
+                });
             }
-
         }
-    });
+});
 });
 function mensajCampoVacio(campo) {
     //PNotify.prototype.options.styling = "bootstrap3";

@@ -42,5 +42,10 @@ namespace HanaASP.Services.Favoritos_arbol
             int arbol = new tbl_ArbolCAD().Buscar_id_arbol_cient(tblAr);
             return new tbl_Favoritos_arbolCAD().Eliminar_arbol(arbol, us.id_usuario);
         }
+
+        public string Validar_favoritos(string nombreCientifico)
+        {
+            return new tbl_Favoritos_arbolCAD().Validar_favoritos(nombreCientifico, HttpContext.Current.Session["Correo"].ToString());
+        }
     }
 }

@@ -33,11 +33,11 @@
                 <li class="select s1">
                     <asp:HyperLink ID="hlnkInicio" NavigateUrl="~/Modulos/indexAdmin.aspx" runat="server" CssClass="entypo-home"></asp:HyperLink></li>
                 <li class="select s2">
-                    <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Modulos/Admin/perfil/perfilAdmin.aspx" runat="server" CssClass="entypo-user"></asp:HyperLink></li>
+                    <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Modulos/Admin/perfil/perfil/perfilUsuario.aspx" runat="server" CssClass="entypo-user"></asp:HyperLink></li>
                 <li class="select s3">
                     <asp:HyperLink ID="hlnkAgregarNuevo" CssClass="entypo-plus-circled open2" runat="server"></asp:HyperLink></li>
                 <li class="select s4">
-                    <asp:HyperLink ID="hlnkFavoritos" NavigateUrl="#" CssClass="open3 entypo-star" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkFavoritos"  CssClass="open3 entypo-star" runat="server"></asp:HyperLink></li>
                 <li class="select s5">
                     <asp:HyperLink ID="hlnkGalerias" CssClass="galeria open1" runat="server"></asp:HyperLink></li>
                 <li class="select s6">
@@ -45,7 +45,7 @@
                 <li class="select s7">
                     <asp:HyperLink ID="hlnkQueFlora" NavigateUrl="#" CssClass="entypo-leaf" runat="server"></asp:HyperLink></li>
                 <li class="select s8">
-                    <asp:HyperLink ID="hlnkCerrarSesion" NavigateUrl="#" CssClass="entypo-logout" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkCerrarSesion" NavigateUrl="~/Modulos/index.aspx" CssClass="entypo-logout" runat="server"></asp:HyperLink></li>
             </div>
         </ul>
         <nav class="slider-menu slider-menu-vertical slider-menu-left" id="slider-menu-s1">
@@ -72,13 +72,13 @@
                 </div>
                 <div class="modal-inset">
                     <div class="itemsGallery" id="ave3">
-                        <asp:HyperLink runat="server" NavigateUrl="~/Modulos/Favoritos/Favorito ave.aspx">
+                        <asp:HyperLink runat="server" NavigateUrl="~/Modulos/Admin/Favoritos/Favorito ave.aspx">
                             <asp:Image CssClass="ave" ID="Image5" runat="server" ImageUrl="~/images/popup/ave.png" />
                             <div class="titleItem">Favorito Ave</div>
                         </asp:HyperLink>
                     </div>
                     <div class="itemsGallery" id="arbol3">
-                        <asp:HyperLink runat="server" NavigateUrl="~/Modulos/Admin/Registrar/ResgistroArbol.aspx">
+                        <asp:HyperLink runat="server" NavigateUrl="~/Modulos/Admin/Favoritos/Favorito arbol.aspx">
                             <asp:Image ID="Image6" runat="server" ImageUrl="~/images/popup/arbol.jpg" />
                             <div class="titleItem b">Favorito Arbol</div>
                         </asp:HyperLink>

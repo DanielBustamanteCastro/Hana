@@ -280,5 +280,119 @@ namespace CAD
             }
             return lista;
         }
+        public String[] Buscar_arbol_nombre_cientifico(tbl_Arbol av)
+        {
+            String[] Save = new String[28];
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_SELECT_tbl_Arbol_nombre_cient";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombrecient", av.nom_cient_arbol);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    Save[0] = dr["id_arbol"].ToString();//0
+                    Save[1] = dr["nom_cient_arbol"].ToString();//1
+                    Save[2] = dr["nom_com_arbol"].ToString();//2
+                    Save[3] = dr["desc_arbol"].ToString();//3
+                    Save[4] = dr["id_dominio_arbol"].ToString();//4
+                    Save[5] = dr["id_reino_arbol"].ToString();//5
+                    Save[6] = dr["id_division_arbol"].ToString();//6
+                    Save[7] = dr["id_clase_arbol"].ToString();//7
+                    Save[8] = dr["id_orden_arbol"].ToString();//8
+                    Save[9] = dr["id_familia_arbol"].ToString();//9
+                    Save[10] = dr["id_genero_arbol"].ToString();//10
+                    Save[11] = dr["id_especie_arbol"].ToString();//11
+                    Save[12] = dr["id_tipo_arbol"].ToString();//12
+                    Save[13] = dr["id_crecimiento"].ToString();//13
+                    Save[14] = dr["id_altura_arbol"].ToString();//14
+                    Save[15] = dr["id_diametro_arbol"].ToString();//15
+                    Save[16] = dr["id_amplitud_copa"].ToString();//16
+                    Save[17] = dr["id_forma_copa"].ToString();//17
+                    Save[18] = dr["id_persistencia_hoja"].ToString();//18
+                    Save[19] = dr["id_color_flor"].ToString();//19
+                    Save[20] = dr["id_color_hoja"].ToString();//20
+                    Save[21] = dr["id_estacion_de_floracion"].ToString();//21
+                    Save[22] = dr["id_limitaciones_arbol"].ToString();//22
+                    Save[23] = dr["id_limitaciones_fruto"].ToString();//23
+                    Save[24] = dr["id_longevidad_arbol"].ToString();//24
+                    Save[25] = dr["id_piso_termico"].ToString();//25
+                    Save[26] = dr["id_luminocidad_arbol"].ToString();//26
+                    Save[27] = dr["id_funcion_arbol"].ToString();//27
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return Save;
+        }
+        public String Modificar_flora(tbl_Flora tblFl, tbl_Especie_arbol tblEp, tbl_Tipo_arbol tblTp, tbl_Habito_crecimiento tblHc, tbl_Altura_arbol tblAt, tbl_Diametro_arbol tblDm, tbl_Amplitud_copa tblAm, tbl_Forma_de_copa tblFr, tbl_Persistencia_hoja tblPt, tbl_Color_flor tblCf, tbl_Estacion_de_floracion tblEf, tbl_Limitacion_arbol tblLa, tbl_Limitaciones_fruto tblLf, tbl_Longevidad_arbol tblLg, tbl_Piso_termico tblPs, tbl_Funcion_arbol tblFn, tbl_Color_hoja tblCh, tbl_Luminocidad_arbol tblLum,String nombreActual)
+        {
+            String mensaje = "Error al modificar, porfavor intenta de nuevo";
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_UPDATE_tbl_Arbol";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombreCientifico", tblFl.nombre_cientifico);
+                cmd.Parameters.AddWithValue("@nombreComun", tblFl.nombre_comun);
+                cmd.Parameters.AddWithValue("@descripcion", tblFl.descripcion_flora);
+                cmd.Parameters.AddWithValue("@idTipo", tblTp.id_tipo_arbol);
+                cmd.Parameters.AddWithValue("@idEspecie", tblEp.id_especie_arbol);
+                cmd.Parameters.AddWithValue("@idCrecimiento", tblHc.id_habito_crecimiento);
+                cmd.Parameters.AddWithValue("@idAltura", tblAt.id_altura_arbol);
+                cmd.Parameters.AddWithValue("@idDiametro", tblDm.id_diametro_arbol);
+                cmd.Parameters.AddWithValue("@idAmplitudC", tblAm.id_amplitud);
+                cmd.Parameters.AddWithValue("@idFormaC", tblFr.id_forma_copa);
+                cmd.Parameters.AddWithValue("@idPersistencia", tblPt.id_persistencia_hoja);
+                cmd.Parameters.AddWithValue("@idColor", tblCf.id_clolor_flor);
+                cmd.Parameters.AddWithValue("@idEstacionF", tblEf.id_estacion_floracion);
+                cmd.Parameters.AddWithValue("@idLimitacionFl", tblLa.id_limitacion_arbol);
+                cmd.Parameters.AddWithValue("@idLimitacionFr", tblLf.id_limitacioin_fruto);
+                cmd.Parameters.AddWithValue("@idLongevidad", tblLg.id_longevidad_arbol);
+                cmd.Parameters.AddWithValue("@idPisoTermico", tblPs.id_piso_termico);
+                cmd.Parameters.AddWithValue("@idLuminocidad", tblLum.id_luminocidad_arbol);
+                cmd.Parameters.AddWithValue("@idFuncion", tblFn.id_funcion_arbol);
+                cmd.Parameters.AddWithValue("@idColorh", tblCh.id_color_hoja);
+                cmd.Parameters.AddWithValue("@nombreCientificoAcatual", nombreActual);
+                con.Open();
+                int rows = cmd.ExecuteNonQuery();
+                con.Close();
+                if (rows != 0) mensaje = "Modifcado correctamente";
+            }
+            catch (Exception e)
+            {
+
+                mensaje = e.Message;
+            }
+            return mensaje;
+        }
+
+        public String Eliminar_arbol(String nombreCient)
+        {
+            String mensaje = "Error al eliminar";
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_DELETE_tbl_Arbol";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombreCient", nombreCient);
+                con.Open();
+                if (cmd.ExecuteNonQuery() != 0) mensaje = "Eliminado correctamente";
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return mensaje;
+        }
     }
 }

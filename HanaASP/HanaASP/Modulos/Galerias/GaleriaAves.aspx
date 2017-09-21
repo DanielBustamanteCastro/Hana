@@ -92,12 +92,12 @@
         <div class="w50 info">
             <!--Datos comunes-->
             <div class="tarjet">
-                <span class="title">Datos Comunes</span>
+                <span class="title">Datos comunes</span>
                 <div class="data">
                     <table>
                         <tr>
                             <td>
-                                <span>Nombre Común:</span><div id="mNombreComun"></div>
+                                <span>Nombre común:</span><div id="mNombreComun"></div>
                             </td>
                         </tr>
                         <tr>
@@ -132,7 +132,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Havbitat:</span><div id="mHabitat"></div>
+                                <span>Hábitat:</span><div id="mHabitat"></div>
                             </td>
                         </tr>
                         <tr>
@@ -146,7 +146,7 @@
 
             <!--Caracteristicas-->
             <div class="tarjet">
-                <span class="title">Caracteristicas</span>
+                <span class="title">Características</span>
                 <div class="data">
                     <table>
                         <tr>
@@ -164,12 +164,12 @@
             </div>
             <!--Datos cientificos-->
             <div class="tarjet tar1">
-                <span class="title">Datos Cientificos</span>
+                <span class="title">Datos científicos</span>
                 <div class="data">
                     <table>
                         <tr>
                             <td>
-                                <span>Nombre Científico:</span><div id="mNombreCientifico"></div>
+                                <span>Nombre científico:</span><div id="mNombreCientifico"></div>
                             </td>
                         </tr>
                         <tr>

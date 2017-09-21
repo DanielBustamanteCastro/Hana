@@ -19,7 +19,7 @@
         $(document).ready(function () {
             $('#olvContra').click(function () {
                 swal({
-                    title: 'Ingrese correo electronico, para recuperar cuenta.',
+                    title: 'Ingresa tu correo electrónico.',
                     input: 'email',
                     showCancelButton: true,
                     cancelButtonText: 'Cancelar',
@@ -60,7 +60,17 @@
                     })
                 })
             });
-        });
+        });       $(document).ready(function () {
+           window.location.hash = "no-back-button";
+           3
+           window.location.hash = "Again-No-back-button" //chrome
+           4
+           window.onhashchange = function () { window.location.hash = " "; }
+
+
+           $('li').removeClass('tl-current');
+           $('li.s1').addClass('tl-current');
+       });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -78,7 +88,7 @@
                     <div class="group b inputData">
                         <input id="txtCorreo" type="text" class="input" name="Correo electronico" required/>
                         <span class="bar"></span>
-                        <label class="label">Correo electronico:</label>
+                        <label class="label">Correo electrónico:</label>
                     </div>
                     <div id="correo" style="position: relative; top: -30px; color: red"></div>
                     <!--Contraseña-->

@@ -6,10 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
     <script src="../../Scripts/jquery-3.1.1.js"></script>
-    <script src="../../Script/Ajax/GaleriaArbol.js"></script> <script src="../../Script/Sweetalert/sweetalert2.js"></script>
+    <script src="../../Script/Ajax/GaleriaArbol.js"></script>
+    <script src="../../Script/Sweetalert/sweetalert2.js"></script>
     <link href="../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
     <script>
         $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "../../Services/Iniciar_sesion/Service_Iniciar_sesion.svc/Validar_sesion",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                processdata: true,
+                success: function (Fotos) {
+                    var img = Fotos.Validar_sesionResult;
+                    if (img == "No iniciado") {
+                        swal({
+                            allowOutsideClick: false,
+                            title: 'Inicia sesión para poder ingresar aquí',
+                            type: 'error'
+                        }).then(function () { location.href = "../index.aspx" });
+                    }
+                }
+            });
             $("#SVGfavorito").click(function () {
                 var nombreCientifico = $("#mNombreCientifico").text();
                 swal({
@@ -22,16 +42,37 @@
                 }).then(function () {
                     $.ajax({
                         type: "POST",
-                        url: "../../../Services/Favoritos_arbol/Service_Favoritos_arbol.svc/Agregar_favoritos",
+                        url: "../../../Services/Favoritos_arbol/Service_Favoritos_arbol.svc/Validar_favoritos",
                         data: '{"nombreCientifico":"' + nombreCientifico + '"}',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         async: false,
                         processdata: true,
                         success: function (Mensaje) {
-                            var mensaje = Mensaje.Agregar_favoritosResult;
-                            swal('',mensaje,'success');
+                            if (Mensaje.Validar_favoritosResult !="Existe") {
+                            $.ajax({
+                                type: "POST",
+                                url: "../../../Services/Favoritos_arbol/Service_Favoritos_arbol.svc/Agregar_favoritos",
+                                data: '{"nombreCientifico":"' + nombreCientifico + '"}',
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                async: false,
+                                processdata: true,
+                                success: function (Mensaje) {
+                                    var mensaje = Mensaje.Agregar_favoritosResult;
+                                    swal('', mensaje, 'success');
 
+                                },
+                                error: function (Mensaje) {
+                                    alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                }
+
+                                });
+
+
+                            } else {
+                                swal('', 'El árbol ya esta agregada a tus favoritos', 'info');
+                            }
                         },
                         error: function (Mensaje) {
                             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -44,7 +85,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  <%--  <div>
+    <%--  <div>
         <input type="number" id="valor" placeholder="agregue cantidad" value="1000">
         <button id="agregarArbol">agregar</button>
     </div>--%>
@@ -110,23 +151,24 @@
     </div>
 
     <div class="modal todo">
-            <div class="w50 bg">
+        <div class="w50 bg">
             <div class="contImage">
                 <img id="imagen" src="">
             </div>
             <div class="hi-icon-wrap hi-icon-effect-8">
                 <div class="contIcon" tooltip="Galeria" flow="down">
                     <div id="SVGgaleria" class="hi-icon">
-                         <img src="../../../images/svg/galeria.png" alt="Galeria" />
+                        <img src="../../../images/svg/galeria.png" alt="Galeria" />
                     </div>
                 </div>
                 <div class="contIcon" tooltip="Favorito" flow="down">
                     <div id="SVGfavorito" class="hi-icon">
-                          <img src="../../../images/svg/estrella.png" alt="Favoritos"  />
+                        <img src="../../../images/svg/estrella.png" alt="Favoritos" />
                     </div>
                 </div>
                 <div class="contIcon" tooltip="Ubicacion" flow="down">
-                    <div id="SVGubicacion" class="hi-icon"> <img src="../../../images/svg/Ubicacion.png" alt="Ubicación" />
+                    <div id="SVGubicacion" class="hi-icon">
+                        <img src="../../../images/svg/Ubicacion.png" alt="Ubicación" />
                     </div>
                 </div>
             </div>
@@ -164,7 +206,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Estacion de floración:</span><div id="mEstacionFloracion"></div>
+                                <span>Estación de floración:</span><div id="mEstacionFloracion"></div>
                             </td>
                         </tr>
                     </table>
@@ -173,7 +215,7 @@
 
             <!--Caracteristicas-->
             <div class="tarjet">
-                <span class="title">Caracteristicas</span>
+                <span class="title">Características</span>
                 <div class="data">
                     <table>
                         <tr>
@@ -203,7 +245,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Limitaciones del arbol:</span><div id="mLimitacionesArbol"></div>
+                                <span>Limitaciones del árbol:</span><div id="mLimitacionesArbol"></div>
                             </td>
                         </tr>
                         <tr>
@@ -218,7 +260,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Longevidad arbol:</span><div id="mLongevidadArbol"></div>
+                                <span>Longevidad árbol:</span><div id="mLongevidadArbol"></div>
                             </td>
                         </tr>
                         <tr>
@@ -231,7 +273,7 @@
             </div>
             <!--Datos cientificos-->
             <div class="tarjet tar1">
-                <span class="title">Datos Cientificos</span>
+                <span class="title">Datos Científicos</span>
                 <div class="data">
                     <table>
                         <tr>
@@ -266,7 +308,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Luminocidad:</span><div id="mLuminocidad"></div>
+                                <span>Luminosidad:</span><div id="mLuminocidad"></div>
                             </td>
                         </tr>
                         <tr>
@@ -281,7 +323,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Función arbol:</span><div id="mFuncionArbol"></div>
+                                <span>Función árbol:</span><div id="mFuncionArbol"></div>
                             </td>
                         </tr>
                         <tr>

@@ -312,5 +312,27 @@ namespace CAD
             }
             return lista;
         }
+
+        public String Eliminar_ave(String nombreCient)
+        {
+            String mensaje = "Error al eliminar";
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_DELETE_tbl_Ave";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombreCient", nombreCient);
+                con.Open();
+                if (cmd.ExecuteNonQuery() != 0) mensaje = "Eliminado correctamente";
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return mensaje;
+        }
     }
 }

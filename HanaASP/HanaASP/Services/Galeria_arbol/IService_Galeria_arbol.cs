@@ -21,5 +21,9 @@ namespace HanaASP.Services.Galeria_arbol
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
         List<tbl_Fotos_arboles> Llamar_fotos_arboles(String idArbol);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
+        String Eliminar_arbol (String Arbol);
+
     }
 }

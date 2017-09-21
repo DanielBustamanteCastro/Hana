@@ -64,5 +64,28 @@ namespace CAD
             }
             return lista;
         }
+
+        public String Modificar_foto_arboles(tbl_Fotos_arboles tblFa)
+        {
+            String mensaje = "Error al modificar, intenta nuevamente";
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_UPDATE_tbl_Foto_arboles";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@foto", tblFa.foto_arbol);
+                cmd.Parameters.AddWithValue("@idA", tblFa.id_arbol);
+                con.Open();
+                int rows = 0;
+                rows = cmd.ExecuteNonQuery();
+                if (rows != 0) mensaje = "Modificado correctamente";
+            }
+            catch (Exception e)
+            {
+                mensaje = e.Message;
+            }
+            return mensaje;
+        }
     }
 }

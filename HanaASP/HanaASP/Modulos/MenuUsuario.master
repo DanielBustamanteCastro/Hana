@@ -35,13 +35,13 @@
                 <li class="select s2">
                     <asp:HyperLink ID="HyperLink1" NavigateUrl="~/Modulos/Usuario/perfil/perfilUsuario.aspx" runat="server" CssClass="entypo-user"></asp:HyperLink></li>
                 <li class="select s3">
-                    <asp:HyperLink ID="hlnkFavoritos" NavigateUrl="#" CssClass="entypo-star open3" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkFavoritos"  CssClass="entypo-star open3" runat="server"></asp:HyperLink></li>
                 <li class="select s4">
                     <asp:HyperLink ID="hlnkGalerias" CssClass="galeria open1" runat="server"></asp:HyperLink></li>
                 <li class="select s5">
-                    <asp:HyperLink ID="hlnkQueFauna" NavigateUrl="#" CssClass="colibri" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkQueFauna" NavigateUrl="~/Modulos/Usuario/Informacion/Que es fauna.aspx" CssClass="colibri" runat="server"></asp:HyperLink></li>
                 <li class="select s6">
-                    <asp:HyperLink ID="hlnkQueFlora" NavigateUrl="#" CssClass="entypo-leaf" runat="server"></asp:HyperLink></li>
+                    <asp:HyperLink ID="hlnkQueFlora" NavigateUrl="~/Modulos/Usuario/Informacion/Que es flora.aspx" CssClass="entypo-leaf" runat="server"></asp:HyperLink></li>
                 <li class="select s7">
                     <asp:HyperLink ID="hlnkCerrarSesion" NavigateUrl="index.aspx" CssClass="entypo-logout" runat="server"></asp:HyperLink></li>
            

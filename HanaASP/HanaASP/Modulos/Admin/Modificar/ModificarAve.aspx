@@ -31,89 +31,105 @@
         }
         window.onload = function () {
             var valores = getGET();
+            if (valores == null) {
+                swal('', 'Error al buscar', 'error').then(function () {
+                    location.href = "../GaleriasAdmin/GaleriaAves.aspx";
+                });
+            }
+            else {
             if (valores) {
                 for (var index in valores) {
-                    $.ajax({
-                        type: "POST",
-                        url: "../../../Services/Modificar_ave/Service_Modificar_ave.svc/Cargar_ave",
-                        data: '{"NombreCientifico":"' + valores[index] + '"}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        async: false,
-                        processdata: true,
-                        success: function (Mensaje) {
-                            var ave = Mensaje.Cargar_aveResult;
-                            $("#txtNombreCientifico").val(ave[1]);
-                            $("#txtNombreComun").val(ave[2]);
-                            dominio(ave[5]);
-                            reino(ave[5], ave[6]);
-                            filum(ave[6], ave[7]);
-                            clase(ave[7], ave[21]);
-                            orden(ave[21], ave[9]);
-                            familia(ave[9], ave[10]);
-                            genero(ave[10], ave[11]);
-                            especie(ave[11], ave[12]);
-                            origen(ave[13]);
-                            tipo(ave[14]);
-                            clase_dieta(ave[20]);
-                            dieta(ave[20], ave[8]);
-                            Comportamiento_ave(ave[15]);
-                            habitat_ave(ave[16]);
-                            reproducccion_ave(ave[17]);
-                            color_plumaje(ave[18]);
-                            tamaño_ave(ave[19]);
-                            $("#txaDescripcion").val(ave[3]);
+                    alert(valores[index].length);
+                 
+                        $.ajax({
+                            type: "POST",
+                            url: "../../../Services/Modificar_ave/Service_Modificar_ave.svc/Cargar_ave",
+                            data: '{"NombreCientifico":"' + valores[index] + '"}',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            async: false,
+                            processdata: true,
+                            success: function (Mensaje) {
+                               
+                                var ave = Mensaje.Cargar_aveResult;
+                                if (ave==null) {
+                                    swal('','Error al cargar los tados','error').then(function(){ 
+                                        location.href = "../GaleriasAdmin/GaleraAves.aspx";});
+                                }else{
+                                    $("#txtNombreCientifico").val(ave[1]);
+                                    $("#txtNombreComun").val(ave[2]);
+                                    dominio(ave[5]);
+                                    reino(ave[5], ave[6]);
+                                    filum(ave[6], ave[7]);
+                                    clase(ave[7], ave[21]);
+                                    orden(ave[21], ave[9]);
+                                    familia(ave[9], ave[10]);
+                                    genero(ave[10], ave[11]);
+                                    especie(ave[11], ave[12]);
+                                    origen(ave[13]);
+                                    tipo(ave[14]);
+                                    clase_dieta(ave[20]);
+                                    dieta(ave[20], ave[8]);
+                                    Comportamiento_ave(ave[15]);
+                                    habitat_ave(ave[16]);
+                                    reproducccion_ave(ave[17]);
+                                    color_plumaje(ave[18]);
+                                    tamaño_ave(ave[19]);
+                                    $("#txaDescripcion").val(ave[3]);
 
 
 
 
-                            $.ajax({
-                                type: "POST",
-                                url: "../../../Services/Galeria_ave/Service_Galeria_ave.svc/Llamar_fotos_aves",
-                                data: '{"idAve":"' + ave[0] + '"}',
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
-                                async: false,
-                                processdata: true,
-                                success: function (Fotos) {
-                                    var img = Fotos.Llamar_fotos_avesResult;
-                                    $("#div").append("<output id=" + " out" + 0 + " class='out'><div id=" + " list" + 0 + " class='imagen'>  </div></output > ");
-                                    $.each(img, function (index, imagen) {
-                                        var input = $("#div output").length;
-                                        var asa = input - 1;
-                                        $("#list" + asa).append('<img class="thumb" id="im" src="'+ imagen.Fotos_aves+ '" title="'+ imagen.id_Fotos_aves+ '"/> <img id="' + input + '" class="x"  src="../../../images/X-roja.png" />')
-                                        $("#" + input).click(function () {
-                                                        swal({
-                                                            title: 'Esta seguro que desea eliminar esta imagen?',
-                                                            type: 'warning',
-                                                            showCancelButton: true,
-                                                            confirmButtonColor: '#3085d6',
-                                                            cancelButtonColor: '#d33',
-                                                            confirmButtonText: 'Si, eliminar'
-                                                        }).then(function () {
-                                                            $("#out" + asa).remove();
-                                                            $("#files").get(0).value = '';
-                                                            $("#files").get(0).type = '';
-                                                            $("#files").get(0).type = 'file';
-                                                        })
-                                                    });
-                                        
-                                            input = input + 1;
-                                    })
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "../../../Services/Galeria_ave/Service_Galeria_ave.svc/Llamar_fotos_aves",
+                                        data: '{"idAve":"' + ave[0] + '"}',
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        async: false,
+                                        processdata: true,
+                                        success: function (Fotos) {
+                                            var img = Fotos.Llamar_fotos_avesResult;
+                                            $("#div").append("<output id=" + " out" + 0 + " class='out'><div id=" + " list" + 0 + " class='imagen'>  </div></output > ");
+                                            $.each(img, function (index, imagen) {
+                                                var input = $("#div output").length;
+                                                var asa = input - 1;
+                                                $("#list" + asa).append('<img class="thumb" id="im" src="' + imagen.Fotos_aves + '" title="' + imagen.id_Fotos_aves + '"/> <img id="' + input + '" class="x"  src="../../../images/X-roja.png" />')
+                                                $("#" + input).click(function () {
+                                                    swal({
+                                                        title: 'Esta seguro que desea eliminar esta imagen?',
+                                                        type: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#3085d6',
+                                                        cancelButtonColor: '#d33',
+                                                        confirmButtonText: 'Si, eliminar'
+                                                    }).then(function () {
+                                                        $("#out" + asa).remove();
+                                                        $("#files").get(0).value = '';
+                                                        $("#files").get(0).type = '';
+                                                        $("#files").get(0).type = 'file';
+                                                    })
+                                                });
 
-                                }, error: function (Mensaje) {
-                                    alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                                input = input + 1;
+                                            })
+
+                                        }, error: function (Mensaje) {
+                                            alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                        }
+                                    });
                                 }
-                            });
 
-                        },
-                        error: function (Mensaje) {
-                            alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                            },
+                            error: function (Mensaje) {
+                                alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                            }
+
+                            });
                         }
-                    });
+                    }
                 }
             }
-        }
 
 
     </script>
@@ -227,7 +243,7 @@
                     </div>
                     <div class="text-center fade-in">
                         <a>
-                            <input value="Atras" type="button" class="button previous" /></a>
+                            <input value="Atrás" type="button" class="button previous" /></a>
                         <a>
                             <input value="Siguiente" type="button" class="button next" /></a>
                     </div>
@@ -235,7 +251,7 @@
             </div>
             <!-- Third step-->
             <div class="modal-body modal-body-step-3">
-                <div class="title">Caracteristicas de Ave</div>
+                <div class="title">Característcas de Ave</div>
                 <div class="description b">Aquí van las características comunes del ave.</div>
                 <div>
                     <!--Clase de dieta:-->
@@ -290,7 +306,7 @@
                 </div>
                 <div class="text-center">
                     <a>
-                        <input value="Atras" type="button" class="button previous" /></a>
+                        <input value="Atrás" type="button" class="button previous" /></a>
                     <a>
                         <input value="Siguiente" type="button" class="button next" /></a>
                 </div>
@@ -310,19 +326,8 @@
                     <textarea id="txaDescripcion" name="Descripción" class="textarea"></textarea>
                 </div>
                 <div class="text-center">
-                    <div class="button previous">Atras</div>
-                    <div class="button next" id="btnGuardar">Editar</div>
-                </div>
-            </div>
-            <!-- Fifth step-->
-            <div class="modal-body modal-body-step-5">
-                <div class="title">Registro Guardado</div>
-                <div class="description">El registro se ha guardado exitosamente. ¿Qué desea hacer?</div>
-                <div class="text-center">
-                    <a href="../../indexAdmin.aspx">
-                        <input value="Ir a Inicio" type="button" class="button" /></a>
-                    <a href="ResgistroAve3.aspx">
-                        <input value="Nuevo registro" type="button" class="button" /></a>
+                    <div class="button previous">Atrás</div>
+                    <div class="button " id="btnGuardar">Editar</div>
                 </div>
             </div>
         </form>

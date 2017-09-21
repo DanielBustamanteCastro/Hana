@@ -2,10 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="../Style/formsAveArbol3.css" />
-    <script src="../Script/Sweetalert/sweetalert2.js"></script>
     <script src="../Script/PNotify/pnotify.custom.min.js"></script>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
     <link href="../Style/PNotify/pnotify.custom.min.css" rel="stylesheet" />
+    <script src="../Script/Sweetalert/sweetalert2.js"></script>
     <link href="../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
     <script src="../Script/Ajax/Registrar.js"></script>
@@ -42,9 +42,9 @@
                     </div>
                     <!--Correo electronico-->
                     <div class="group inputData">
-                        <input id="txtCorreo" type="text" class="input" name="Correo electronico" required="required" />
+                        <input id="txtCorreo" type="text" class="input" name="Correo electrónico" required="required" />
                         <span class="bar"></span>
-                        <label class="label">Correo electronico:</label>
+                        <label class="label">Correo electrónico:</label>
                         <div id="Correo" class="div4" style="color: red; position: absolute; left: 30%;"></div>
                     </div>
                     <!--Contraseña-->
@@ -67,18 +67,11 @@
                         <label class="mdl-select__label"><span>Municipio:</span></label>
                     </div>
                     <div class="text-center">
-                        <input value="Guardar" type="button" id="btnRegistrar" class="button next" />
+                        <input value="Guardar" type="button" id="btnRegistrar" class="button" />
                     </div>
                 </div>
             </div>
-            <div class="modal-body modal-body-step-2">
-                <div class="title">Registro Guardado</div>
-                <div class="description">Un correo de verificación ha sido enviado a tu correo electrónico por favor ingrese a su correo y siga los pasos que se le indicaran.</div>
-                <div class="text-center">
-                    <a href="index.aspx">
-                        <input value="Ir a Inicio" type="button" class="button" /></a>
-                </div>
-            </div>
+         
         </form>
     </div>
     <script src="../Script/pagRegist2.js"></script>

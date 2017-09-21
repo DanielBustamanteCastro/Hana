@@ -101,7 +101,7 @@ namespace HanaASP.Services
                             HttpContext.Current.Session["Rol"] = Rol[0];
                             HttpContext.Current.Session["Correo"] = Correo;
                             HttpContext.Current.Session["Contraseña"] = Contraseña;
-                            HttpContext.Current.Response.Redirect("indexAdmin.aspx");
+                            return HttpContext.Current.Session["Rol"].ToString();
                         }
                     }
                     if (Rol[2].Equals("Inactivo"))
@@ -114,8 +114,24 @@ namespace HanaASP.Services
 
         }
 
+        public string Validar_sesion()
+        {
+            String Correo = "None";
+            try
+            {
+                 Correo = HttpContext.Current.Session["Correo"].ToString();
+            }
+            catch (Exception)
+            {
 
+                return "No iniciado";
+            }
+            return new tbl_UsuarioCAD().Validar_sesion(Correo);
+        }
 
-
+        public void Eliminar_sesion()
+        {
+            HttpContext.Current.Session.RemoveAll();
+        }
     }
 }

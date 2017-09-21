@@ -136,7 +136,7 @@ namespace CAD
                 con.Open();
                 int rows = cmd.ExecuteNonQuery();
                 con.Close();
-                if (rows != 0) mensaje = "Modificado correctamenre";
+                if (rows != 0) mensaje = "Modificado correctamente";
             }
             catch (Exception)
             {

@@ -9,7 +9,127 @@
     <link href="../../../Style/PNotify/pnotify.custom.min.css" rel="stylesheet" />
     <link href="../../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
-    <script src="../../../Script/Ajax/Registrar_arbol.js"></script>
+    <script src="../../../Script/Ajax/Modificar_arbol.js"></script>
+    <script>
+        function getGET() {
+            var loc = document.location.href;
+            if (loc.indexOf('?') > 0) {
+                var getString = loc.split('?')[1];
+                var GET = getString.split('&');
+                var get = {};
+                for (var i = 0, l = GET.length; i < l; i++) {
+                    var tmp = GET[i].split('=');
+                    get[tmp[0]] = unescape(decodeURI(tmp[1]));
+                }
+                return get;
+            }
+        }
+        window.onload = function () {
+            var valores = getGET();
+            if (valores == null) {
+                swal('', 'Error al buscar', 'error').then(function () {
+                    location.href = "../GaleriasAdmin/GaleriaArboles.aspx";
+                });
+            }
+            else{
+            if (valores) {
+                for (var index in valores) {
+                    $.ajax({
+                        type: "POST",
+                        url: "../../../Services/Modificar_arbol/Service_Modificar_arbol.svc/Cargar_arbol",
+                        data: '{"NombreCientifico":"' + valores[index] + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        processdata: true,
+                        success: function (Mensaje) {
+                            var arbol = Mensaje.Cargar_arbolResult;
+                            if (arbol == ',,,,,,,,,,,,,,,,,,,,,,,,,,,') {
+                                swal('', 'Error al cargar los tados', 'error').then(function () {
+                                    location.href = "../GaleriasAdmin/GaleriaArboles.aspx";
+                                });
+                            } else {
+                                $("#txtNombreCientifico").val(arbol[1]);
+                                $("#txtNombreComun").val(arbol[2]);
+                                dominio(arbol[4]);
+                                reino(arbol[4], arbol[5]);
+                                division(arbol[5], arbol[6]);
+                                clase(arbol[6], arbol[7]);
+                                orden(arbol[7], arbol[8]);
+                                familia(arbol[8], arbol[9]);
+                                genero(arbol[9], arbol[10]);
+                                especie(arbol[10], arbol[11]);
+                                tipo(arbol[12]);
+                                habito_crecimiento(arbol[13]);
+                                altura_arbol(arbol[14]);
+                                diametro(arbol[15]);
+                                amplitud_copa(arbol[16]);
+                                forma_copa(arbol[17]);
+                                persistencia_Hoja(arbol[18]);
+                                color_Flor(arbol[19]);
+                                color_hoja(arbol[20]);
+                                estacion_floracion(arbol[21]);
+                                limitacion_arbol(arbol[22]);
+                                limitacion_fruto(arbol[23]);
+                                longevidad_arbol(arbol[24]);
+                                piso_termico(arbol[25]);
+                                luminocidad_arbol(arbol[26]);
+                                funcion_arbol(arbol[27]);
+                                $("#txaDescripcion").val(arbol[0]);
+
+
+
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "../../../Services/Galeria_arbol/Service_Galeria_arbol.svc/Llamar_fotos_arboles",
+                                    data: '{"idArbol":"' + arbol[0] + '"}',
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    async: false,
+                                    processdata: true,
+                                    success: function (Fotos) {
+                                        var img = Fotos.Llamar_fotos_arbolesResult;
+
+                                        $("#div").append("<output id=" + " out" + 0 + " class='out'><div id=" + " list" + 0 + " class='imagen'>  </div></output > ");
+                                        $.each(img, function (index, imagen) {
+                                            var input = $("#div output").length;
+                                            var asa = input - 1;
+                                            $("#list" + asa).append('<img class="thumb" id="im" src="' + imagen.foto_arbol + '" title="' + imagen.id_arbol + '"/> <img id="' + input + '" class="x"  src="../../../images/X-roja.png" />')
+                                            $("#" + input).click(function () {
+                                                swal({
+                                                    title: 'Esta seguro que desea eliminar esta imagen?',
+                                                    type: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#3085d6',
+                                                    cancelButtonColor: '#d33',
+                                                    confirmButtonText: 'Si, eliminar'
+                                                }).then(function () {
+                                                    $("#out" + asa).remove();
+                                                    $("#files").get(0).value = '';
+                                                    $("#files").get(0).type = '';
+                                                    $("#files").get(0).type = 'file';
+                                                })
+                                            });
+
+                                            input = input + 1;
+                                        })
+
+                                    }, error: function (Mensaje) {
+                                        alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                    }
+                                });
+                            }
+                        },
+                        error: function (Mensaje) {
+                            alert('Error al llamar el servicion : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                        }
+                    });
+                }
+            }
+        }
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -21,9 +141,9 @@
 
             <div class="modal-body modal-body-step-1 is-showing">
                 <ul></ul>
-                <div class="title">Modificar Arbol</div>
-                <div class="sub-title">Datos comunes y cientificos</div>
-                <div class="description">Aquí va toda la información que caracteriza a un arbol dependiendo de su tipo.</div>
+                <div class="title">Modificar Árbol</div>
+                <div class="sub-title">Datos comunes y científicos</div>
+                <div class="description">Aquí va toda la información que caracteriza a un árbol dependiendo de su tipo.</div>
                 <div>
                     <!--Nombre Común:-->
                     <div class="group b inputData">
@@ -68,15 +188,15 @@
                         <label class="mdl-select__label"><span>Clase:</span></label>
                     </div>
                     <div class="text-center">
-                        <a href="#">
+                        <a >
                             <input value="Siguiente" type="button" class="button next" /></a>
                     </div>
                 </div>
             </div>
 
             <div class="modal-body modal-body-step-2">
-                <div class="title">Datos comunes y cientificos</div>
-                <div class="description b">Aquí va toda la información que caracteriza a un arbol dependiendo de su tipo.</div>
+                <div class="title">Datos comunes y científicos</div>
+                <div class="description b">Aquí va toda la información que caracteriza a un árbol dependiendo de su tipo.</div>
                 <div>
                     <!--Orden:-->
                     <div class="mdl-select b mdl-js-select mdl-select--floating-label b">
@@ -121,17 +241,17 @@
                         <label class="mdl-select__label"><span>Estación de floración:</span></label>
                     </div>
                     <div class="text-center fade-in">
-                        <a href="#">
-                            <input value="Atras" type="button" class="button previous" /></a>
-                        <a href="#">
+                        <a >
+                            <input value="Atrás" type="button" class="button previous" /></a>
+                        <a >
                             <input value="Siguiente" type="button" class="button next" /></a>
                     </div>
                 </div>
             </div>
 
             <div class="modal-body modal-body-step-3">
-                <div class="title">Caracteristicas de arbol</div>
-                <div class="description b">Aquí van las características comunes del arbol.</div>
+                <div class="title">Característcas de árbol</div>
+                <div class="description b">Aquí van las características comunes del árbol.</div>
                 <div>
                     <!--Altura:-->
                     <div class="mdl-select b mdl-js-select mdl-select--floating-label">
@@ -166,7 +286,7 @@
                         <select class="mdl-select__input" id="ddlHabitoCrecimiento">
                             <option value="0">No determinado</option>
                         </select>
-                        <label class="mdl-select__label"><span>Habito de crecimiento:</span></label>
+                        <label class="mdl-select__label"><span>Hábito de crecimiento:</span></label>
                     </div>
                     <!--Persistencia hoja:-->
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
@@ -177,16 +297,16 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="#">
-                        <input value="Atras" type="button" class="button previous" /></a>
-                    <a href="#">
+                    <a >
+                        <input value="Atrás" type="button" class="button previous" /></a>
+                    <a >
                         <input value="Siguiente" type="button" class="button next" /></a>
                 </div>
             </div>
 
             <div class="modal-body modal-body-step-4">
-                <div class="title">Caracteristicas de arbol</div>
-                <div class="description b">Aquí van las características comunes del arbol.</div>
+                <div class="title">Característcas de árbol</div>
+                <div class="description b">Aquí van las características comunes del árbol.</div>
                 <div>
                     <!--Color flor:-->
                     <div class="mdl-select b mdl-js-select mdl-select--floating-label">
@@ -223,12 +343,12 @@
                         </select>
                         <label class="mdl-select__label"><span>Piso térmico:</span></label>
                     </div>
-                    <!--Funcion arbol:-->
+                    <!--Funcion árbol:-->
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
                         <select class="mdl-select__input" id="ddlFuncionA">
                             <option value="0">No determinado</option>
                         </select>
-                        <label class="mdl-select__label"><span>Función arbol:</span></label>
+                        <label class="mdl-select__label"><span>Función árbol:</span></label>
                     </div>
                     <!--Color hojas:-->
                     <div class="mdl-select b mdl-js-select mdl-select--floating-label">
@@ -246,16 +366,16 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="#">
-                        <input value="Atras" type="button" class="button previous" /></a>
-                    <a href="#">
+                    <a >
+                        <input value="Atrás" type="button" class="button previous" /></a>
+                    <a >
                         <input value="Siguiente" type="button" class="button next" /></a>
                 </div>
             </div>
 
             <div class="modal-body modal-body-step-5">
-                <div class="title">Cargar imagenes</div>
-                <div class="description">Aquí se subirán las primeras imágenes del arbol.</div>
+                <div class="title">Cargar imágenes</div>
+                <div class="description">Aquí se subirán las primeras imágenes del árbol.</div>
                 <div id="div">
                 </div>
                 <label class="file">
@@ -267,21 +387,11 @@
                     <textarea id="txaDescripcion" name="Descripción" class="textarea"></textarea>
                 </div>
                 <div class="text-center">
-                    <div class="button previous">Atras</div>
-                    <div class="button next" id="btnGuardar">Guardar</div>
+                    <div class="button previous">Atrás</div>
+                    <div class="button " id="btnGuardar">Guardar</div>
                 </div>
             </div>
             
-            <div class="modal-body modal-body-step-6">
-                <div class="title">Registro Guardado</div>
-                <div class="description">El registro se ha guardado exitosamente. ¿Qué desea hacer?</div>
-                <div class="text-center">
-                    <a href="../../indexAdmin.aspx">
-                        <input value="Ir a Inicio" type="button" class="button" /></a>
-                    <a href="ResgistroArbol3.aspx">
-                        <input value="Nuevo registro" type="button" class="button" /></a>
-                </div>
-            </div>
         </form>
     </div>
     <script src="../../../Scripts/jquery-3.1.1.min.js"></script>

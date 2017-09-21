@@ -3,20 +3,50 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Inicio</title>
     <link href="../Style/slider.css" rel="stylesheet" />
+    <script src="../../Script/Sweetalert/sweetalert2.js"></script>
+    <link href="../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
     <script>
         $(document).ready(function () {
             window.location.hash = "no-back-button";
             3
             window.location.hash = "Again-No-back-button" //chrome
             4
-            window.onhashchange = function () { window.location.hash = "no-back-button"; }
+            window.onhashchange = function () { window.location.hash = "#"; }
+            $.ajax({
+                type: "POST",
+                url: "../Services/Iniciar_sesion/Service_Iniciar_sesion.svc/Validar_sesion",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                processdata: true,
+                success: function (Fotos) {
+                    $("body").css('dysplay', 'none');
+                    var img = Fotos.Validar_sesionResult;
+                    if (img == "No iniciado") {
+                        swal({
+                            allowOutsideClick: false,
+                            title: 'Inicia sesión para ingresar',
+                            type: 'error'
+                        }).then(function () { location.href = "index.aspx" });
+                    }
+                    if (img == "Usuario") {
+                        swal({
+                            allowOutsideClick: false,
+                            title: 'Tu rol no tiene acceso a esta seccion',
+                            type: 'info'
+                        }).then(function () { location.href = "indexUsuario.aspx" });
+                        swal('', 'Tu rol no tiene acceso a esta seccion', 'info').then(function () { location.href = "indexUsuario.aspx" });
+                    }
+                }
+            });
         });
     </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="Modern-Slider">
+    <div class="Modern-Slider" hidden="hidden">
         <!-- Item -->
         <div class="item" data-thumbnail="../images/slider/img1.jpg">
             <div class="img-fill">

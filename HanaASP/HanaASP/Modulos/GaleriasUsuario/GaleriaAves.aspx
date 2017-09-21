@@ -11,6 +11,25 @@
     <link href="../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
     <script>
         $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: "../../Services/Iniciar_sesion/Service_Iniciar_sesion.svc/Validar_sesion",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                processdata: true,
+                success: function (Fotos) {
+                    var img = Fotos.Validar_sesionResult;
+                    if (img == "No iniciado") {
+                        swal({
+                            allowOutsideClick: false,
+                            title: 'Inicia sesión para poder ingresar aquí',
+                            type: 'error'
+                        }).then(function () { location.href = "../index.aspx" });
+                    }
+                }
+            });
             $("#SVGfavorito").click(function () {
                 var nombreCientifico = $("#mNombreCientifico").text();
                 swal({
@@ -23,16 +42,36 @@
                 }).then(function () {
                     $.ajax({
                         type: "POST",
-                        url: "../../../Services/Favoritos_ave/Service_Favoritos_ave.svc/Agregar_favoritos",
+                        url: "../../../Services/Favoritos_ave/Service_Favoritos_ave.svc/Verificar_favoritos",
                         data: '{"nombreCientifico":"' + nombreCientifico + '"}',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         async: false,
                         processdata: true,
                         success: function (Mensaje) {
-                            var mensaje = Mensaje.Agregar_favoritosResult;
-                            swal('',mensaje,'success');
+                            if (Mensaje.Verificar_favoritosResult != "Existe") {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "../../../Services/Favoritos_ave/Service_Favoritos_ave.svc/Agregar_favoritos",
+                                    data: '{"nombreCientifico":"' + nombreCientifico + '"}',
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    async: false,
+                                    processdata: true,
+                                    success: function (Mensaje) {
+                                        var mensaje = Mensaje.Agregar_favoritosResult;
+                                        swal('', mensaje, 'success');
 
+                                    },
+                                    error: function (Mensaje) {
+                                        alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                    }
+
+                                });
+                            }
+                            else {
+                                swal('', 'El ave ya esta agregada a tus favoritos', 'info');
+                            }
                         },
                         error: function (Mensaje) {
                             alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
@@ -172,7 +211,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Havbitat:</span><div id="mHabitat"></div>
+                                <span>Hábitat:</span><div id="mHabitat"></div>
                             </td>
                         </tr>
                         <tr>
@@ -186,7 +225,7 @@
 
             <!--Caracteristicas-->
             <div class="tarjet">
-                <span class="title">Caracteristicas</span>
+                <span class="title">Características</span>
                 <div class="data">
                     <table>
                         <tr>
@@ -204,7 +243,7 @@
             </div>
             <!--Datos cientificos-->
             <div class="tarjet tar1">
-                <span class="title">Datos Cientificos</span>
+                <span class="title">Datos Científicos</span>
                 <div class="data">
                     <table>
                         <tr>

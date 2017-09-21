@@ -7,6 +7,95 @@
     <script src="../../../Scripts/jquery-3.1.1.js"></script>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
     <script src="../../../Script/Ajax/GaleriaArbol.js"></script>
+    <link href="../../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
+    <script src="../../../Script/Sweetalert/sweetalert2.js"></script>
+    <script>
+        $(document).ready(function () {
+      $("#imgModificar").click(function () {
+                location.href = "../Modificar/ModificarArbol.aspx?av=" + $("#mNombreCientifico").text() + "";
+            });
+        $("#SVGfavorito").click(function () {
+            var nombreCientifico = $("#mNombreCientifico").text();
+            swal({
+                title: 'Esta seguro que desea agregar a favoritos?',
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si'
+            }).then(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "../../../../Services/Favoritos_arbol/Service_Favoritos_arbol.svc/Validar_favoritos",
+                    data: '{"nombreCientifico":"' + nombreCientifico + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: false,
+                    processdata: true,
+                    success: function (Mensaje) {
+                        if (Mensaje.Validar_favoritosResult != "Existe") {
+                            $.ajax({
+                                type: "POST",
+                                url: "../../../../Services/Favoritos_arbol/Service_Favoritos_arbol.svc/Agregar_favoritos",
+                                data: '{"nombreCientifico":"' + nombreCientifico + '"}',
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                async: false,
+                                processdata: true,
+                                success: function (Mensaje) {
+                                    var mensaje = Mensaje.Agregar_favoritosResult;
+                                    swal('', mensaje, 'success');
+
+                                },
+                                error: function (Mensaje) {
+                                    alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                }
+
+                            });
+
+
+                        } else {
+                            swal('', 'El árbol ya esta agregada a tus favoritos', 'info');
+                        }
+                    },
+                    error: function (Mensaje) {
+                        alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                    }
+
+                });
+                })
+        });
+        $("#SVGEliminar").click(function () {
+            swal({
+                title: 'Esta seguro que desea eliminar este árbol?',
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si'
+            }).then(function () {
+                    var nombreCientifico = $("#mNombreCientifico").text();
+                    $.ajax({
+                        type: "POST",
+                        url: "../../../../Services/Galeria_arbol/Service_Galeria_arbol.svc/Eliminar_arbol",
+                        data: '{"Ave":"' + nombreCientifico + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        processdata: true,
+                        success: function (Mensaje) {
+                            var mensaje = Mensaje.Eliminar_arbolResult;
+                            swal('', mensaje, 'success').then(function () { location.href="GaleriaArboles.aspx" });
+
+                        },
+                        error: function (Mensaje) {
+                            alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                        }
+
+                    }); });
+        });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--<div>
@@ -82,22 +171,26 @@
             <div class="hi-icon-wrap hi-icon-effect-8">
                 <div class="contIcon" tooltip="Galeria" flow="down">
                     <div id="SVGgaleria" class="hi-icon">
-                        <object data="../../../images/svg/galeria.svg"></object>
+                        <img src="../../../images/svg/galeria.png" alt="Galeria" />
                     </div>
                 </div>
                 <div class="contIcon" tooltip="Favorito" flow="down">
                     <div id="SVGfavorito" class="hi-icon">
-                        <object data="../../../images/svg/estrella.svg"></object>
+                         <img src="../../../images/svg/estrella.png" alt="Estrella" />
                     </div>
                 </div>
                 <div class="contIcon" tooltip="Modificar" flow="down">
-                    <div id="SVGmodificar" class="hi-icon">
-                        <object data="../../../images/svg/editar.svg"></object>
-                    </div>
+                    <div id="SVGmodificar" class="hi-icon">                   
+                        <img src="../../../images/svg/Editar.png" alt="Editar" id="imgModificar" />
+                                            </div>
                 </div>
                 <div class="contIcon" tooltip="Ubicacion" flow="down">
                     <div id="SVGubicacion" class="hi-icon">
-                        <object data="../../../images/svg/ubicacion.svg"></object>
+                                           <img src="../../../images/svg/Ubicacion.png" alt="Ubicación" />
+                    </div>
+                </div>  <div class="contIcon" tooltip="Eliminar" flow="down">
+                    <div id="SVGEliminar" class="hi-icon">
+                                           <img src="https://icon-icons.com/icons2/215/PNG/256/delete-file256_25240.png" alt="Ubicación" />
                     </div>
                 </div>
             </div>

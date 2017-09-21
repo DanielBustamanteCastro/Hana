@@ -58,7 +58,7 @@ namespace HanaASP.Modulos
                         String[] Insertar = tblUsC.Insertar_usuario(tblUs, tblC, tblU, tblR, tblE, tblCe);
                         if (Insertar[0] == null && Insertar[1] != null)
                         {
-                            string script = @"<script type='text/javascript'>swal('Upps..','" + Insertar[1] + "','error');</script>";
+                            string script = @"<script type='text/javascript'>swal('Oops..','" + Insertar[1] + "','error');</script>";
                             ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                         }
                         if (Insertar[0] != null && Insertar[1] == null)
@@ -69,7 +69,7 @@ namespace HanaASP.Modulos
                     }
                     if (valor[0].Equals("Fuera de tiempo"))
                     {
-                        string script = @"<script type='text/javascript'>swal('Upps..','Has sobrepasado el tiempo estimado para activar tu cuenta','error');</script>";
+                        string script = @"<script type='text/javascript'>swal('Oops..','Has sobrepasado el tiempo estimado para activar tu cuenta','error');</script>";
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                     }
                     if (valor[0].Equals("Eliminada"))
@@ -80,7 +80,7 @@ namespace HanaASP.Modulos
                 }
                 if (valor[0] == null && valor[1] != null)
                 {
-                    string script = @"<script type='text/javascript'>swal('Upps..','" + valor[1] + "','error');</script>";
+                    string script = @"<script type='text/javascript'>swal('Oops..','" + valor[1] + "','error');</script>";
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
                 }
             }

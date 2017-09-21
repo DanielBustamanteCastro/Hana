@@ -6,13 +6,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' />
     <script src="../../../Scripts/jquery-3.1.1.js"></script>
+    
+    <script src="../../../Script/Sweetalert/sweetalert2.js"></script>
+    <link href="../../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
     <script src="../../../Script/Ajax/GaleriaAve.js"></script>
     <script>
         $(document).ready(function () {
             $("#imgModificar").click(function () {
                 location.href = "../Modificar/ModificarAve.aspx?av=" + $("#mNombreCientifico").text() + "";
             });
+
+            $("#SVGfavorito").click(function () {
+                var nombreCientifico = $("#mNombreCientifico").text();
+                swal({
+                    title: 'Esta seguro que desea agregar a favoritos?',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si'
+                }).then(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "../../../../../Services/Favoritos_ave/Service_Favoritos_ave.svc/Verificar_favoritos",
+                        data: '{"nombreCientifico":"' + nombreCientifico + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        processdata: true,
+                        success: function (Mensaje) {
+                            if (Mensaje.Verificar_favoritosResult != "Existe") {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "../../../../../Services/Favoritos_ave/Service_Favoritos_ave.svc/Agregar_favoritos",
+                                    data: '{"nombreCientifico":"' + nombreCientifico + '"}',
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    async: false,
+                                    processdata: true,
+                                    success: function (Mensaje) {
+                                        var mensaje = Mensaje.Agregar_favoritosResult;
+                                        swal('', mensaje, 'success');
+
+                                    },
+                                    error: function (Mensaje) {
+                                        alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                                    }
+
+                                });
+                            }
+                            else {
+                                swal('', 'El ave ya esta agregada a tus favoritos', 'info');
+                            }
+                        },
+                        error: function (Mensaje) {
+                            alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                        }
+
+                    });
+                })
+            });
+            $("#SVGEliminar").click(function () {
+                swal({
+                    title: 'Esta seguro que desea eliminar esta ave?',
+                    type: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si'
+                }).then(function () {
+                    var nombreCientific = $("#mNombreCientifico").text();
+                    $.ajax({
+                        type: "POST",
+                        url: "../../../../Services/Galeria_ave/Service_Galeria_ave.svc/Eliminar_ave",
+                        data: '{"Ave":"' + nombreCientific + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        processdata: true,
+                        success: function (Mensaje) {
+                            var mensaje = Mensaje.Eliminar_aveResult;
+                            swal('', mensaje, 'success').then(function () { location.href = "GaleriaArboles.aspx" });
+
+                        },
+                        error: function (Mensaje) {
+                            alert('Error al llamar el servicio : ' + Mensaje.status + ' ' + Mensaje.statusText);
+                        }
+
+                    });
+                });
+            });
         });
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -106,6 +191,12 @@
                     <div id="SVGubicacion" class="hi-icon">
                         <%--<object data="../../../images/svg/ubicacion.svg"></object>--%>
                         <img src="../../../images/svg/Ubicacion.png" alt="Ubicación" />
+                    </div>
+                </div>
+                <div class="contIcon" tooltip="Ubicacion" flow="down">
+                    <div id="SVGEliminar" class="hi-icon">
+                        <%--<object data="../../../images/svg/ubicacion.svg"></object>--%>
+                        <img src="https://icon-icons.com/icons2/215/PNG/256/delete-file256_25240.png" alt="Ubicación" />
                     </div>
                 </div>
             </div>

@@ -38,7 +38,7 @@
                     </div>
                     <!--Fecha nacimiento-->
                     <div class="group b f inputData">
-                        <input id="txtFecha" type="date" class="input" required="required" name="Fecha de nacimiento" style="padding-bottom: 1px;" />
+                        <input id="txtFecha" type="date" class="input" required="required" name="Fecha de nacimiento"  style="padding-bottom: 1px;" />
                         <span class="bar"></span>
                         <label class="label">Fecha nacimiento:</label>
                     </div>
@@ -69,17 +69,11 @@
                         <div id="Contraseña" style="color: red; position: absolute;"></div>
                     </div>
                     <div class="text-center">
-                        <input value="Modificar" type="button" id="btnRegistrar" class="button next" />
+                        <input value="Modificar" type="button" id="btnRegistrar" class="button" />
                     </div>
                 </div>
             </div>
-            <div class="modal-body modal-body-step-2">
-                <div class="title">Modificado exitosamente</div>
-                <div class="text-center">
-                    <a href="../../indexUsuario.aspx">
-                        <input value="Ir a Inicio" type="button" class="button" /></a>
-                </div>
-            </div>
+        
         </form>
     </div>
     <script src="../../../Script/icono.js"></script>

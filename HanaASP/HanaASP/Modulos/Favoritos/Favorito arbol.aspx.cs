@@ -7,11 +7,10 @@ using System.Web.UI.WebControls;
 
 namespace HanaASP.Modulos.Favoritos
 {
-    public partial class Favorito_arbol : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+    public partial class Favorito_arbol : System.Web.UI.Page { 
+    //    protected void Page_Load(object sender, EventArgs e)
+    //    {
 
-        }
+    //    }
     }
 }

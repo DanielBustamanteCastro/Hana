@@ -43,5 +43,10 @@ namespace HanaASP.Services.Favoritos_ave
             return new tbl_Favoritos_aveCAD().Eliminar_ave(ave, us.id_usuario);
 
         }
+
+        public string Verificar_favoritos(string nombreCientifico)
+        {
+            return new tbl_Favoritos_aveCAD().Validar_favoritos(nombreCientifico, HttpContext.Current.Session["Correo"].ToString());
+        }
     }
 }

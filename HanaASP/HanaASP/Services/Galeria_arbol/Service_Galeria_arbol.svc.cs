@@ -15,7 +15,10 @@ namespace HanaASP.Services.Galeria_arbol
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service_Galeria_arbol.svc o Service_Galeria_arbol.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class Service_Galeria_arbol : IService_Galeria_arbol
     {
-
+        public string Eliminar_arbol(string Arbol)
+        {
+            return new tbl_ArbolCAD().Eliminar_arbol(Arbol);
+        }
 
         public List<string[]> Llamar_arboles()
         {

@@ -120,7 +120,7 @@
                     </div>
                     <div class="text-center fade-in">
                         <a href="#">
-                            <input value="Atras" type="button" class="button previous" /></a>
+                            <input value="Atrás" type="button" class="button previous" /></a>
                         <a href="#">
                             <input value="Siguiente" type="button" class="button next" /></a>
                     </div>
@@ -128,7 +128,7 @@
             </div>
             <!-- Third step-->
             <div class="modal-body modal-body-step-3">
-                <div class="title">Caracteristicas de Ave</div>
+                <div class="title">Características de Ave</div>
                 <div class="description b">Aquí van las características comunes del ave.</div>
                 <div>
                     <!--Clase de dieta:-->
@@ -157,7 +157,7 @@
                         <select class="mdl-select__input" id="ddlHabitat">
                             <option value="0">No determinado</option>
                         </select>
-                        <label class="mdl-select__label"><span>Habitat:</span></label>
+                        <label class="mdl-select__label"><span>Hábitat:</span></label>
                     </div>
                     <!--Reproduccion:-->
                     <div class="mdl-select mdl-js-select mdl-select--floating-label b">
@@ -183,14 +183,14 @@
                 </div>
                 <div class="text-center">
                     <a href="#">
-                        <input value="Atras" type="button" class="button previous" /></a>
+                        <input value="Atrás" type="button" class="button previous" /></a>
                     <a href="#">
                         <input value="Siguiente" type="button" class="button next" /></a>
                 </div>
             </div>
             <!-- Forth step-->
             <div class="modal-body modal-body-step-4">
-                <div class="title">Cargar imagenes</div>
+                <div class="title">Cargar imágenes</div>
                 <div class="description">Aquí se subirán las primeras imágenes del ave.</div>
                 <div id="div">
                 </div>
@@ -203,21 +203,12 @@
                     <textarea id="txaDescripcion" name="Descripción" class="textarea"></textarea>
                 </div>
                 <div class="text-center">
-                    <div class="button previous">Atras</div>
-                    <div class="button next" id="btnGuardar">Guardar</div>
+                    <div class="button previous">Atrás</div>
+                    <div class="button" id="btnGuardar">Guardar</div>
                 </div>
             </div>
             <!-- Fifth step-->
-            <div class="modal-body modal-body-step-5">
-                <div class="title">Registro Guardado</div>
-                <div class="description">El registro se ha guardado exitosamente. ¿Qué desea hacer?</div>
-                <div class="text-center">
-                    <a href="../../indexAdmin.aspx">
-                        <input value="Ir a Inicio" type="button" class="button" /></a>
-                    <a href="ResgistroAve.aspx">
-                        <input value="Nuevo registro" type="button" class="button" /></a>
-                </div>
-            </div>
+            
         </form>
     </div>
     <script src="../../../Scripts/jquery-3.1.1.min.js"></script>

@@ -25,5 +25,9 @@ namespace HanaASP.Services.Favoritos_ave
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
         String Eliminar_favoritos(String nombreCientifico);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
+        String Verificar_favoritos(String nombreCientifico);
     }
 }

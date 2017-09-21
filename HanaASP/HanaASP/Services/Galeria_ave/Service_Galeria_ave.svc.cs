@@ -15,7 +15,10 @@ namespace HanaASP.Services.Galeria_ave
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service_Galeria_ave.svc o Service_Galeria_ave.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class Service_Galeria_ave : IService_Galeria_ave
     {
-    
+        public string Eliminar_ave(string Ave)
+        {
+            return new tbl_AveCAD().Eliminar_ave(Ave);
+        }
 
         public List<string[]> Llamar_aves()
         {

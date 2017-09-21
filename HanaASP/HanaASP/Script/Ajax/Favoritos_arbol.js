@@ -1,6 +1,24 @@
 ﻿$(document).ready(function () {
     $.ajax({
         type: "POST",
+        url: "../../Services/Iniciar_sesion/Service_Iniciar_sesion.svc/Validar_sesion",
+        data: '{}',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        processdata: true,
+        success: function (Fotos) {
+            var img = Fotos.Validar_sesionResult;
+            if (img == "No iniciado") {
+                swal({
+                    allowOutsideClick: false,
+                    title: 'Inicia sesión para poder ingresar aquí',
+                    type: 'error'
+                }).then(function () { location.href = "../index.aspx" });
+            } else {
+
+    $.ajax({
+        type: "POST",
         url: "../../../Services/Favoritos_arbol/Service_Favoritos_arbol.svc/Cargar_favoritos",
         data: '{}',
         contentType: "application/json; charset=utf-8",
@@ -105,7 +123,7 @@
                 success: function (Mensaje) {
                     var mensaje = Mensaje.Eliminar_favoritosResult;
                     if (mensaje == "Eliminado correctamente") {
-                        swal('', mensaje, 'success');
+                        swal('', mensaje, 'success').then(function () { location.href = "Favorito arbol.aspx" });
 
                     }
                     else {
@@ -120,4 +138,7 @@
             });
         })
     })
+            }
+        }
+    });
 });

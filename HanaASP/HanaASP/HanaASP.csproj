@@ -123,6 +123,8 @@
     <Content Include="images\svg\ubicacion.svg" />
     <Content Include="images\X-roja.png" />
     <Content Include="images\Registrar\FondoI1.png" />
+    <Content Include="Modulos\Admin\Favoritos\Favorito arbol.aspx" />
+    <Content Include="Modulos\Admin\Favoritos\Favorito ave.aspx" />
     <Content Include="Modulos\Admin\GaleriasAdmin\GaleriaArboles.aspx" />
     <Content Include="Modulos\Admin\GaleriasAdmin\GaleriaAves.aspx" />
     <Content Include="Modulos\Admin\Informacion\Que es fauna.aspx" />
@@ -130,6 +132,8 @@
     <Content Include="Modulos\Admin\Modificar\ModificarAve.aspx" />
     <Content Include="Modulos\Admin\perfil\modificarPerfilAdmin.aspx" />
     <Content Include="Modulos\Admin\perfil\perfilAdmin.aspx" />
+    <Content Include="Modulos\Admin\perfil\perfil\modificarPerfilUsuario.aspx" />
+    <Content Include="Modulos\Admin\perfil\perfil\perfilUsuario.aspx" />
     <Content Include="Modulos\Admin\Registrar\ResgistroArbol.aspx" />
     <Content Include="Modulos\Admin\Registrar\ResgistroAve.aspx" />
     <Content Include="Modulos\Favoritos\Favorito arbol.aspx" />
@@ -145,6 +149,8 @@
     <Content Include="Modulos\Informacion\Que es flora.aspx" />
     <Content Include="Modulos\Inicio sesion.aspx" />
     <Content Include="Modulos\Register.aspx" />
+    <Content Include="Modulos\Usuario\Informacion\Que es fauna.aspx" />
+    <Content Include="Modulos\Usuario\Informacion\Que es flora.aspx" />
     <Content Include="Modulos\Usuario\perfil\modificarPerfilUsuario.aspx" />
     <Content Include="Modulos\Usuario\perfil\perfilUsuario.aspx" />
     <Content Include="Modulos\Validacion.aspx" />
@@ -157,13 +163,18 @@
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\Materialize.min.js" />
+    <Content Include="Script\Ajax\Favoritos_arbolAdmin.js" />
     <Content Include="Script\Ajax\Favoritos_arbol.js" />
+    <Content Include="Script\Ajax\Favoritos_aveAdmin.js" />
     <Content Include="Script\Ajax\Favoritos_ave.js" />
     <Content Include="Script\Ajax\GaleriaArbol.js" />
     <Content Include="Script\Ajax\GaleriaAve.js" />
     <Content Include="Script\Ajax\Iniciar_sesion.js" />
     <Content Include="Script\Ajax\ModificarAve.js" />
+    <Content Include="Script\Ajax\Modificar_arbol.js" />
+    <Content Include="Script\Ajax\Modificar_perfilAdmin.js" />
     <Content Include="Script\Ajax\Modificar_perfil.js" />
+    <Content Include="Script\Ajax\PerfilAdmin.js" />
     <Content Include="Script\Ajax\Perfil.js" />
     <Content Include="Script\Ajax\Registrar.js" />
     <Content Include="Script\Ajax\Registrar_arbol.js" />
@@ -187,6 +198,7 @@
     <Content Include="Services\Galeria_arbol\Service_Galeria_arbol.svc" />
     <Content Include="Services\Galeria_ave\Service_Galeria_ave.svc" />
     <Content Include="Services\Iniciar_sesion\Service_Iniciar_sesion.svc" />
+    <Content Include="Services\Modificar_arbol\Service_Modificar_arbol.svc" />
     <Content Include="Services\Modificar_ave\Service_Modificar_ave.svc" />
     <Content Include="Services\Perfil\Service_Perfil.svc" />
     <Content Include="Services\Registrar\Service_Registrar.svc" />
@@ -230,6 +242,20 @@
   <ItemGroup>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Admin\Favoritos\Favorito arbol.aspx.cs">
+      <DependentUpon>Favorito arbol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Admin\Favoritos\Favorito arbol.aspx.designer.cs">
+      <DependentUpon>Favorito arbol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Admin\Favoritos\Favorito ave.aspx.cs">
+      <DependentUpon>Favorito ave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Admin\Favoritos\Favorito ave.aspx.designer.cs">
+      <DependentUpon>Favorito ave.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Admin\GaleriasAdmin\GaleriaArboles.aspx.cs">
       <DependentUpon>GaleriaArboles.aspx</DependentUpon>
@@ -279,6 +305,20 @@
     </Compile>
     <Compile Include="Modulos\Admin\perfil\perfilAdmin.aspx.designer.cs">
       <DependentUpon>perfilAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Admin\perfil\perfil\modificarPerfilUsuario.aspx.cs">
+      <DependentUpon>modificarPerfilUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Admin\perfil\perfil\modificarPerfilUsuario.aspx.designer.cs">
+      <DependentUpon>modificarPerfilUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Admin\perfil\perfil\perfilUsuario.aspx.cs">
+      <DependentUpon>perfilUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Admin\perfil\perfil\perfilUsuario.aspx.designer.cs">
+      <DependentUpon>perfilUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Admin\Registrar\ResgistroArbol.aspx.cs">
       <DependentUpon>ResgistroArbol.aspx</DependentUpon>
@@ -397,6 +437,20 @@
     <Compile Include="Modulos\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Usuario\Informacion\Que es fauna.aspx.cs">
+      <DependentUpon>Que es fauna.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Usuario\Informacion\Que es fauna.aspx.designer.cs">
+      <DependentUpon>Que es fauna.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Usuario\Informacion\Que es flora.aspx.cs">
+      <DependentUpon>Que es flora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Usuario\Informacion\Que es flora.aspx.designer.cs">
+      <DependentUpon>Que es flora.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Usuario\perfil\modificarPerfilUsuario.aspx.cs">
       <DependentUpon>modificarPerfilUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -438,6 +492,10 @@
     <Compile Include="Services\Iniciar_sesion\IService_Iniciar_sesion.cs" />
     <Compile Include="Services\Iniciar_sesion\Service_Iniciar_sesion.svc.cs">
       <DependentUpon>Service_Iniciar_sesion.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Modificar_arbol\IService_Modificar_arbol.cs" />
+    <Compile Include="Services\Modificar_arbol\Service_Modificar_arbol.svc.cs">
+      <DependentUpon>Service_Modificar_arbol.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\Modificar_ave\IService_Modificar_ave.cs" />
     <Compile Include="Services\Modificar_ave\Service_Modificar_ave.svc.cs">

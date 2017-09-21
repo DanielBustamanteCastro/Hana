@@ -21,9 +21,9 @@
 
             <div class="modal-body modal-body-step-1 is-showing">
                 <ul></ul>
-                <div class="title">Registro Arbol</div>
-                <div class="sub-title">Datos comunes y cientificos</div>
-                <div class="description">Aquí va toda la información que caracteriza a un arbol dependiendo de su tipo.</div>
+                <div class="title">Registro Árbol</div>
+                <div class="sub-title">Datos comunes y científicos</div>
+                <div class="description">Aquí va toda la información que caracteriza a un árbol dependiendo de su tipo.</div>
                 <div>
                     <!--Nombre Común:-->
                     <div class="group b inputData">
@@ -75,8 +75,8 @@
             </div>
 
             <div class="modal-body modal-body-step-2">
-                <div class="title">Datos comunes y cientificos</div>
-                <div class="description b">Aquí va toda la información que caracteriza a un arbol dependiendo de su tipo.</div>
+                <div class="title">Datos comunes y científicos</div>
+                <div class="description b">Aquí va toda la información que caracteriza a un árbol dependiendo de su tipo.</div>
                 <div>
                     <!--Orden:-->
                     <div class="mdl-select b mdl-js-select mdl-select--floating-label b">
@@ -122,7 +122,7 @@
                     </div>
                     <div class="text-center fade-in">
                         <a href="#">
-                            <input value="Atras" type="button" class="button previous" /></a>
+                            <input value="Atrás" type="button" class="button previous" /></a>
                         <a href="#">
                             <input value="Siguiente" type="button" class="button next" /></a>
                     </div>
@@ -130,8 +130,8 @@
             </div>
 
             <div class="modal-body modal-body-step-3">
-                <div class="title">Caracteristicas de arbol</div>
-                <div class="description b">Aquí van las características comunes del arbol.</div>
+                <div class="title">Características de árbol</div>
+                <div class="description b">Aquí van las características comunes del ábol.</div>
                 <div>
                     <!--Altura:-->
                     <div class="mdl-select b mdl-js-select mdl-select--floating-label">
@@ -178,15 +178,15 @@
                 </div>
                 <div class="text-center">
                     <a href="#">
-                        <input value="Atras" type="button" class="button previous" /></a>
+                        <input value="Atrás" type="button" class="button previous" /></a>
                     <a href="#">
                         <input value="Siguiente" type="button" class="button next" /></a>
                 </div>
             </div>
 
             <div class="modal-body modal-body-step-4">
-                <div class="title">Caracteristicas de arbol</div>
-                <div class="description b">Aquí van las características comunes del arbol.</div>
+                <div class="title">Características de árbol</div>
+                <div class="description b">Aquí van las características comunes del árbol.</div>
                 <div>
                     <!--Color flor:-->
                     <div class="mdl-select b mdl-js-select mdl-select--floating-label">
@@ -214,7 +214,7 @@
                         <select class="mdl-select__input" id="ddlLongevidadA">
                             <option value="0">No determinado</option>
                         </select>
-                        <label class="mdl-select__label"><span>Longevidad arbol:</span></label>
+                        <label class="mdl-select__label"><span>Longevidad árbol:</span></label>
                     </div>
                     <!--Piso térmico:-->
                     <div class="mdl-select b mdl-js-select mdl-select--floating-label">
@@ -228,7 +228,7 @@
                         <select class="mdl-select__input" id="ddlFuncionA">
                             <option value="0">No determinado</option>
                         </select>
-                        <label class="mdl-select__label"><span>Función arbol:</span></label>
+                        <label class="mdl-select__label"><span>Función árbol:</span></label>
                     </div>
                     <!--Color hojas:-->
                     <div class="mdl-select b mdl-js-select mdl-select--floating-label">
@@ -242,20 +242,20 @@
                         <select class="mdl-select__input" id="ddlLuminocidad">
                             <option value="0">No determinado</option>
                         </select>
-                        <label class="mdl-select__label"><span>Luminocidad:</span></label>
+                        <label class="mdl-select__label"><span>Luminosidad:</span></label>
                     </div>
                 </div>
                 <div class="text-center">
                     <a href="#">
-                        <input value="Atras" type="button" class="button previous" /></a>
+                        <input value="Atrás" type="button" class="button previous" /></a>
                     <a href="#">
                         <input value="Siguiente" type="button" class="button next" /></a>
                 </div>
             </div>
 
             <div class="modal-body modal-body-step-5">
-                <div class="title">Cargar imagenes</div>
-                <div class="description">Aquí se subirán las primeras imágenes del arbol.</div>
+                <div class="title">Cargar imágenes</div>
+                <div class="description">Aquí se subirán las primeras imágenes del árbol.</div>
                 <div id="div">
                 </div>
                 <label class="file">
@@ -267,21 +267,11 @@
                     <textarea id="txaDescripcion" name="Descripción" class="textarea"></textarea>
                 </div>
                 <div class="text-center">
-                    <div class="button previous">Atras</div>
-                    <div class="button next" id="btnGuardar">Guardar</div>
+                    <div class="button previous">Atrás</div>
+                    <div class="button " id="btnGuardar">Guardar</div>
                 </div>
             </div>
             
-            <div class="modal-body modal-body-step-6">
-                <div class="title">Registro Guardado</div>
-                <div class="description">El registro se ha guardado exitosamente. ¿Qué desea hacer?</div>
-                <div class="text-center">
-                    <a href="../../indexAdmin.aspx">
-                        <input value="Ir a Inicio" type="button" class="button" /></a>
-                    <a href="ResgistroArbol.aspx">
-                        <input value="Nuevo registro" type="button" class="button" /></a>
-                </div>
-            </div>
         </form>
     </div>
     <script src="../../../Scripts/jquery-3.1.1.min.js"></script>

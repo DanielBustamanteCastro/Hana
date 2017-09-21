@@ -8,9 +8,7 @@
     <script src="../../Script/Sweetalert/sweetalert2.js"></script>
     <link href="../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
     <script src="../../Script/Ajax/Favoritos_ave.js"></script>
-    <script>
-  
-    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--    <div>
@@ -145,7 +143,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Havbitat:</span><div id="mHabitat"></div>
+                                <span>Hábitat:</span><div id="mHabitat"></div>
                             </td>
                         </tr>
                         <tr>
@@ -159,7 +157,7 @@
 
             <!--Caracteristicas-->
             <div class="tarjet">
-                <span class="title">Caracteristicas</span>
+                <span class="title">Características</span>
                 <div class="data">
                     <table>
                         <tr>
@@ -177,7 +175,7 @@
             </div>
             <!--Datos cientificos-->
             <div class="tarjet tar1">
-                <span class="title">Datos Cientificos</span>
+                <span class="title">Datos Científicos</span>
                 <div class="data">
                     <table>
                         <tr>

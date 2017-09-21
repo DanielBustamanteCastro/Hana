@@ -287,6 +287,7 @@ body {
             }
 
 .tarjet .data {
+    padding:15px;
     display: block;
     margin-bottom: 20px;
     background-color: white;
@@ -295,6 +296,10 @@ body {
     height: auto;
     border-radius: 1px;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+#mDescripcion{
+    margin-left:15px;
 }
 
 .tarjet .title {

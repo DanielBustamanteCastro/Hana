@@ -86,6 +86,31 @@ namespace CAD
             }
             return mensaje;
         }
+        public String Validar_favoritos(String NombreCient, String Correo)
+        {
+            String mensaje = "No existe";
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_Confirmar_Favoritos_arbol";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nomcient", NombreCient);
+                cmd.Parameters.AddWithValue("@correo", Correo);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    mensaje = "Existe";
+                }
+                con.Close();
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+            return mensaje;
+        }
     }
 }

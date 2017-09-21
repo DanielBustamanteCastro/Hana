@@ -8,6 +8,7 @@
     <script src="../../Script/Ajax/Favoritos_arbol.js"></script>
     <script src="../../Script/Sweetalert/sweetalert2.js"></script>
     <link href="../../Style/Sweetalert/sweetalert2.css" rel="stylesheet" />
+  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <%--  <div>
@@ -132,7 +133,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Estacion de floración:</span><div id="mEstacionFloracion"></div>
+                                <span>Estación de floración:</span><div id="mEstacionFloracion"></div>
                             </td>
                         </tr>
                     </table>
@@ -141,7 +142,7 @@
 
             <!--Caracteristicas-->
             <div class="tarjet">
-                <span class="title">Caracteristicas</span>
+                <span class="title">Características</span>
                 <div class="data">
                     <table>
                         <tr>
@@ -171,7 +172,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Limitaciones del arbol:</span><div id="mLimitacionesArbol"></div>
+                                <span>Limitaciones del árbol:</span><div id="mLimitacionesArbol"></div>
                             </td>
                         </tr>
                         <tr>
@@ -186,7 +187,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Longevidad arbol:</span><div id="mLongevidadArbol"></div>
+                                <span>Longevidad árbol:</span><div id="mLongevidadArbol"></div>
                             </td>
                         </tr>
                         <tr>
@@ -199,7 +200,7 @@
             </div>
             <!--Datos cientificos-->
             <div class="tarjet tar1">
-                <span class="title">Datos Cientificos</span>
+                <span class="title">Datos Científicos</span>
                 <div class="data">
                     <table>
                         <tr>
@@ -234,7 +235,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Luminocidad:</span><div id="mLuminocidad"></div>
+                                <span>Luminosidad:</span><div id="mLuminocidad"></div>
                             </td>
                         </tr>
                         <tr>
@@ -249,7 +250,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <span>Función arbol:</span><div id="mFuncionArbol"></div>
+                                <span>Función árbol:</span><div id="mFuncionArbol"></div>
                             </td>
                         </tr>
                         <tr>

@@ -20,5 +20,9 @@ namespace HanaASP.Services.Galeria_ave
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
         List<tbl_Fotos_aves> Llamar_fotos_aves(String idAve);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
+        String Eliminar_ave(String Ave);
     }
 }

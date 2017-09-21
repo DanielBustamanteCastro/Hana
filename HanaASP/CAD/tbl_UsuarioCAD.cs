@@ -267,5 +267,85 @@ namespace CAD
             }
             return datos;
         }
+        public String[] Cargar_usuario_m(String correo)
+        {
+            String[] datos = new String[8];
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT* FROM tbl_Contraseña AS C INNER JOIN tbl_Usuario AS U ON C.id_contraseña = U.id_contraseña INNER JOIN tbl_Correo_electronico AS CE ON U.id_usuario = CE.id_usuario INNER JOIN tbl_Ubicacion AS UB ON U.id_Ubicacion = UB.id_ubicacion WHERE CE.correo_usuario = '" + correo + "'";
+                cmd.CommandType = CommandType.Text;
+                //cmd.Parameters.AddWithValue("@Correo", correo);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    datos = new string[] {dr["id_contraseña"].ToString(),dr["contraseña_usuario"].ToString(),dr["id_usuario"].ToString(),
+                    dr["nombre_usuario"].ToString(),dr["apellido_usuario"].ToString(),Convert.ToDateTime(dr["fecha_nacimiento_usuario"].ToString()).ToString("yyyy-MM-dd"),dr["id_Ubicacion"].ToString(),dr["correo_usuario"].ToString(),dr["departamento"].ToString()};
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return datos;
+        }
+
+        public String Modificar_usuario(tbl_Usuario us, tbl_Contraseña cont, tbl_Ubicacion ub, String CorreoNuevo, tbl_Correo_electronico cel)
+        {
+            String Insert = "Error al modificar, intenta nuevamente";
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "prc_UPDATE_Usuario";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@nombre", us.nombre_usuario);
+                cmd.Parameters.AddWithValue("@apellido", us.apellido_usuario);
+                cmd.Parameters.AddWithValue("@fecha", us.fecha_nacimiento);
+                cmd.Parameters.AddWithValue("@idU", ub.id_ubicacion);
+                cmd.Parameters.AddWithValue("@Correo", cel.correo_electronico);
+                cmd.Parameters.AddWithValue("@Contraseña", cont.contraseña_usuario);
+                cmd.Parameters.AddWithValue("@CorreoNuevo", CorreoNuevo);
+                con.Open();
+                int id = cmd.ExecuteNonQuery();
+                con.Close();
+                if (id != 0) Insert = "Modificado correctamente";
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            return Insert;
+        }
+
+        public String Validar_sesion(String Correo)
+        {
+            String tblUs = "None";
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT * FROM tbl_Correo_electronico AS C INNER JOIN tbl_Usuario AS U ON C.id_usuario=U.id_usuario INNER JOIN tbl_Rol AS R ON U.id_rol=R.id_rol WHERE C.correo_usuario='"+Correo+"'";
+                cmd.CommandType = CommandType.Text;
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                foreach (var item in dr)
+                {
+                    tblUs = dr["rol"].ToString();
+                }
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return tblUs;
+        }
+
     }
 }
